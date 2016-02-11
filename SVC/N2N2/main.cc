@@ -72,6 +72,16 @@ double integrand_(hep::mc_point<double> const& x, double Temperature)
 
 int main()
 {
+	double r = 5.0;
+	double theta1 = 0.5;
+	double theta2 = 0.5;
+	double phi = 0.5;
+	double v;
+	
+	potinit();
+	potn2n2( &r, &theta1, &theta2, &phi, &v);
+	cout << "v: " << v << endl;
+
 	cout << "--- Computing SVC for N2N2 --- " << endl;
 	
 	cout << ">> Enter the lower boundary for temperature interval:" << endl;
@@ -98,15 +108,15 @@ int main()
 	clock_t cycle_clock;
 
 	full_clock = clock();
+	
+	// initializing internal parameters for calculating potential value
+	potinit();
 
 	for ( double temp = LTEMP; temp <= HTEMP; temp += STEP )
 	{
 		cycle_clock = clock();
 
 		temperatures.push_back(temp);
-
-		// initializing internal parameters for calculating potential value
-		potinit();
 			
 		// creating integrand function
 		auto integrand = bind(integrand_, _1, temp);
