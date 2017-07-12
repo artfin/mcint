@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=10mm,
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath, amssymb}
+
+\newcommand{\vverh}{\vspace*{-0.3cm}}
+
+\begin{document}
+
+\subsection*{Замена переменных в одномерном интеграле}
+
+Рассмотрим интеграл от функции одной переменной в пределах от $0$ до $+\infty$. Осуществим замену переменных, позволяющую интегрировать на интервале $[0, 1]$:
+\vverh
+\begin{gather}
+		\int\limits_{0}^{\infty} f(x) d x = \left[ y = \frac{2}{\pi} \arctg x \right] = \frac{\pi}{2} \int\limits_{0}^{1} \left[ 1 + \tg^2 \left( \frac{\pi}{2} y \right) \right] f \left( \tg \left( \frac{\pi}{2} y \right) \right) dy \notag 
+\end{gather}
+
+Введем дополнительное обозначение, чтобы упростить полученное выражение:
+\vverh
+\begin{gather}
+		x = \tg \left( \frac{\pi}{2} y \right) \notag \\
+	I = \frac{\pi}{2} \int\limits_{0}^{1} \left[ 1 + x^2 \right] f (x) dy \notag
+\end{gather}
+
+\subsection*{Замена переменных в двумерном интеграле}
+
+Рассмотрим двумерный интеграл, в котором интегрирование по одной переменной происходит вдоль луча $[0, \infty)$, а по второй -- по отрезку $\left[ 0, \pi \right]$ (именно такого типа интеграл фигурирует в выражении для ВВК для системы Ar-CO$_2$).
+\vverh
+\begin{gather}
+		\int\limits_{0}^{\infty} dx \int\limits_{0}^{\pi} f(x, y) dy \notag
+\end{gather}
+
+Для того, чтобы область интегрирования свести к единичному квадрату, можно осуществить следующую замену переменных:
+\vverh
+\begin{gather}
+	\begin{aligned}
+			X &= \frac{2}{\pi} \arctg x \\
+			Y &= \frac{1}{\pi} y
+	\end{aligned}
+	\quad \quad \quad 
+	\begin{aligned}
+			x &= \tg \left( \frac{\pi}{2} X \right) \\ 
+			y &=\pi Y
+	\end{aligned}
+	\notag
+\end{gather}
+
+Учитывая производные, вылазящие при замене переменных, приходим к следующему выражению:
+\vverh
+\begin{gather}
+		\int\limits_{0}^{\infty} dx \int\limits_{0}^{\pi} f(x, y) dy = \frac{\pi^2}{2} \int\limits_0^1 d X \int\limits_0^1 f \left( \tg \left( \frac{\pi}{2} X \right), \pi Y \right) \left( 1 + \tg^2 \left( \frac{\pi}{2} X \right) \right) d Y \notag
+\end{gather}
+
+С вычислительной точки зрения проще пересчитывать старые переменные $\left( x, y \right)$ через новые $\left( X, Y \right)$, чтобы рассчитать значение подынтегрального выражения. 
+\vverh
+\begin{gather}
+		\frac{\pi^2}{2} \int\limits_0^1 d X \int\limits_0^1 f \left( \tg \left( \frac{\pi}{2} X \right), \pi Y \right) \left( 1 + \tg^2 \left( \frac{\pi}{2} X \right) \right) d Y = \frac{\pi^2}{2} \int\limits_0^1 d X \int\limits_0^1 f \left( x, y \right) (1 + x^2 ) d Y \notag
+\end{gather}
+
+
+\end{document}
