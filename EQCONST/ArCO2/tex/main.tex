@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=10mm,
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath, amssymb}
+
+\newcommand{\vverh}{\vspace*{-0.3cm}}
+
+\newcommand{\lb}{\left(}
+\newcommand{\rb}{\right)}
+
+\newcommand{\mH}{\mathcal{H}}
+
+\newcommand{\intty}{\int\limits_{-\infty}^{\infty}}
+\newcommand{\intzo}{\int\limits_{0}^{1}}
+
+\begin{document}
+	
+\begin{gather}
+	Q_{bound}^{pair} = \lb Q_{bound}^{pair} \rb_{tr} \frac{4 \pi^2}{h^5} \int_{H < 0} \exp \lb - \frac{\mH}{kT} \rb d R \, d \theta \, d p_R \, d p_\theta \, d J_x \, d J_y \, d J_z \notag 
+\end{gather}
+
+\begin{gather}
+		\intty f(x) dx = \left[ y = \frac{1}{\pi} \arctan x + \frac{1}{2}, dy = \frac{1}{\pi} \frac{dx}{1 + x^2}, dx = \pi (1 + x^2) dy \right] = \pi \intzo (1 + x^2) f(x) dy, \notag
+\end`{gather}
+where $x$ relates to $y$ the following way
+\vverh
+\begin{gather}
+		x = \tan \lb \pi \lb y - \frac{1}{2} \rb \rb \notag
+\end{gather}
+
+\end{document}
+
