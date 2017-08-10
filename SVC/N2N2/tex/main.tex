@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=10mm,
+}
+
+\newcommand{\lb}{\left(}
+\newcommand{\rb}{\right)}
+\newcommand{\intty}{\int\limits}
+
+\begin{document}
+
+\begin{gather}
+	\frac{N_0}{4} \intty_0^\infty r^2 dr \intty_0^\pi \sin \theta_1 d \theta_1 \intty_0^\pi \sin \theta_2 d \theta_2 \intty_0^{2 \pi} \lb 1 - \exp \lb - \frac{U \lb r, \theta_1, \theta_2, \varphi \rb}{kT} \rb \rb d \varphi \notag \\
+	\begin{aligned}
+			r &= \tan \lb \frac{\pi}{2} \hat{r} \rb \\
+			\theta_1 &= \pi \hat{\theta}_1 \\
+			\theta_2 &= \pi \hat{\theta}_2 \\
+			\varphi &= 2 \pi \hat{\varphi}
+	\end{aligned} \quad \quad \quad 
+	\begin{aligned}
+			\hat{r} &= \frac{2}{\pi} \arctan \lb r \rb \\
+			\hat{\theta}_1 &= \frac{1}{\pi} \theta_1 \\
+			\hat{\theta}_2 &= \frac{1}{\pi} \theta_2 \\
+			\hat{\varphi} &= \frac{1}{2 \pi} \varphi
+	\end{aligned}
+	\notag \\
+	\frac{N_0}{4} \intty_0^1 \frac{\pi}{2} r^2 \lb 1 + r^2 \rb d \hat{r} \intty_0^1 \pi \sin \theta_1 d \hat{\theta}_1 \intty_0^1 \pi \sin \theta_2 d \hat{\theta}_2 \intty_0^1 2 \pi \lb 1 - \exp \lb - \frac{U \lb r, \theta_1, \theta_2, \varphi \rb}{kT} \rb \rb d \hat{\varphi} = \notag \\
+	= \frac{N_0 \pi^4}{4} \intty_0^1 r^2 (1 + r^2) d \hat{r} \intty_0^1 \sin \theta_1 d \hat{\theta}_1 \intty_0^1 \sin \theta_2 d \hat{\theta}_2 \intty_0^1 \lb 1 - \exp \lb - \frac{U \lb r, \theta_1, \theta_2, \varphi \rb}{kT} \rb \rb d \hat{\varphi} \notag
+\end{gather}
+
+\end{document}

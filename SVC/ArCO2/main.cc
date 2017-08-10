@@ -41,6 +41,13 @@ double integrand_(hep::mc_point<double> const& x, double Temperature)
 	
 	double in_braces = ( 1 - exp( - potential_value / (BOLTZCONST * Temperature) ));	
 
+	cout << "---" << endl;
+	cout << "R: " << R << endl;
+	cout << "Theta: " << Theta << endl;
+	cout << "potential value: " << potential_value << endl;
+	cout << "exp(-u/kt): " << exp( - potential_value / (BOLTZCONST * Temperature) ) << endl;
+	cout << "---" << endl << endl;
+	
 	return pow(M_PI, 2) / 2 * in_braces * pow(R, 2) * sin(Theta) * (1 + pow(R, 2)); 
 }
 

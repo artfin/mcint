@@ -3,7 +3,7 @@
 EXECS = main precision
 
 CCXX = g++
-CXXFLAGS = -std=c++11 -I/home/artfin/Downloads/hep-mc-0.5/include -I /usr/local/include/eigen3/ -lm
+CXXFLAGS = -std=c++11 -O3 -I/home/artfin/Downloads/hep-mc-0.5/include -I /usr/local/include/eigen3/ -lm
 
 all: ${EXECS}
 

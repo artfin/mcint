@@ -3,7 +3,7 @@ F = gfortran
 
 CXXFLAGS = -std=c++11 -lgfortran -I/home/artfin/Downloads/hep-mc-0.5/include -lm
 
-TARGET = main
+TARGET = simple
 
 POT_SRC_PATH = ../../POT/src/
 POT_OBJ_PATH = ../../POT/obj/
@@ -19,4 +19,7 @@ $(POT_OBJ_PATH)%.o: $(POT_SRC_PATH)%.f
 $(TARGET): $(OBJ) 
 	@echo [INFO] Creating Binary Executable
 	@$(CCXX) $(CXXFLAGS) $(TARGET).cc -o $@ $^
+
+clean: 
+	rm simple
 

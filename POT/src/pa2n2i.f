@@ -17,7 +17,7 @@ c ==================================================================
 c  finally:  R - atomic units,  V - cm-1,  three angles - radians
 c ==================================================================
 c
-      subroutine potinit
+      subroutine potinit() bind(C)
 	  !MS$ATTRIBUTES DLLEXPORT :: potinit
 c
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
@@ -204,14 +204,15 @@ c
 	CNDISP(5,3)=5.778D-6
 c     -1 0 0
 c -----------------------------------------------------
-	return
-	end
+      return
+	end subroutine potinit
 c =====================================================
 c
-      real*8 function potn2n2(rr,theta1,theta2,phi)
+      subroutine potn2n2(rr,theta1,theta2,phi,res) bind(C)
 	  !MS$ATTRIBUTES DLLEXPORT :: potn2n2
 c
       implicit real*8(a-h,o-z)
+
       LOGICAL FIRST
       CHARACTER*1 REP
       DIMENSION C_ELEC(6), IDXC_ELE(12)
@@ -234,15 +235,22 @@ c
 c     THETA1=PI*THETA1/180d0
 c     THETA2=PI*THETA2/180d0
 c     PHI   =PI*PHI/180d0
-c
+        
+C         write(*,*) "Starting pot2n2 subroutine..."
+C         write(*,*) 'R: ', RR
+C         write(*,*) 'THETA1: ', THETA1
+C         write(*,*) 'THETA2: ', THETA2
+C         write(*,*) 'PHI: ', PHI 
+
          R=RR*BOHR/10D0		    ! BOHR --> ANGSTROM --> NM
+         
          CALL PUISS(R)
 c
          VPOT=0D0
          VELE=0D0
          VOVL=0D0
          VDIS=0D0
-c
+
       DO ITERM=1,20
          FIRST=.TRUE.
          LA=MATIDX(ITERM,1)
@@ -251,7 +259,7 @@ c
 c
          ALALBL=PR3JYY(LA,LB,LL,THETA1,THETA2,PHI)
 cc
-*        write(12,*) 'iterm, alalbl', iterm, alalbl
+C        write(12,*) 'iterm, alalbl', iterm, alalbl
 cc
          FLALBL=COEFOVP(ITERM,1)*XSCALE
          ALPHA =COEFOVP(ITERM,2)*ZSCALE
@@ -319,9 +327,16 @@ C POTENTIEL V(R,T1,T2,PHI)
          VPOT=VPOT+ALALBL*DPOT*XNORM
 
       ENDDO			! ITERM
-	potn2n2=VPOT
+        
+C      write(*,*) "VELE: ", VELE
+C      write(*,*) "VDIS: ", VDIS
+C      write(*,*) "VOVL: ", VOVL
+C      write(*,*) "VPOT: ", VPOT 
+
+      res = VPOT
+      
       return
-      END
+      END subroutine potn2n2
 ****************************************************
 C
       FUNCTION FDAMP(N,CTE1,CTE2,CTE3)
