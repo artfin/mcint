@@ -33,16 +33,40 @@ const long double PLANKCONST2 = pow(PLANKCONST, 2);
 // dalton to kg
 const long double DA = 1.660539040 * pow(10, -27);
 
-double Temperature = 200;
-
-const double MU1 = 7 * DA; 
 const double N2_LENGTH = 1.0975 * pow(10, -10);
 
 // particles molar masses, g/mol
 const double N2_MOLARMASS = 28.0;
 const double COMPLEX_MOLARMASS = 56.0;
 
-double integrand(hep::mc_point<double> const& x)
+struct stop_after_precision
+{
+	stop_after_precision( double rel_error )
+			: rel_error( rel_error )
+	{
+	}
+
+	bool operator()(std::vector<hep::vegas_result<double>> const& r)
+	{
+		hep::vegas_verbose_callback<double>(r);
+
+		// compute cumulative result
+		auto const result = hep::cumulative_result0(r.begin(), r.end());
+	
+		if ( result.error() < abs(rel_error * result.value()) )
+		{
+			cout << ">> relative error " << (result.error() / result.value() ) << " is smaller than the limit " << rel_error << endl;
+			
+			return false;
+		}
+
+		return true;
+	}
+
+	double rel_error;
+};
+
+double integrand_( hep::mc_point<double> const& x, double Temperature )
 {
 	double R_new = x.point()[0];
 	double pR_new = x.point()[1];
@@ -124,42 +148,96 @@ int main()
 	// initializing auxiliary potential values
 	potinit();
 
-	clock_t start = clock();
+	cout << "--- Computing FULL EQCONST for N2N2 (Avoird potential) --- " << endl;
 
-	hep::vegas_callback<double>(hep::vegas_verbose_callback<double>);
+	cout << ">> Enter the lower boundary for temperature interval: " << endl;
+	double LTEMP;
+	cin >> LTEMP;
 
-	auto results = hep::vegas(
-		hep::make_integrand<double>(integrand, 11),
-		std::vector<std::size_t>(3, pow(10, 5))
-	);
+	cout << ">> Enter the higher boundary for temperature interval: " << endl;
+	double HTEMP;
+	cin >> HTEMP;
 
-	auto result = hep::cumulative_result0(results.begin() + 1, results.end());
-	double chi_square_dof = hep::chi_square_dof0(results.begin() + 1, results.end());
+	cout << ">> Enter the step for temperature: " << endl;
+	double STEP;
+	cin >> STEP;
 
-	cout << ">> Cumulative result: " << endl;
-	cout << ">> N = " << result.calls() << "; I = " << result.value() << " +- " << result.error() << endl;
-	cout << ">> chi^2/dof = " << chi_square_dof << endl;
+	vector<double> temperatures;
+	vector<double> constants;
 
-	cout << "Time needed: " << (clock() - start) / (double)(CLOCKS_PER_SEC) << "s" << endl;
+	clock_t full_clock = clock();
+	clock_t cycle_clock;
 
-	double Qtr_complex = calculate_qtr(COMPLEX_MOLARMASS, Temperature);
-	double Qtr_N2 = calculate_qtr(N2_MOLARMASS, Temperature);
-
-	double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * Temperature / PLANKCONST2 * MU1 * pow(N2_LENGTH, 2);
-    
-	double Q_N2 = Qtr_N2 * Qrot_N2;
-
-	cout << "Qtr_complex: " << Qtr_complex << endl;
-	cout << "Qtr_N2: " << Qtr_N2 << endl;
-	cout << "Qrot_N2: " << Qrot_N2 << endl;
-	cout << "Q_N2: " << Q_N2 << endl;
+	hep::vegas_callback<double>(stop_after_precision(0.01));
 	
-	double eqconst = AVOGADRO / (UGASCONST * Temperature) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (8 * pow(M_PI, 3)); 
+	FILE* out = fopen("temp", "w");
+	
+	fprintf(out, "TEMPERATURE Qtr_N2 Qrot_N2 Q_N2 Qtr_complex result.value() eqconst\n");
 
-	cout << "---------------------------------------------" << endl;
+	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP )
+	{
+		cycle_clock = clock();
 
-	cout << "Temperature: " << Temperature << endl;
-	cout << "EQCONST: " << eqconst << endl;
+		temperatures.push_back( TEMP );
+
+		auto integrand = bind( integrand_, _1, TEMP );
+		
+		auto results = hep::vegas(
+			hep::make_integrand<double>(integrand, 11),
+			std::vector<std::size_t>(10, 1e5)
+		);
+
+		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
+		double chi_square_dof = hep::chi_square_dof0(results.begin() + 1, results.end());
+
+		cout << ">> Cumulative result: " << endl;
+		cout << ">> N = " << result.calls() << "; I = " << result.value() << " +- " << result.error() << endl;
+		cout << ">> chi^2/dof = " << chi_square_dof << endl;
+
+		cout << "Time needed: " << ( clock() - cycle_clock ) / (double)(CLOCKS_PER_SEC) << "s" << endl;
+
+		double Qtr_complex = calculate_qtr(COMPLEX_MOLARMASS, TEMP );
+		double Qtr_N2 = calculate_qtr(N2_MOLARMASS, TEMP );
+
+		// seems to be right
+		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7 * DA * pow(N2_LENGTH, 2);
+		double Q_N2 = Qtr_N2 * Qrot_N2;
+   	
+		/*
+		double O2_LENGTH = 1.207 * 1e-10;
+		double Qrot_O2 = 4 * pow(M_PI, 2) * BOLTZCONST * Temperature / PLANKCONST2 * 8 * DA * pow(O2_LENGTH, 2);
+		*/
+
+	
+		/*
+		cout << "Qtr_complex: " << Qtr_complex << endl;
+		cout << "Qtr_N2: " << Qtr_N2 << endl;
+		cout << "Qrot_N2: " << Qrot_N2 << endl;
+		cout << "Q_N2: " << Q_N2 << endl;
+		*/
+
+		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (8 * pow(M_PI, 3)); 
+
+		cout << "Temperature: " << TEMP << "; EQCONST: " << eqconst << endl << endl;
+
+		constants.push_back( eqconst );
+
+
+		fprintf(out, "%.3e %.3e %.3e %.3e %.3e %.3e %.3e\n", TEMP, Qtr_N2, Qrot_N2, Q_N2, Qtr_complex, result.value(), eqconst);
+	}
+
+	fclose( out );
+
+	cout << "Total time elapsed: " << ( clock() - full_clock ) / (double) CLOCKS_PER_SEC << "s" << endl;
+
+	FILE* const_file = fopen("full_constants.dat", "w");
+
+	for ( int counter = 0; counter < temperatures.size(); counter++ )
+	{
+		fprintf(const_file, "%.2lf %.12lf\n", temperatures[counter], constants[counter]);
+	}
+
+	fclose( const_file );
 
 	return 0;
 }

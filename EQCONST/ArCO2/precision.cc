@@ -158,7 +158,10 @@ int main()
 	double Qtr_CO2;
 	double Qrot_CO2;
     double Q_CO2;
-	
+
+	FILE* out = fopen("temp", "w");
+	fprintf(out, "TEMP Qtr_CO2, Qrot_CO2 Q_CO2 Qtr_complex result.value() eqconst\n");	
+
 	for ( int temp = LTEMP; temp <= HTEMP; temp += STEP )
 	{
 		temperatures.push_back(temp);
@@ -197,7 +200,11 @@ int main()
 
     	cout << "T = " << temp << "; EQCONST: " << res << endl;
 		cout << "-------------------------------" << endl;	
+
+		fprintf(out, "%.2e %.5e %.5e %.5e %.5e %.5e %.5e\n", temp, Qtr_CO2, Qrot_CO2, Q_CO2, Qtr_complex, result.value(), res);
 	}
+
+	fclose( out );
 
 	cout << "Total time elapsed: " << (clock() - full_start) / (double)(CLOCKS_PER_SEC) << "s" << endl;
 

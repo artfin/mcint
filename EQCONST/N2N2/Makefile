@@ -3,7 +3,7 @@ F = gfortran
 
 CXXFLAGS = -std=c++11 -lgfortran -I/home/artfin/Downloads/hep-mc-0.5/include -lm -I /usr/local/include/eigen3/
 
-TARGET = simple 
+TARGET = simple
 TEST = simps
 FULL_TARGET = full
 

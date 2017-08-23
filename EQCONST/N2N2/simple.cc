@@ -8,6 +8,8 @@
 
 #include <ctime>
 
+#include <boost/math/special_functions/gamma.hpp>
+
 extern "C" void potinit(void);
 extern "C" void potn2n2(double* rr, double* theta1, double* theta2, double* phi, double* res);
 
@@ -31,6 +33,7 @@ const double M3TOCM3 = pow(10, 6);
 // universal gas consant
 const double UGASCONST = 8.314;
 
+/*
 struct stop_after_precision
 {
 	stop_after_precision( double rel_error )
@@ -83,6 +86,7 @@ double gammainc(double a, double b)
 }
 
 const double GAMMA35 = gammainc(3.5, 10.0);
+*/
 
 double integrand_(hep::mc_point<double> const& x, double Temperature)
 {
@@ -107,7 +111,7 @@ double integrand_(hep::mc_point<double> const& x, double Temperature)
 		{
 			double U_KT = potential_value / (BOLTZCONST * Temperature);
 
-			return pow(M_PI, 4) / 4 * pow(R, 2) * sin(Theta1) * sin(Theta2) * (1 + pow(R, 2)) * gammainc(3.5, - U_KT ) / GAMMA35 * exp( -U_KT );
+			return pow(M_PI, 4) / 4 * pow(R, 2) * sin(Theta1) * sin(Theta2) * (1 + pow(R, 2)) * boost::math::gamma_p(3.5, - U_KT ) * exp( -U_KT );
 		} 
 		
 		else {
@@ -153,7 +157,7 @@ int main()
 
 		auto results = hep::vegas(
 			hep::make_integrand<double>(integrand, 4),
-			std::vector<std::size_t>(5, 5000)
+			std::vector<std::size_t>(5, 10000)
 		);
 					
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
@@ -170,11 +174,11 @@ int main()
 
 	cout << "Time elapsed (full calculation): " << ( clock() - full_clock ) / (double) CLOCKS_PER_SEC << "s" << endl;
 
-	FILE* const_file = fopen("constants.dat", "w");
+	FILE* const_file = fopen("simple_constants.dat", "w");
 
 	for ( int counter = 0; counter < temperatures.size(); counter++ )
 	{
-		fprintf(const_file, "%.4lf %.4lf \n", temperatures[counter], constants[counter]);
+		fprintf(const_file, "%.12lf %.12lf \n", temperatures[counter], constants[counter]);
 	}
 
 	fclose(const_file);

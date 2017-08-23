@@ -17,7 +17,7 @@ c ==================================================================
 c  finally:  R - atomic units,  V - cm-1,  three angles - radians
 c ==================================================================
 c
-      subroutine potinit() bind(C)
+      subroutine potinit()
 	  !MS$ATTRIBUTES DLLEXPORT :: potinit
 c
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
@@ -208,7 +208,7 @@ c -----------------------------------------------------
 	end subroutine potinit
 c =====================================================
 c
-      subroutine potn2n2(rr,theta1,theta2,phi,res) bind(C)
+      real*8 function potn2n2(rr,theta1,theta2,phi)
 	  !MS$ATTRIBUTES DLLEXPORT :: potn2n2
 c
       implicit real*8(a-h,o-z)
@@ -231,6 +231,14 @@ c
       RCUT=14D0                 ! EN UA
 c
       rep='o'
+
+C      F6 =FDAMP(6, 15.966639229774474, 28.05152615, 2.0531140096)
+C      F8 =FDAMP(8, 15.966639229774474, 28.05152615, 2.0531140096)
+C      F10 =FDAMP(10, 15.966639229774474, 28.05152615, 2.0531140096)
+    
+C      write(*,*) "F6: ", F6
+C      write(*,*) "F8: ", F8
+C      write(*,*) "F10: ", F10
 c
 c     THETA1=PI*THETA1/180d0
 c     THETA2=PI*THETA2/180d0
@@ -250,7 +258,7 @@ c
          VELE=0D0
          VOVL=0D0
          VDIS=0D0
-      
+
 C      write(*,*) "VD6: ", VD6
 C      write(*,*) "VD8: ", VD8
 C      write(*,*) "VD10: ", VD10
@@ -316,8 +324,8 @@ C CONTRIBUTION DISPERSION
             VD8 =F8*CNDISP(ITERM,2)/R8
             VD10=F10*CNDISP(ITERM,3)/R10
             VDISP=-(VD6+VD8+VD10)
-            
-C            write(*,*) "INSIDE IF... VDISP:", VDISP 
+
+C            write(*,*) "INSIDE IF... VDISP: ", VDISP
 C            write(*,*) "INSIDE IF... VD6: ", VD6
 C            write(*,*) "INSIDE IF... VD8: ", VD8
 C            write(*,*) "INSIDE IF... VD10: ", VD10
@@ -334,7 +342,7 @@ C            write(*,*) "ALPHA: ", ALPHA
 C            write(*,*) "TBETA: ", TBETA
 C            write(*,*) "FDEXP: ", FDEXP
 C            write(*,*) "------------------"
-         ENDIF
+        ENDIF
 
 C POTENTIEL TOTAL (V_LA,LB,L(R)) "RADIAL"
  50      VELECT=VELECT/ECONV
@@ -342,9 +350,9 @@ C POTENTIEL TOTAL (V_LA,LB,L(R)) "RADIAL"
          VOVERL=VOVERL/ECONV
          DPOT=VELECT+VOVERL+VDISP                    ! EN CM-1
 
-C         write(*,*) "ALALBL: ", ALALBL
-C         write(*,*) "VDISP: ", VDISP
-C         write(*,*) "XNORM: ", XNORM
+C        write(*,*) "ALALBL: ", ALALBL
+C        write(*,*) "VDISP: ", VDISP
+C        write(*,*) "XNORM: ", XNORM
 c
 C POTENTIEL V(R,T1,T2,PHI)
          VELE=VELE+ALALBL*VELECT*XNORM
@@ -359,10 +367,10 @@ C      write(*,*) "VDIS: ", VDIS
 C      write(*,*) "VOVL: ", VOVL
 C      write(*,*) "VPOT: ", VPOT 
 
-      res = VPOT
-      
+      potn2n2=VPOT
+
       return
-      END subroutine potn2n2
+      END function potn2n2
 ****************************************************
 C
       FUNCTION FDAMP(N,CTE1,CTE2,CTE3)
@@ -378,6 +386,7 @@ C
 
 C      write(*,*) "INSIDE FDAMP"
 
+      ! wtf ????
  5    IF (NTIMES .EQ.0) CALL FACLOG
       NTIMES = NTIMES+1
 
@@ -395,8 +404,14 @@ C      write(*,*) "INSIDE FDAMP"
 
       IF (N.GT.6) GOTO 30
 
+      ! MAGIC PLACE !!!!
+      ! MAGIC PLACE !!!!
+      ! MAGIC PLACE !!!!
+      ! MAGIC PLACE !!!!
+      ! MAGIC PLACE !!!!
       DO K=0,10
          AMAT2(K)=AMAT1(K)*XPUI(K)
+         write(*,*) 
 C         write(*,*) "AMAT2(",K,"):", AMAT2(K)
       ENDDO
 
@@ -404,11 +419,10 @@ C         write(*,*) "AMAT2(",K,"):", AMAT2(K)
       DO K=0,6
          SUM=SUM+AMAT2(K)
       ENDDO
+
       GOTO 40
-      
-C      write(*,*) ""
+
 C      write(*,*) "SUM AFTER FIRST CYCLE", SUM
-C      write(*,*) ""
 
  30   IF (N.GT.8) GOTO 35
 
@@ -416,15 +430,17 @@ C      write(*,*) ""
 	 SUM=SUM+AMAT2(K)
       ENDDO
       GOTO 40
-
+      
 C      write(*,*) "SUM AFTER SECOND CYCLE", SUM
 
- 35   DO K=9,10
+ 35    DO K=9,10
 	 SUM=SUM+AMAT2(K)
       ENDDO
-      
-      
+
  40   FDAMP=1D0-SUM*CTE3
+C 40   write(*,*) "SUM: ", SUM
+C      FDAMP=1D0-SUM*CTE3
+C      write(*,*) "FDAMP: ", FDAMP
 
       RETURN
       END

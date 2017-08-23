@@ -16,7 +16,7 @@ $(POT_OBJ_PATH)%.o: $(POT_SRC_PATH)%.f
 	@$(F) -c $< -o $@
 
 # Building target binary
-$(TARGET): $(OBJ) 
+$(TARGET): $(OBJ)
 	@echo [INFO] Creating Binary Executable
 	@$(CCXX) $(CXXFLAGS) $(TARGET).cc -o $@ $^
 

@@ -29,6 +29,45 @@ const double ALU = 5.291772 * pow(10, -11);
 // m3 to cm3
 const double M3TOCM3 = pow(10, 6);
 
+struct stop_after_precision
+{
+	stop_after_precision( double rel_error )
+			: rel_error(rel_error)
+	{
+	}
+
+	bool operator()(std::vector<hep::vegas_result<double>> const& r)
+	{
+		hep::vegas_verbose_callback<double>(r);
+
+		//compute cumulative result
+		auto const result = hep::cumulative_result0(r.begin(), r.end());
+		
+		/*
+		cout << "--------" << endl;
+		cout << "current relative error: " << result.error() / result.value() << endl;
+		cout << "result.error(): " << result.error() << endl;
+		cout << "rel_error * result.value(): " << rel_error * result.value() << endl;
+		cout << "--------" << endl;
+		*/
+
+		// check the relative error
+		if ( result.error() < abs(rel_error * result.value()) )
+		{
+			cout << ">> relative error "
+				 << ( result.error() / result.value() )
+				 << " is smaller than the limit " << rel_error << endl;
+
+			// returning false stops all remaining iterations
+			return false;
+		}
+
+		return true;
+	}
+
+	double rel_error;
+};
+
 double integrand_(hep::mc_point<double> const& x, double Temperature)
 {
 	double R_new = x.point()[0];
@@ -79,7 +118,7 @@ int main()
 	double v;
 	
 	potinit();
-	potn2n2( &r, &theta1, &theta2, &phi, &v);
+	potn2n2(&r, &theta1, &theta2, &phi, &v);
 	cout << "v: " << v << endl;
 
 	cout << "--- Computing SVC for N2N2 --- " << endl;
@@ -121,12 +160,11 @@ int main()
 		// creating integrand function
 		auto integrand = bind(integrand_, _1, temp);
 			
-		// set the verbose vegas callback function
-		// hep::vegas_callback<double>(hep::vegas_verbose_callback<double>);
+		hep::vegas_callback<double>(stop_after_precision(0.005));
 
 		auto results = hep::vegas(
 			hep::make_integrand<double>(integrand, 4),
-			std::vector<std::size_t>(10, 30000)
+			std::vector<std::size_t>(10, 15000)
 		);
 			
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
@@ -145,11 +183,11 @@ int main()
 	cout << "-----------------------" << endl;
 	cout << "Total elapsed time: " << ( clock() - full_clock ) / (double) CLOCKS_PER_SEC << endl;
 
-	FILE* svc_file = fopen("svc.dat", "w");
+	FILE* svc_file = fopen("svc.dat", "a");
 
 	for ( int counter = 0; counter < temperatures.size(); counter++ )
 	{
-		fprintf(svc_file, "%.4lf %.4lf \n", temperatures[counter], vir_coeffs[counter]);
+		fprintf(svc_file, "%.2lf %.8lf \n", temperatures[counter], vir_coeffs[counter]);
 	}
 
 	fclose(svc_file);
