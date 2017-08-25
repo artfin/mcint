@@ -1,10 +1,13 @@
 CCXX = g++
-CXXFLAGS = -std=c++11 
+CXXFLAGS = -std=c++11 -O3 -DEIGEN_N_DEBUG -fopenmp 
 
-STFLAGS = -I /home/artfin/Desktop/repos/gnuplot-iostream 
+STFLAGS = -I /home/artfin/Desktop/repos/gnuplot-iostream -I /usr/local/include/eigen3   
 LDFLAGS = -lboost_iostreams -lboost_system -lm
 
-TARGET = harmonic 
+TARGET = harmonic delta_variational 
 
-$(TARGET): harmonic.cpp
+harmonic: harmonic.cpp
 	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@	
+
+delta_variational: delta_variational.cpp
+	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
