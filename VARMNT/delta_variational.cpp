@@ -14,10 +14,10 @@
 using namespace std;
 using namespace Eigen;
 
-const double DX = 0.02;
+const double DX = 0.2;
 const double DX2 = pow(DX, 2);
-const double X_MIN = -50.0;
-const double X_MAX =  50.0;
+const double X_MIN = -1.0;
+const double X_MAX =  1.0;
 
 const int SIZE = (int) (X_MAX - X_MIN) / DX + 1;
 
