@@ -5,7 +5,7 @@ LDFLAGS = -lm
 
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
-INC_PATH = -I ./include
+INC_PATH = -I ./include/
 
 BIN_PATH = ./bin/
 TEST_PATH = ./test/
@@ -25,5 +25,5 @@ test_vector: ./obj/vector.o
 	$(CCXX) $(CXXFLAGS) $< $(INC_PATH) $(TEST_PATH)$@.cpp -o $(TEST_PATH)$@
 
 test_atom: ./obj/vector.o ./obj/atom.o
-	$(CCXX) $(CXXFLAGS) $< $(INC_PATH) $(TEST_PATH)$@.cpp -o $(TEST_PATH)$@
+	$(CCXX) $(CXXFLAGS) $^ $(INC_PATH) $(TEST_PATH)$@.cpp -o $(TEST_PATH)$@
 

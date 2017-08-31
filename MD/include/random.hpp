@@ -3,7 +3,12 @@
 #include <random>
 #include <ctime>
 
+// thread_local is not supported in clang 
+#if defined(__clang__)
+static std::mt19937 generator;
+#else
 static thread_local std::mt19937 generator;
+#endif
 
 class Random
 {

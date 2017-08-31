@@ -5,6 +5,7 @@
 #include <vector>
 #include <assert.h>
 #include <random>
+#include "random.hpp"
 
 class __vector__
 {
@@ -14,7 +15,9 @@ class __vector__
         void setCoords( std::vector<double> c );
         void setCoords( double x, double y, double z );
         void normalize ( void );
-        void fill_random( double scale = 1.0 );
+
+        void randomUniform( double scale = 1.0 );
+        void randomGaussian( double mean, double sigma );
             
         int getDimension( void );
         std::vector<double> getCoords( void );

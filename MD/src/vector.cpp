@@ -95,7 +95,7 @@ void __vector__::normalize ( void )
     }
 }
 
-void __vector__::fill_random( double scale ) 
+void __vector__::randomUniform ( double scale ) 
 {
     // mt19937 -- Mersenne Twister pseudo-random generator of 32-bit numbers with astate size of 19937 bits
     std::random_device rd; // obtain a random number
@@ -106,6 +106,14 @@ void __vector__::fill_random( double scale )
     {
         this->coords[i] = distr( eng );
     } 
+}
+
+void __vector__::randomGaussian( double mean, double sigma )
+{
+   for ( size_t i = 0; i < this->dim; i++ )
+   {
+       this->coords[i] = Random::nextGaussian( mean, sigma );
+   }
 }
 
 double __vector__::getLength( void )

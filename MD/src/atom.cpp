@@ -1,23 +1,14 @@
-#include <iostream>
+#include "atom.hpp"
 
-#include "vector.hpp"
-#include "random.hpp"
-
-class Atom
+void Atom::setMass( double m )
 {
-    public:
-        Atom( double m );
-        Atom( double m, double x, double y, double z );
+    mass = m;
+}
 
-        ~Atom();
-
-    private:
-        double mass;
-
-        __vector__ pos;
-        __vector__ vel;
-        __vector__ force;
-};
+double Atom::getMass( void )
+{
+    return mass;
+}
 
 Atom::Atom( double m )
 {
@@ -35,24 +26,30 @@ Atom::Atom( double m, double x, double y, double z )
     pos.print(); 
 }
 
-~Atom() 
+void Atom::printCoords( void )
 {
+    std::cout << "Atom coordinates: " << std::endl;
+    pos.print();
+}
+
+void Atom::printVelocity( void )
+{
+    std::cout << "Atom velocity: " << std::endl;
+    vel.print();
+}
+
+void Atom::printForce( void )
+{
+    std::cout << "Atom force: " << std::endl;
+    force.print();
 }
 
 // setting the velocity according to Maxwell-Boltzmann distribution
-void Atom::setMaxwellVel( double temperature )
+void Atom::setMaxwellVelocity ( double temperature )
 {
+    // random Gaussian value with mean = 0, sigma = sqrt( k * T / m )
     double sigma = sqrt( BOLTZCONST * temperature / mass );
-}
-
-}
-
-int main()
-{
-    Atom a1( 1.0 );
-    Atom a2( 1.0, 0.0, 0.0, 0.0 );
-
-    return 0;
+    vel.randomGaussian( 0, sigma );
 }
 
 

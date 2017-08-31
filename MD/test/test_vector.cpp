@@ -89,8 +89,13 @@ int main()
     v2.print();
     cout << endl;
 
-    cout << "v2.fill_random(): " << endl;
-    v2.fill_random();
+    cout << "v2.randomUniform(): " << endl;
+    v2.randomUniform();
+    v2.print();
+    cout << endl;
+
+    cout << "v2.randomGaussian( mean = 1.0, sigma = 1.0 ): " << endl;
+    v2.randomGaussian( 1.0, 1.0 );
     v2.print();
     cout << endl;
 
