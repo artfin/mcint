@@ -14,16 +14,45 @@
 using namespace std;
 using namespace Eigen;
 
-const double DX = 0.02;
+const double DX = 0.005;
 const double DX2 = pow(DX, 2);
-const double X_MIN = -50.0;
-const double X_MAX =  50.0;
+const double X_MIN = 0.01;
+const double X_MAX = 15.0;
 
 const int SIZE = (int) (X_MAX - X_MIN) / DX + 1;
 
+const double EPSILON = 10.0;
+const double SIGMA = 1.0;
+
+const double DE = 100.0;
+const double A = 1.0;
+const double RE = 1.0;
+
+vector<double> calculate_levels ( int n )
+{
+	vector<double> levels;
+
+	double NU0 = A / (2 * M_PI) * sqrt ( 2 * DE );
+
+	for ( int i = 0; i < n; i++ )
+	{
+		double interim = 2 * M_PI * NU0 * ( i + 0.5 );
+		levels.push_back( interim - pow(interim, 2) / (4 * DE) );
+	}
+
+	return levels;
+}	
+
 double potential( double x )
 {
-	return 0.5 * x * x;
+		//double r6 = pow(x / SIGMA, -6);
+		//double r12 = pow(r6, 2);
+
+		//return 4 * EPSILON * (r12 - r6);
+	
+		//return 0.5 * x * x;
+	
+	return DE * pow(1 - exp( - A * (x - RE)), 2);
 }
 
 void fillSparseHamiltonian( SparseMatrix<double> &h, vector<double> pot )
@@ -52,6 +81,13 @@ void fillSparseHamiltonian( SparseMatrix<double> &h, vector<double> pot )
 
 int main()
 {
+	vector<double> levels = calculate_levels(20);
+	for (int i = 0; i < levels.size(); i++ )
+	{
+		cout << "Level " << i << ": " << levels[i] << endl;
+	}
+	
+	
 	cout << "SIZE of Hamiltonian matrix is " << SIZE << "x" << SIZE << endl;
 
 	vector<double> pot(SIZE);
@@ -65,7 +101,7 @@ int main()
 
 	SparseMatrix<double> h( SIZE, SIZE );
 	fillSparseHamiltonian( h, pot );
-
+	
 	cout << "Time needed to fill Sparse hamiiltonian matrix: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
 
 	start = clock();
