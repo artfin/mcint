@@ -1,6 +1,9 @@
 #include <math.h>
 
 #include <iostream>
+#include <random>
+
+#include <ctime>
 
 using namespace std;
 
@@ -20,102 +23,71 @@ float pythag( float a, float b )
         return ( absb == 0.0 ? 0.0 : absb * sqrt( 1.0 + SQR( absa / absb )));
 }
 
-void tqli( float d[], float e[], int n )
-/*
- * Input:
- *      d[ 1 .. n ] -- containts the diagonal elements of the tridiagonal matrix
- *          on output, it returns the eigenvalues
- *      e[ 1 .. n ] -- inputs the subdiagonal elements of the tridiagonal matrix, with
- *          on output e is destroyed
- */
+void tqli( double *d, double *e, int n )
 {
-    float pythag( float a, float b );
-    int i, m, l, iter, k;
-    float s, r, p, g, f, dd, c, b;
+   register int   m,l,iter,i,k;
+   double         s,r,p,g,f,dd,c,b;
 
-    // it is convenient to renumber the elements of e
-    for ( i = 2; i <= n; i++ )
-    {
-        e[i - 1] = e[i];
-    }
-    e[n] = 0.0;
-    
-    for ( l = 1; l <= n; l++ )
-    {
-        iter = 0;
-        
-        do
-        {
-            for ( m = 1; m <= n - 1; m++ )
-            {
-                dd = fabs( d[m] ) + fabs( d[m + 1] );
-                if ( (float) ( fabs( e[m] ) + dd ) == dd ) 
-                {
-                    break;
-                }
+   for(i = 1; i < n; i++) e[i-1] = e[i];
+     e[n] = 0.0;
+   for(l = 0; l < n; l++) {
+      iter = 0;
+      do {
+         for(m = l; m < n-1; m++) {
+            dd = fabs(d[m]) + fabs(d[m+1]);
+            if((double)(fabs(e[m])+dd) == dd) break;
+         }
+         if(m != l) {
+            if(iter++ == 50) {
+               printf("\n\nToo many iterations in tqli.\n");
+               exit(1);
             }
-
-            if ( m != l )
-            {
-                if ( iter++ == 30 )
-                {
-                    cout << "Too many iterations in TQLI!" << endl;
-                }
-                
-                // form shift
-                g = ( d[l + 1] - d[l] ) / ( 2.0 * e[l] );
-                r = pythag( g, 1.0 );
-                
-                // this is d_m - k_s
-                g = d[m] - d[l] + e[l] / (g + SIGN( r, g ));
-                s = c = 1.0;
-                p = 0.0;
-                
-                // a plane rotation as in the original QL, followed by Givens rotation to restore 
-                // tridiagonal form
-                for ( i = m-1; i >= l; i-- )
-                {
-                    f = s * e[i];
-                    b = c * e[i];
-                    e[i + 1] = (r = pythag( f, g ));
-
-                    if ( r == 0.0 )
-                    {
-                        d[i + 1] -= p;
-                        e[m] = 0.0;
-                        break;
-                    }
-
-                    s = f / r;
-                    c = g / r;
-                    g = d[i + 1] - p;
-                    r = ( d[i] - g ) * s + 2.0 * c * b;
-                    d[i + 1] = g + ( p = s * r );
-                    g = c * r - b; 
-                }  
-           
-                if ( r == 0.0 && i >= l ) 
-                {
-                    continue;
-                }
-
-                d[l] -= p;
-                e[l] = g;
-                e[m] = 0.0;
-            }
-        } while ( m != l );
-    }
-}
-
+            g = (d[l+1] - d[l])/(2.0 * e[l]);
+            r = pythag(g,1.0);
+            g = d[m]-d[l]+e[l]/(g+SIGN(r,g));
+            s = c = 1.0;
+            p = 0.0;
+            for(i = m-1; i >= l; i--) {
+               f      = s * e[i];
+               b      = c*e[i];
+               e[i+1] = (r=pythag(f,g));
+               if(r == 0.0) {
+                  d[i+1] -= p;
+                  e[m]    = 0.0;
+                  break;
+               }
+               s      = f/r;
+               c      = g/r;
+               g      = d[i+1] - p;
+               r      = (d[i] - g) * s + 2.0 * c * b;
+               d[i+1] = g + (p = s * r);
+               g      = c * r - b;
+            
+            	/*  
+               for(k = 0; k < n; k++) {
+                  f         = z[k][i+1];
+                  z[k][i+1] = s * z[k][i] + c * f;
+                  z[k][i]   = c * z[k][i] - s * f;
+               } /* end k-loop 
+               */
+            
+            } /* end i-loop */
+            if(r == 0.0 && i >= l) continue;
+            d[l] -= p;
+            e[l]  = g;
+            e[m]  = 0.0;
+         } /* end if-loop for m != 1 */
+      } while(m != l);
+   } /* end l-loop */
+} /* End: function tqli(), (C) Copr. 1986-92 Numerical Recipes Software )%. */
+   
 int main()
 {
-    cout << "hey" << endl;
-
 	const int n = 5;
     // diagonal elements
-    float d[ n ] = { 4.5, 4.125, 4.0, 4.125, 4.5 };
+    double d[ n ] = { 4.5, 4.125, 4.0, 4.125, 4.5 };
 	// parallel diagonal elements
-	float e[ n ] = { 0.0, -2.0, -2.0, -2.0, -2.0 };	
+	double e[ n ] = { 0.0, -2.0, -2.0, -2.0, -2.0 };	
 
 	tqli( d, e, n );
 
@@ -123,6 +95,30 @@ int main()
 	{
 		cout << "d[" << i << "]: " << d[i] << endl;
 	}
+
+	random_device rd1;
+	random_device rd2;
+	mt19937 eng1( rd1() );
+	mt19937 eng2( rd2() );
+	uniform_real_distribution<> distr1( 100, 101 );
+	uniform_real_distribution<> distr2( 5, 6 );
+
+	const int SIZE = 50000;
+	double d2[ SIZE ];
+	double e2[ SIZE ];
+	for ( int i = 0; i < SIZE; i++ )
+	{
+		d2[i] = distr1( eng1 );
+		e2[i] = distr2( eng2 );
+	}
+
+	cout << "Size of input tridiagonal matrix: " << SIZE << endl;
+
+	clock_t start = clock();
+	tqli( d2, e2, SIZE );
+	cout << "Time elapsed: " << ( clock() - start ) / (double) CLOCKS_PER_SEC << "s" << endl;
+
+	
 /*
 Eigenvalues:
 0: 0.674115
