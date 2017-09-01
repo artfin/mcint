@@ -40,13 +40,13 @@ void tqli( float d[], float e[], int n )
     }
     e[n] = 0.0;
     
-    for ( int l = 1; l <= n; l++ )
+    for ( l = 1; l <= n; l++ )
     {
         iter = 0;
         
         do
         {
-            for ( int m = 1; m <= n - 1; m++ )
+            for ( m = 1; m <= n - 1; m++ )
             {
                 dd = fabs( d[m] ) + fabs( d[m + 1] );
                 if ( (float) ( fabs( e[m] ) + dd ) == dd ) 
@@ -111,9 +111,26 @@ int main()
 {
     cout << "hey" << endl;
 
+	const int n = 5;
     // diagonal elements
-    float d[3] = 
+    float d[ n ] = { 4.5, 4.125, 4.0, 4.125, 4.5 };
+	// parallel diagonal elements
+	float e[ n ] = { 0.0, -2.0, -2.0, -2.0, -2.0 };	
 
+	tqli( d, e, n );
+
+	for ( int i = 0; i < n; i++ )
+	{
+		cout << "d[" << i << "]: " << d[i] << endl;
+	}
+/*
+Eigenvalues:
+0: 0.674115
+1: 2.30373
+2: 4.33237
+3: 6.32127
+4: 7.61851
+*/
     return 0;
 }
 
