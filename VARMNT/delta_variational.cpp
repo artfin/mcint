@@ -5,6 +5,8 @@
 #include <ctime>
 #include <math.h>
 
+#include <algorithm>
+#include <iomanip>
 #include <vector>
 
 #define EIGEN_STACK_ALLOCATION_LIMIT 0
@@ -14,12 +16,8 @@
 using namespace std;
 using namespace Eigen;
 
-const double DX = 0.5;
-const double DX2 = pow(DX, 2);
-const double X_MIN = -1.0;
-const double X_MAX =  1.0;
-
-const int SIZE = (int) (X_MAX - X_MIN) / DX + 1;
+const double X_MIN = -10.0;
+const double X_MAX =  10.0;
 
 const double EPSILON = 10.0;
 const double SIGMA = 1.0;
@@ -42,7 +40,6 @@ vector<double> calculate_levels ( int n )
 
 	return levels;
 }	
-
 
 // why static ? 
 static float sqrarg;
@@ -130,8 +127,11 @@ double potential( double x )
 	//return DE * pow(1 - exp( - A * (x - RE)), 2);
 }
 
-void fillSparseHamiltonian( SparseMatrix<double> &h, vector<double> pot )
+void fillSparseHamiltonian( SparseMatrix<double> &h, vector<double> pot, int SIZE )
 {
+	double DX = ( X_MAX - X_MIN ) / SIZE;
+	double DX2 = pow( DX, 2 );
+
 	vector< Triplet<double> > tripletList( SIZE * SIZE );
 
 	for ( int i = 0; i < SIZE; i++ )
@@ -162,13 +162,18 @@ int main()
 		//cout << "Level " << i << ": " << levels[i] << endl;
 		//}
 	cout << "Variational approach using delta-functions on constant grid. " << endl;
-	cout << "X_MIN : " << X_MIN << "; X_MAX: " << "; DX: " << DX << endl << endl;
+	cout << "X_MIN : " << X_MIN << "; X_MAX: " << X_MAX << endl;
+
+	cout << "Enter number of delta functions: " << endl;
+	int SIZE;
+	cin >> SIZE;
+
+	double DX = (X_MAX - X_MIN) / SIZE;
+	double DX2 = pow( DX, 2 );
 
 	cout << "SIZE of Hamiltonian matrix is " << SIZE << "x" << SIZE << endl;
 
 	clock_t start;
-
-	cout << "Time needed to fill Sparse hamiiltonian matrix: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
 
 	cout << "1: Eigen diagonalization procedure" << endl;
 	cout << "2: Custom diagonalization procedure for tridiagonal matrices" << endl;
@@ -191,12 +196,13 @@ int main()
 	switch( v ) 
 	{
 		case 1:
+		{
 			cout << "Filling Eigen SparseMatrix..." << endl;
 
 			start = clock();
 			
 			SparseMatrix<double> h( SIZE, SIZE );
-			fillSparseHamiltonian( h, pot );
+			fillSparseHamiltonian( h, pot, SIZE );
 
 			cout << "Time needed to fill Hamiltonian matrix: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
 
@@ -207,29 +213,114 @@ int main()
 			if ( eigensolver.info() != Success ) abort();
 
 			cout << "Time needed to find eigenvalues: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
-
+			break;
+		}
+		
 		case 2:
-
+		{
 			cout << "Filling arrays of diagonal and over-diagonal elements..." << endl;
+			start = clock();
+
+			// initializing array of diagonal and off-diagonal elements
+			double d[ SIZE ];
+			double e[ SIZE ];	
+
+			for ( int i = 0; i < SIZE; i++ )
+			{
+				d[i] = 1 / DX2 + pot[i];
+				e[i] = - 0.5 / DX2;
+			}
+
+			cout << "Time needed to fill arrays of elements: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
+
+			cout << "Starting diagonalization..." << endl;
+			start = clock();
+				
+			tqli( d, e, SIZE );
+
+			cout << "Time needed to find eigenvalues: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
+			
+			cout << "Number of eigenvalues to be displayed: " << endl;
+			int n_values;
+			cin >> n_values;
+
+			vector<double> dv( SIZE );
+			for ( int i = 0; i < SIZE; i++ )
+			{
+				dv[i] = d[i];
+			}
+
+			sort( dv.begin(), dv.end() );
+
+			cout << "i" << setw(15) << "eigenvalue" << endl;
+			for ( int i = 0; i < n_values; i++ )
+			{
+				cout << i << setw(15) << dv[i] << endl;
+			}
+
+			break;
+		}
+
+		case 3:
+		{
+			cout << "Filling arrays of diagonal and over-diagonal elements and Eigen Sparsematrix..." << endl;
+			start = clock();
+
+			double d[ SIZE ];
+			double e[ SIZE ];
+
+			for ( int i = 0; i < SIZE; i++ )
+			{
+				d[i] = 1 / DX2 + pot[i];
+				e[i] = - 0.5 / DX2;
+			}
+
+			SparseMatrix<double> h( SIZE, SIZE );
+			fillSparseHamiltonian( h, pot, SIZE );
+
+			cout << "Time needed to fill Hamiltonian matrix: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl;
+
+			cout << "Starting diagonalization..." << endl;
+			start = clock();
+
+			SelfAdjointEigenSolver< SparseMatrix<double> > eigensolver( h );
+			if ( eigensolver.info() != Success ) abort();
+
+			tqli( d, e, SIZE );
+
+			cout << "Time needed to find eigenvalues: " << (double) (clock() - start) / CLOCKS_PER_SEC << "s" << endl << endl;
+
+			cout << "Number of eigenvalues to be displayed for comparison: " << endl;
+			
+			vector<double> dv( SIZE );
+			for ( int i = 0; i < SIZE; i++ )
+			{
+				dv[i] = d[i];
+			}
+			sort( dv.begin(), dv.end() );
+
+			int n_values;			
+			cin >> n_values;
+			
+			cout << endl << endl;
+			cout << "i \t Eigen \t Custom procedure" << endl;
+			cout << "------------------------------" << endl;
+			for ( int i = 0; i < n_values; i++ )
+			{
+				cout << i << setw(20) << eigensolver.eigenvalues()[i] << setw(20) << dv[i] << endl; 
+			}	
+
+			cout << endl << endl;
+
+			break;
+		}	
 
 		default:
+		{
 			cout << "Invalid number!" << endl;
 			exit( 1 );
-
+		}
 	} 
-	
-	/*
-	vector<double> eigs;
-	for ( int i = 0; i < eigensolver.eigenvalues().size(); i++ )
-	{
-		eigs.push_back( eigensolver.eigenvalues()[i] );
-	}
-
-	for ( int i = 0; i < 5; i++ )
-	{
-			cout << i << ": " << eigs[i] << endl;
-	}
-	*/
 
 	return 0;
 }
