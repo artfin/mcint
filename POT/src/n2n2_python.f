@@ -411,9 +411,11 @@ C      write(*,*) "INSIDE FDAMP"
       ! MAGIC PLACE !!!!
       DO K=0,10
          AMAT2(K)=AMAT1(K)*XPUI(K)
-C         write(*,*) 
 C         write(*,*) "AMAT2(",K,"):", AMAT2(K)
       ENDDO
+C      DO K=0,10  
+C      write(*,*) "AMAT2(",K,")", AMAT2(K)
+C      ENDDO
 
       SUM=0.
       DO K=0,6

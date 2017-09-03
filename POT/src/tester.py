@@ -1,4 +1,4 @@
-from n2n2 import potinit, potn2n2
+from n2n2_1 import potinit, potn2n2
 
 potinit()
 
