@@ -32,8 +32,8 @@ int main()
     // construct matrix operation object
     SparseGenMatProd<double> op(M);
 
-    // construct eigen solver object, request 3 smallest eigenvalues
-    GenEigsSolver< double, SMALLEST_MAGN, SparseGenMatProd<double> > eigs(&op, 3, 6);
+    // construct eigen solver object
+    GenEigsSolver< double, LARGEST_MAGN, SparseGenMatProd<double> > eigs(&op, 5, 8);
 
     eigs.init();
     int nconv = eigs.compute();

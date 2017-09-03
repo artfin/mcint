@@ -10,7 +10,7 @@ harmonic: harmonic.cpp
 	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@	
 
 delta_variational: delta_variational.cpp
-	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
+	$(CCXX) $(CXXFLAGS) -I /usr/local/include/eigen3 -I /Users/mac/repos/spectra/include $^ -o $@
 
 guided_walk: guided_walk.cpp
 	$(CCXX) $(CXXFLAGS) -lm $^ -o $@

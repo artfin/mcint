@@ -1,7 +1,7 @@
 CCXX = g++
 F = gfortran
 
-CXXFLAGS = -std=c++11 -lgfortran -I/home/artfin/Downloads/hep-mc-0.5/include -lm
+CXXFLAGS = -std=c++11 -lgfortran -I/home/artfin/Downloads/hep-mc-0.5/include -lm -I/Users/mac/Downloads/hep-mc/include -L/usr/local/Cellar/gcc/6.3.0_1/lib/gcc/6/
 
 TARGET = main
 
