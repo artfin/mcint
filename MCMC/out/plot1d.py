@@ -5,7 +5,7 @@ import numpy as np
 def target( x ):
     return np.sin(x)**2 * np.sin(2*x)**2 * mlab.normpdf(x, 0, 1)
 
-with open('vars.txt', 'r') as inputfile:
+with open('1d.txt', 'r') as inputfile:
     lines = inputfile.readlines()
 
 ys = []

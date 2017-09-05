@@ -12,12 +12,6 @@ static double nextDouble( const double &min = 0.0, const double &max = 1.0 )
     return distribution( generator );
 }
 
-static double nextGaussian( const double &mean, const double &sigma )
-{
-    normal_distribution<double> distribution( mean, sigma );
-    return distribution( generator );
-}
-
 double pdf_gaussian( double x )
 {
     return (1 / sqrt( 2 * M_PI )) * exp( -0.5 * pow(x, 2.0));
