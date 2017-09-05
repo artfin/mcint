@@ -16,10 +16,10 @@ for line in lines:
 
 fig, ax = plt.subplots(figsize=[8,6])
 
-N, bins, patches = ax.hist(ys, bins = 50, color = '#777777')
+N, bins, patches = ax.hist(ys, bins = 100, color = '#777777', normed = True )
 
-# xs = np.linspace( min(ys), max(ys) )
-# targets = [ target(x) for x in xs ]
-# ax.plot(xs, targets, lw = 2, color = 'red')
+xs = np.linspace( min(ys), max(ys) )
+targets = [ target(x) for x in xs ]
+ax.plot(xs, targets, lw = 2, color = 'red')
 
 plt.show()
