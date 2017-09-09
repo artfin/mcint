@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
-sayHello <- function()
-{
-    print('hello from R!')
-}
+require( graphics )
 
-sayHello()
+df <- read.table("1d.txt")
+acf( df, lag.max = 50000, type = c("correlation"), plot = TRUE )
+
