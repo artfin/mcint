@@ -48,9 +48,9 @@ theta, pR, pT, jx, jy, jz = read_file( 'co2ar.txt' )
 
 fig, ax = plt.subplots( figsize=[8, 6] )
 
-ax.set_title("pR distribution")
+ax.set_title("Jz distribution")
 
-n_mh, bins_mh, patches_mh = ax.hist( pT, bins = 100, normed = True, color = '#777777')
+n_mh, bins_mh, patches_mh = ax.hist( jz, bins = 100, normed = True, color = '#777777')
 
 plt.grid( linestyle = ':', alpha = 0.7)
 plt.show()
