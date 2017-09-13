@@ -26,7 +26,7 @@ const double RDIST = 20.0;
 // -----------------------------
 
 // temperature in K
-const double temperature = 300;
+const double temperature = 240;
 
 static mt19937 generator;
 
@@ -140,7 +140,7 @@ int main( int argc, char* argv[] )
 {
     if ( argc != 5 )
     {
-        cout << "Usage: ./ ... (int) record_steps (int) burn-in-steps (double) alpha (bool) show_vec" << endl;
+        cout << "Usage: ./ ... (int) moves_to_be_made (int) burn-in-steps (double) alpha (bool) show_vec" << endl;
         exit( 1 );
     }
 
@@ -161,9 +161,8 @@ int main( int argc, char* argv[] )
 
     VectorXf x(6);
     x << 0.5, 0.5, 0.5, 0.5, 0.5, 0.5;
-    
-    VectorXf xnew;
-    int moves = 0;
+
+	VectorXf xnew;
 
     clock_t start = clock();
 
@@ -173,18 +172,45 @@ int main( int argc, char* argv[] )
     cout << "# alpha = " << alpha << endl;
     cout << "# temperature = " << temperature << endl;
     cout << "# R (a. u.) = " << RDIST << endl;
+	
+	cout << "# file structure: " << endl;
+	cout << "# number R theta pR pT jphi jtheta j" << endl;
 
-    for ( int i = 0; i < nsteps + burnin; i++ )
-    {
+	double jx, jy, jz;
+	double j, jtheta, jphi;
+
+	// just number of output point for aesthetics
+	int pNumber = 1;
+
+	// burnin cycle
+	for ( size_t i = 0; i < burnin; i++ )
+	{
+		x = metro_step( x, alpha );
+	}
+
+	// running cycle
+	size_t algo_steps = 0;
+	size_t moves = 0;
+	while ( moves < nsteps )  
+	{
+		algo_steps++;
         xnew = metro_step( x, alpha );
 
         if ( xnew != x )
         {
             moves++;
 
-            if ( i > burnin && show_vecs == true )
+            if ( show_vecs == true )
             {
-                cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
+				jx = x(3);
+				jy = x(4);
+				jz = x(5);
+				j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
+				jtheta = acos( jz / j );
+				jphi = atan ( jy / jx );
+
+                cout << pNumber << " " << RDIST << " " << x(0) << " " << x(1) << " " << x(2) << " " << jphi << " " << jtheta << " " << j << endl;
+				pNumber++;
             }
         } 
 
@@ -192,7 +218,8 @@ int main( int argc, char* argv[] )
     }
 
     cerr << "-----------------------------------" << endl;
-    cerr << "Total steps: " << nsteps + burnin << "; moves: " << moves << "; percent: " << (double) moves / ( nsteps + burnin ) * 100 << "%" << endl;
+	cerr << "Burnin: " << burnin << endl;
+    cerr << "Total steps: " << algo_steps  << "; moves: " << moves << "; percent: " << (double) moves / algo_steps * 100 << "%" << endl;
     cerr << "Time elapsed: " << (double) ( clock() - start ) / CLOCKS_PER_SEC <<"s" << endl; 
     cerr << "-----------------------------------" << endl;
 

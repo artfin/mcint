@@ -34,25 +34,28 @@ def read_file( filename ):
     return jx, jy, pR
 
 jx_mh, jy_mh, pR_mh = read_file( 'mh.txt' )
-jx_d1, jy_d1, pR_d1 = read_file( 'd_with_s.txt' )
-jx_d2, jy_d2, pR_d2 = read_file( 'd_without_s.txt' )
+jx_d1, jy_d1, pR_d1 = read_file( 'diatomics_exact.txt' )
+
+green_patch = mpatches.Patch(color = '#777777', label = 'Danila formulae')
 
 fig, ax = plt.subplots( figsize=[8, 6] )
 
-ax.set_title('pR distribution')
-
-# cumulative distribution 
-n_mh, bins_mh, patches_mh = ax.hist( pR_mh, bins = 100, normed = True, color = 'red' )
-N_d1, bins_d1, patches_d1 = ax.hist( pR_d1, bins = 100, normed = True, color = '#777777' )
-
-red_patch = mpatches.Patch(color = 'red', label = 'Metropolis-Hastings')
-green_patch = mpatches.Patch(color = '#777777', label = 'Danila formulae')
-plt.legend(handles=[red_patch, green_patch])
-
+plt.subplot(1, 3, 1)
+plt.title(r'p$_R$ distribution')
+N_d1, bins_d1, patches_d1 = plt.hist( pR_d1, bins = 500, normed = True, color = '#e33054' )
 plt.grid(linestyle = ':', alpha = 0.7)
 
-# random walk picture
-# plt.plot( jx, color = 'k', linewidth = 1.2 )
+plt.subplot(1, 3, 2)
+plt.title(r'J$_x$ distribution')
+N_d1, bins_d1, patches_d1 = plt.hist( jx_d1, bins = 500, normed = True, color = '#396161' )
+plt.grid(linestyle = ':', alpha = 0.7)
+
+plt.subplot(1, 3, 3)
+plt.title(r'J$_y$ distribution')
+N_d1, bins_d1, patches_d1 = plt.hist( jy_d1, bins = 500, normed = True, color = '#232458' )
+plt.grid(linestyle = ':', alpha = 0.7)
+
+plt.tight_layout()
 
 plt.show()
 

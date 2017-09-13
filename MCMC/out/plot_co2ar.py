@@ -43,14 +43,15 @@ def transform_theta( theta ):
     
     return theta_i
 
-theta, pR, pT, jx, jy, jz = read_file( 'co2ar.txt' )
+#theta, pR, pT, jx, jy, jz = read_file( 'co2ar.txt' )
+theta, pR, pT, jphi, jtheta, j = read_file( 'co2ar.txt' ) 
 # theta = transform_theta( theta )
 
 fig, ax = plt.subplots( figsize=[8, 6] )
 
 ax.set_title("pR distribution")
 
-n_mh, bins_mh, patches_mh = ax.hist( pT, bins = 100, normed = True, color = '#777777')
+n_mh, bins_mh, patches_mh = ax.hist( jtheta, bins = 200, normed = True, color = '#777777')
 
 plt.grid( linestyle = ':', alpha = 0.7)
 plt.show()

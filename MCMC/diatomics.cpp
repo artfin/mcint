@@ -31,10 +31,6 @@ const double temperature = 300;
 
 static mt19937 generator;
 
-// potential parameters
-const double EPSILON = 10.0;
-const double SIGMA = 1.0;
-
 // !--------------------------------
 // distance between two atoms in ALU
 const double RDIST = 20.0;
