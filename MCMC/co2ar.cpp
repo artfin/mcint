@@ -26,7 +26,7 @@ const double RDIST = 20.0;
 // -----------------------------
 
 // temperature in K
-const double temperature = 240;
+const double temperature = 300;
 
 static mt19937 generator;
 
@@ -113,7 +113,7 @@ double hamiltonian( double theta, double pR, double pT, double Jx, double Jy, do
 	return ang_term + kin_term + cor_term;
 }
 
-// x = [theta, pR, pT, Jx, Jy, Jz ]
+// x = [ sin(theta), pR, pT, Jx, Jy, Jz ]
 double target( VectorXf x )
 {
     double h = hamiltonian( x[0], x[1], x[2], x[3], x[4], x[5] );
@@ -174,13 +174,10 @@ int main( int argc, char* argv[] )
     cout << "# R (a. u.) = " << RDIST << endl;
 	
 	cout << "# file structure: " << endl;
-	cout << "# number R theta pR pT jphi jtheta j" << endl;
+	cout << "# theta pR pT jx jy jz" << endl;
 
 	double jx, jy, jz;
 	double j, jtheta, jphi;
-
-	// just number of output point for aesthetics
-	int pNumber = 1;
 
 	// burnin cycle
 	for ( size_t i = 0; i < burnin; i++ )
@@ -202,16 +199,8 @@ int main( int argc, char* argv[] )
 
             if ( show_vecs == true )
             {
-				jx = x(3);
-				jy = x(4);
-				jz = x(5);
-				j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
-				jtheta = acos( jz / j );
-				jphi = atan ( jy / jx );
-
-                cout << pNumber << " " << RDIST << " " << x(0) << " " << x(1) << " " << x(2) << " " << jphi << " " << jtheta << " " << j << endl;
-				pNumber++;
-            }
+            	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
+			}
         } 
 
         x = xnew;

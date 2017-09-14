@@ -82,7 +82,7 @@ int main( int argc, char* argv[] )
 {
     if ( argc != 5 )
     {
-        cout << "USAGE: ./... (int) record-steps (int) burn-in-steps (double) alpha (bool) show_vecs" << endl;
+        cout << "USAGE: ./... (int) moves-to-be-made (int) burn-in-steps (double) alpha (bool) show_vecs" << endl;
         exit( 1 );
     }
 
@@ -95,25 +95,34 @@ int main( int argc, char* argv[] )
 
     cerr << "-----" << endl;
     cerr << "Input parameters: " << endl;
-    cerr << ">> nsteps: " << nsteps << endl;
-    cerr << ">> burnin: " << burnin << endl;
+    cerr << ">> moves-to-be-made: " << nsteps << endl;
+    cerr << ">> burn-in: " << burnin << endl;
     cerr << ">> alpha: " << alpha << endl;
     cerr << ">> show_vecs: " << show_vecs << endl;
 
     Vector3d x ( 10.0, 10.0, 10.0 );
     Vector3d xnew;
-    int moves = 0;
 
     clock_t start = clock();
     
     cout << "# Metropolis-Hastings sampler for diatomics" << endl;
-    cout << "# nsteps = " << nsteps << endl;
-    cout << "# burnin = " << burnin << endl;
+    cout << "# moves-to-be-made = " << nsteps << endl;
+    cout << "# burn-in = " << burnin << endl;
     cout << "# alpha = " << alpha << endl;
     cout << "# temperature = " << temperature << endl;
     cout << "# R (a.u.) = " << RDIST << endl;  
+    
+	size_t moves = 0;
+	size_t total_steps = 0;
 
-    for ( int i = 0; i < nsteps + burnin; i++ )
+	// burn-in
+	for ( size_t i = 0; i < burnin; i++ )
+	{
+		x = metro_step( x, alpha );
+	}
+
+	// recording
+	while ( moves < nsteps )
     {
         xnew = metro_step( x, alpha );
 
@@ -121,21 +130,20 @@ int main( int argc, char* argv[] )
         {
             moves++;
 
-            if ( i > burnin && show_vecs == true )
+            if ( show_vecs == true )
             {
                 cout << x(0) << " " << x(1) << " " << x(2) << endl;
             }
         }
 
         x = xnew;
+		total_steps++;
     }
 
     cerr << "-----------------------------------" << endl;
-    cerr << "total steps: " << nsteps + burnin << "; moves: " << moves << "; percent: " << (double) moves / ( nsteps + burnin ) * 100 << "%" << endl;
-    cerr << "Time elapsed: " << (double) ( clock() - start ) /CLOCKS_PER_SEC << "s" << endl; 
+    cerr << "Total steps: " << total_steps << "; moves: " << moves << "; percent: " << (double) moves / total_steps * 100 << "%" << endl;
+    cerr << "Time elapsed: " << (double) ( clock() - start ) / CLOCKS_PER_SEC << "s" << endl; 
     cerr << "-----------------------------------" << endl;
 
-
-    
     return 0;
 }

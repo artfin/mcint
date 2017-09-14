@@ -4,7 +4,7 @@ CXXFLAGS = -std=c++11 -O3
 STFLAGS = -I /usr/local/include/eigen3
 LDFLAGS = -lm
 
-all: simple 2d diatomics co2ar 2d-exp-sin diatomics_exact 
+all: simple 2d diatomics co2ar 2d-exp-sin diatomics_exact co2ar_angles 
 
 simple: simple.cpp
 	$(CCXX) $(CXXFLAGS) $^ -o $@
@@ -16,6 +16,9 @@ diatomics: diatomics.cpp
 	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
 
 co2ar: co2ar.cpp
+	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
+
+co2ar_angles: co2ar_angles.cpp
 	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
 
 2d-exp-sin: 2d-exp-sin.cpp
