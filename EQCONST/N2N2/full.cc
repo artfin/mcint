@@ -7,6 +7,9 @@
 
 #include <ctime>
 
+#include <fstream>
+#include <iomanip> // setprecision
+
 extern "C" void potinit(void);
 extern "C" void potn2n2(double* rr, double* theta1, double* theta2, double* phi, double* res);
 
@@ -123,13 +126,6 @@ double integrand_( hep::mc_point<double> const& x, double Temperature )
 		double jacJy = M_PI * (1 + pow(Jy, 2));
 		double jacJz = M_PI * (1 + pow(Jz, 2));
 
-		/*
-		cout << "R: " << R_new << endl;
-		cout << "potential_value: " << endl;
-		cout << "h: " << h << endl;
-		cout << "boltz_exp: " << boltz_exp << endl << endl;
-		*/ 
-
 		return boltz_exp * jacR * jacTheta1 * jacTheta2 * jacPhi * jacpR * jacpTheta1 * jacpTheta2 * jacpPhi * jacJx * jacJy * jacJz;
 	}
 	else
@@ -162,29 +158,23 @@ int main()
 	double STEP;
 	cin >> STEP;
 
-	vector<double> temperatures;
-	vector<double> constants;
-
 	clock_t full_clock = clock();
 	clock_t cycle_clock;
 
-	hep::vegas_callback<double>(stop_after_precision(0.01));
-	
-	FILE* out = fopen("temp", "w");
-	
-	fprintf(out, "TEMPERATURE Qtr_N2 Qrot_N2 Q_N2 Qtr_complex result.value() eqconst\n");
+	ofstream file;
+	file.open( "full_constants.dat" );
 
+	hep::vegas_callback<double>(stop_after_precision(0.001));
+	
 	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP )
 	{
 		cycle_clock = clock();
-
-		temperatures.push_back( TEMP );
 
 		auto integrand = bind( integrand_, _1, TEMP );
 		
 		auto results = hep::vegas(
 			hep::make_integrand<double>(integrand, 11),
-			std::vector<std::size_t>(10, 1e5)
+			std::vector<std::size_t>(20, 5e5)
 		);
 
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
@@ -202,42 +192,24 @@ int main()
 		// seems to be right
 		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7 * DA * pow(N2_LENGTH, 2);
 		double Q_N2 = Qtr_N2 * Qrot_N2;
-   	
-		/*
-		double O2_LENGTH = 1.207 * 1e-10;
-		double Qrot_O2 = 4 * pow(M_PI, 2) * BOLTZCONST * Temperature / PLANKCONST2 * 8 * DA * pow(O2_LENGTH, 2);
-		*/
-
-	
-		/*
+   		
+		/*	
 		cout << "Qtr_complex: " << Qtr_complex << endl;
 		cout << "Qtr_N2: " << Qtr_N2 << endl;
 		cout << "Qrot_N2: " << Qrot_N2 << endl;
 		cout << "Q_N2: " << Q_N2 << endl;
 		*/
 
-		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (8 * pow(M_PI, 3)); 
+		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2; // 2 is purely hypothethical, it seems to me that it should be there due to degeneracy of rotation about one of eulera angles 	
 
 		cout << "Temperature: " << TEMP << "; EQCONST: " << eqconst << endl << endl;
 
-		constants.push_back( eqconst );
-
-
-		fprintf(out, "%.3e %.3e %.3e %.3e %.3e %.3e %.3e\n", TEMP, Qtr_N2, Qrot_N2, Q_N2, Qtr_complex, result.value(), eqconst);
+		file << setprecision(5) << TEMP << " " << setprecision(10) << eqconst << endl;
 	}
 
-	fclose( out );
+	file.close();
 
 	cout << "Total time elapsed: " << ( clock() - full_clock ) / (double) CLOCKS_PER_SEC << "s" << endl;
-
-	FILE* const_file = fopen("full_constants.dat", "w");
-
-	for ( int counter = 0; counter < temperatures.size(); counter++ )
-	{
-		fprintf(const_file, "%.2lf %.12lf\n", temperatures[counter], constants[counter]);
-	}
-
-	fclose( const_file );
 
 	return 0;
 }

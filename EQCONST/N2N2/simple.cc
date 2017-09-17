@@ -5,7 +5,6 @@
 #include <math.h>
 #include <cstddef>
 #include <vector>
-
 #include <ctime>
 
 #include <boost/math/special_functions/gamma.hpp>
@@ -33,7 +32,6 @@ const double M3TOCM3 = pow(10, 6);
 // universal gas consant
 const double UGASCONST = 8.314;
 
-/*
 struct stop_after_precision
 {
 	stop_after_precision( double rel_error )
@@ -43,7 +41,7 @@ struct stop_after_precision
 
 	bool operator()(std::vector<hep::vegas_result<double>> const& r)
 	{
-		// hep::vegas_verbose_callback<double>(r);
+		hep::vegas_verbose_callback<double>(r);
 
 		//compute cumulative result
 		auto const result = hep::cumulative_result0(r.begin(), r.end());
@@ -63,31 +61,6 @@ struct stop_after_precision
 };
 
 
-double gammainc_integrand(hep::mc_point<double> const& x, double a, double b)
-{
-	return pow(b, a) * pow( x.point()[0], a - 1 ) * exp( -b * x.point()[0] );
-}
-
-double gammainc(double a, double b)
-{
-		auto i = bind(gammainc_integrand, _1, a, b);
-		
-		// stop if error is lower than 0.05%
-		hep::vegas_callback<double>(stop_after_precision(0.0005));
-		
-		auto results = hep::vegas(
-			hep::make_integrand<double>(i, 1),
-			vector<size_t>(10, 300)
-		);
-
-		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
-
-		return result.value();
-}
-
-const double GAMMA35 = gammainc(3.5, 10.0);
-*/
-
 double integrand_(hep::mc_point<double> const& x, double Temperature)
 {
 	double R_new = x.point()[0];
@@ -95,28 +68,37 @@ double integrand_(hep::mc_point<double> const& x, double Temperature)
 	double Theta2_new = x.point()[2];
 	double Phi_new = x.point()[3];
 
-	double R = tan(M_PI / 2 * x.point()[0]);
+	double R = tan( M_PI / 2 * R_new );
 	double Theta1 = M_PI * Theta1_new;
 	double Theta2 = M_PI * Theta2_new;
 	double Phi = 2 * M_PI * Phi_new;
 
-	if ( R > 4.4 )
+	if ( R < 4.4 )
 	{
-		double potential_value;
-		potn2n2(&R, &Theta1, &Theta2, &Phi, &potential_value);
+		return 0;
+	}
 
-		potential_value = potential_value * CMTOH * HTOJ;
+	double potential_value;
+	potn2n2(&R, &Theta1, &Theta2, &Phi, &potential_value);
 
-		if ( potential_value < 0 )
-		{
-			double U_KT = potential_value / (BOLTZCONST * Temperature);
+	potential_value = potential_value * CMTOH * HTOJ;
 
-			return pow(M_PI, 4) / 4 * pow(R, 2) * sin(Theta1) * sin(Theta2) * (1 + pow(R, 2)) * boost::math::gamma_p(3.5, - U_KT ) * exp( -U_KT );
-		} 
-		
-		else {
-			return 0;
-		}
+	if ( potential_value < 0 )
+	{
+		//jacobians
+		double jacR = M_PI / 2 * (1 + pow(R, 2));
+		double jacTheta1 = M_PI;
+		double jacTheta2 = M_PI;
+		double jacPhi = 2 * M_PI;
+
+		double U_KT = potential_value / (BOLTZCONST * Temperature);
+
+		return jacR * jacTheta1 * jacTheta2 * jacPhi * pow(R, 2) * sin(Theta1) * sin(Theta2) * boost::math::gamma_p(3.5, - U_KT ) * exp( -U_KT );
+	} 
+
+	else 
+	{
+		return 0;
 	}
 }
 
@@ -145,7 +127,8 @@ int main()
 	clock_t cycle_clock;
 	
 	// set the verbose vegas callback function
-	hep::vegas_callback<double>(hep::vegas_verbose_callback<double>);
+	// hep::vegas_callback<double>(hep::vegas_verbose_callback<double>);
+	hep::vegas_callback<double>(stop_after_precision(0.01));
 	
 	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP ) 
 	{
@@ -157,7 +140,7 @@ int main()
 
 		auto results = hep::vegas(
 			hep::make_integrand<double>(integrand, 4),
-			std::vector<std::size_t>(5, 10000)
+			std::vector<std::size_t>(10, 10000)
 		);
 					
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
