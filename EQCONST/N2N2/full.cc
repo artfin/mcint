@@ -200,7 +200,7 @@ int main()
 		cout << "Q_N2: " << Q_N2 << endl;
 		*/
 
-		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2; // 2 is purely hypothethical, it seems to me that it should be there due to degeneracy of rotation about one of eulera angles 	
+		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2; // 2 comes from degeeracy of Psi (Euler angle); \psi integration goes from 0 to \pi instead of 0 to 2 \pi 
 
 		cout << "Temperature: " << TEMP << "; EQCONST: " << eqconst << endl << endl;
 
