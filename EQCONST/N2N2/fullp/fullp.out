@@ -1,0 +1,88 @@
+--- Computing FULL EQCONST for N2N2 (Avoird potential) --- 
+iteration 0 finished.
+this iteration: N=300000 E=4.28185e+08 +- 1.04837e+08 (24.4841%)
+all iterations: N=300000 E=4.28185e+08 +- 1.04837e+08 (24.4841%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=5.10493e+08 +- 2.03845e+07 (3.99311%)
+all iterations: N=600000 E=5.07494e+08 +- 2.00098e+07 (3.94286%) chi^2/dof=0.593927
+
+iteration 2 finished.
+this iteration: N=300000 E=5.55484e+08 +- 9.59944e+06 (1.72812%)
+all iterations: N=900000 E=5.46506e+08 +- 8.65501e+06 (1.5837%) chi^2/dof=2.63491
+
+iteration 3 finished.
+this iteration: N=300000 E=5.70182e+08 +- 7.19646e+06 (1.26213%)
+all iterations: N=1200000 E=5.60504e+08 +- 5.53352e+06 (0.987239%) chi^2/dof=3.23142
+
+iteration 4 finished.
+this iteration: N=300000 E=5.68144e+08 +- 5.60214e+06 (0.986043%)
+all iterations: N=1500000 E=5.64277e+08 +- 3.93682e+06 (0.697676%) chi^2/dof=2.65886
+
+iteration 5 finished.
+this iteration: N=300000 E=5.72486e+08 +- 9.14882e+06 (1.59809%)
+all iterations: N=1800000 E=5.65559e+08 +- 3.61623e+06 (0.639408%) chi^2/dof=2.26295
+
+iteration 6 finished.
+this iteration: N=300000 E=5.661e+08 +- 6.64064e+06 (1.17305%)
+all iterations: N=2100000 E=5.65683e+08 +- 3.17587e+06 (0.561422%) chi^2/dof=1.88664
+
+iteration 7 finished.
+this iteration: N=300000 E=5.72205e+08 +- 4.70164e+06 (0.821671%)
+all iterations: N=2400000 E=5.67726e+08 +- 2.63173e+06 (0.463555%) chi^2/dof=1.80587
+
+iteration 8 finished.
+this iteration: N=300000 E=5.65169e+08 +- 3.82786e+06 (0.677296%)
+all iterations: N=2700000 E=5.66905e+08 +- 2.16863e+06 (0.382539%) chi^2/dof=1.61803
+
+iteration 9 finished.
+this iteration: N=300000 E=5.72791e+08 +- 3.79282e+06 (0.662166%)
+all iterations: N=3000000 E=5.68356e+08 +- 1.88262e+06 (0.33124%) chi^2/dof=1.63988
+
+iteration 10 finished.
+this iteration: N=300000 E=5.73833e+08 +- 3.89424e+06 (0.678637%)
+all iterations: N=3300000 E=5.69393e+08 +- 1.69495e+06 (0.297676%) chi^2/dof=1.63625
+
+iteration 11 finished.
+this iteration: N=300000 E=5.70525e+08 +- 3.87771e+06 (0.679674%)
+all iterations: N=3600000 E=5.69575e+08 +- 1.55307e+06 (0.272671%) chi^2/dof=1.494
+
+iteration 12 finished.
+this iteration: N=300000 E=5.79985e+08 +- 1.02973e+07 (1.77544%)
+all iterations: N=3900000 E=5.69806e+08 +- 1.5357e+06 (0.269512%) chi^2/dof=1.45278
+
+iteration 13 finished.
+this iteration: N=300000 E=5.86874e+08 +- 9.21166e+06 (1.56962%)
+all iterations: N=4200000 E=5.70268e+08 +- 1.51479e+06 (0.265628%) chi^2/dof=1.59796
+
+iteration 14 finished.
+this iteration: N=300000 E=5.68156e+08 +- 4.59665e+06 (0.809047%)
+all iterations: N=4500000 E=5.70061e+08 +- 1.43869e+06 (0.252374%) chi^2/dof=1.49742
+
+iteration 15 finished.
+this iteration: N=300000 E=5.71137e+08 +- 4.03949e+06 (0.707271%)
+all iterations: N=4800000 E=5.70182e+08 +- 1.35529e+06 (0.237695%) chi^2/dof=1.40179
+
+iteration 16 finished.
+this iteration: N=300000 E=5.74861e+08 +- 7.05087e+06 (1.22654%)
+all iterations: N=5100000 E=5.70349e+08 +- 1.33093e+06 (0.233354%) chi^2/dof=1.34072
+
+iteration 17 finished.
+this iteration: N=300000 E=5.61423e+08 +- 5.74307e+06 (1.02295%)
+all iterations: N=5400000 E=5.69894e+08 +- 1.29657e+06 (0.227511%) chi^2/dof=1.3967
+
+iteration 18 finished.
+this iteration: N=300000 E=5.64927e+08 +- 4.20503e+06 (0.74435%)
+all iterations: N=5700000 E=5.69463e+08 +- 1.23901e+06 (0.217575%) chi^2/dof=1.38988
+
+iteration 19 finished.
+this iteration: N=300000 E=5.83034e+08 +- 5.13252e+06 (0.880312%)
+all iterations: N=6000000 E=5.7021e+08 +- 1.20441e+06 (0.211222%) chi^2/dof=1.66447
+
+>> Cumulative result: 
+>> N = 5700000; I = 5.70229e+08 +- 1.20449e+06
+>> chi^2/dof = 1.65496
+Time needed: 356.09s
+Temperature: 100; EQCONST: 0.00143691
+
+Total time elapsed: 356.09s

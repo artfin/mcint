@@ -157,7 +157,7 @@ int main( int argc, char* argv[] )
 	}
 
 	const double LTEMP = 100.0;
-	const double HTEMP = 350.0;
+	const double HTEMP = 100.0;
 	const double STEP = 10.0;
 
 	clock_t full_clock = clock();
