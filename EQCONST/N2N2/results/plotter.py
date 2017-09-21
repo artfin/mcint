@@ -40,21 +40,26 @@ def read_data( filename ):
 
 fig = plt.figure()
 
-temperatures, simple_constants = read_data('simple_constants.dat')
-temps_full, full_constants = read_data('parallel_full.dat')
+temps1, simple_constants = read_data('simple_constants.dat')
+temps2, full_constants = read_data('parallel_full.dat')
 
-simp = simple_constants
-full = full_constants
+simp = np.log( simple_constants )
+full = np.log( full_constants )
+
+temps1 = np.log( temps1 )
+temps2 = np.log( temps2 ) 
 
 lw = 1.75
 
-plt.title(r'\textbf{Temperature dependence of K$_p$(N$_2$-N$_2$)}')
+#plt.title(r'\textbf{Temperature dependence of K$_p$(N$_2$-N$_2$)}')
 
-plt.xlabel(r'\textbf{T}, K')
-plt.ylabel(r'\textbf{K}, atm$^{-1}$')
+#plt.xlabel(r'\textbf{T}, K')
+#plt.ylabel(r'\textbf{K}, atm$^{-1}$')
+plt.xlabel(r'Log \textbf{T}')
+plt.ylabel(r'Log \textbf{K}')
 
-l1, = plt.plot(temperatures, simp, color = 'k', linewidth = lw)
-l2, = plt.plot(temps_full, full, color = 'r', linewidth = lw)
+l1, = plt.plot(temps1, simp, color = 'k', linewidth = lw)
+l2, = plt.plot(temps2, full, color = 'r', linewidth = lw)
 
 red_patch = mpatches.Patch( color = 'red', label = 'Full phase space' )
 black_patch = mpatches.Patch( color = 'black', label = 'Simple')

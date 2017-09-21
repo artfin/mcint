@@ -128,7 +128,7 @@ int main()
 	
 	// set the verbose vegas callback function
 	// hep::vegas_callback<double>(hep::vegas_verbose_callback<double>);
-	hep::vegas_callback<double>(stop_after_precision(0.01));
+	hep::vegas_callback<double>(stop_after_precision(0.001));
 	
 	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP ) 
 	{
@@ -140,7 +140,7 @@ int main()
 
 		auto results = hep::vegas(
 			hep::make_integrand<double>(integrand, 4),
-			std::vector<std::size_t>(10, 10000)
+			std::vector<std::size_t>(20, 100000)
 		);
 					
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
