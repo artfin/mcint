@@ -3,10 +3,11 @@
 import sys
 import subprocess
 
-instances = 2
+instances = 4 
 
 programs = {
-    'full_parallel': ('full_parallel', instances),
+    'full_p': ('full_p', instances),
+    'full_pw': ('full_pw', instances),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
