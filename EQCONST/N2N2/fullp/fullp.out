@@ -82,7 +82,8 @@ all iterations: N=6000000 E=5.7021e+08 +- 1.20441e+06 (0.211222%) chi^2/dof=1.66
 >> Cumulative result: 
 >> N = 5700000; I = 5.70229e+08 +- 1.20449e+06
 >> chi^2/dof = 1.65496
-Time needed: 356.09s
+Time needed: 23.39s
 Temperature: 100; EQCONST: 0.00143691
 
-Total time elapsed: 356.09s
+Total time elapsed: 23.39s
+removed non-finite number: 0
