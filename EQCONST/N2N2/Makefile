@@ -6,10 +6,10 @@ CCXX = g++
 
 F = gfortran
 
-CXXFLAGS = -std=c++11 -lgfortran -lm -O3 
+CXXFLAGS = -std=c++11 -lgfortran -lm -Wall 
 
+INCLUDE_HEP = -I/home/artfin/Downloads/hep-mc-0.5/include -I/n/home11/artfin/hep-mc-0.5/include
 INCLUDE_EIGEN = -I/usr/local/include/eigen3
-INCLUDE_HEP = -I/home/artfin/Downloads/hep-mc-0.5/include
 
 POT_SRC_PATH = ../../POT/src/
 POT_OBJ_PATH = ../../POT/obj/
@@ -50,5 +50,3 @@ full_p: $(OBJ) hamiltonian.o full_p.cpp
 full_pw: $(OBJ) hamiltonian_wcoriolis.o full_pw.cpp
 	$(MPICCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_HEP) $^ -o $@
 
-clean:
-	rm simple || rm full || rm simps 
