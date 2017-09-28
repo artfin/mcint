@@ -31,8 +31,8 @@ int main( int argc, char* argv[] )
 
 	int nsteps = atoi( argv[1] );
 
-	double x_min = -3.0;
-	double x_max =  3.0;
+	double x_min = -2.5;
+	double x_max =  2.5;
 
 	double summ = 0;
 	for ( int i = 0; i < nsteps; i++ )

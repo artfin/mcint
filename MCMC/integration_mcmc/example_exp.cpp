@@ -72,6 +72,7 @@ int main( int argc, char* argv[] )
 	for ( int i = 0; i < nsteps; i++ )
 	{
 		x = metro_step( x, alpha );
+		//cout << x << endl;
 
 		sum += target( x );
 
@@ -86,7 +87,7 @@ int main( int argc, char* argv[] )
 		}
 	}
 	
-	sum = sum * ( x_max - x_min ) / nsteps;	
+	sum = sum * 2.6 / nsteps;	
 
 	cout << "x_min: " << x_min << endl;
 	cout << "x_max: " << x_max << endl;
@@ -96,7 +97,7 @@ int main( int argc, char* argv[] )
 	cout << "Exact: " << exact << endl;
 	cout << "Monte Carlo estimate: " << sum << endl;
 
-	cout << "ratio: " << sum / exact << endl;
+	//cout << "ratio: " << sum / exact << endl;
 
 	return 0;
 }
