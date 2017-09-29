@@ -1,3 +1,4 @@
+MPICCXX = mpic++
 CCXX = g++
 
 F = gfortran -O0
@@ -54,7 +55,7 @@ CO2H2_SRC_PATH = src/co2h2/
 CO2H2_BIN_PATH = bin/co2h2/
 
 zeroth_moment: $(HAM_OBJ)co2h2_hamiltonian.o $(DIP_OBJ)co2h2_dipole_lr.o $(POT_OBJ)co2h2_pes.o $(CO2H2_SRC_PATH)zeroth_moment.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_HEP) $^ -o $(CO2H2_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE) $(DIP_INCLUDE)
+	$(MPICCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_HEP) $^ -o $(CO2H2_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE) $(DIP_INCLUDE)
 
 ###################################################################
 

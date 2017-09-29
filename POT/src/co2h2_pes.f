@@ -17,7 +17,7 @@ c=============================================
 
 c******************************************************************************
 C      REAL*8 FUNCTION CO2H2PES(XR,XTH1,XTH2,XPHI) 
-        SUBROUTINE CO2H2PES( XR, XTH1, XTH2, XPHI, POTVALUE )
+        SUBROUTINE CO2H2PES( XR, XTH1, XTH2, XPHI, POTVALUE ) bind(C)
 c******************************************************************************
 c** Subroutine to generate values of the vibrationally averaged 4D-MLR analyic
 c  potential energy surfaces for complexes formed between H2 and CO2 
@@ -283,7 +283,7 @@ C		 CO2H2PES=V
       RETURN
       END 
 c-----------------------------------------------------------------------------
-      SUBROUTINE PARAREAD() 
+      SUBROUTINE PARAREAD() bind(C) 
       IMPLICIT REAL*8 (A-H,O-Z)
       PARAMETER (MXPARM=600,MMAX=16,MXDE=82, MXRE=51, MXPHI=87,ISP=2)
       PARAMETER (MXC6=6, MXC8=10, isC=12, isO=16)
