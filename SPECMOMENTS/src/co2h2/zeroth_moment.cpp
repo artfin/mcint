@@ -39,6 +39,10 @@ const double HTOJ = 4.35974417 * pow(10, -18);
 // boltzmann constant
 const long double BOLTZCONST = 1.38064852 * pow(10, -23);
 
+const double COEFF = 0.0036148;
+const double RMAX = 100.0;
+const double VOLUME = 1.0 / 3.0 * pow( RMAX, 3 );
+
 using namespace std;
 using namespace std::placeholders;
 
@@ -165,8 +169,8 @@ double denumerator_integrand_( hep::mc_point<double> const& x, double Temperatur
 	double Jy = tan(M_PI * (Jy_new - 0.5));
 	double Jz = tan(M_PI * (Jz_new - 0.5));
 	
-	// integrating only to R = 100.0
-	if ( R > 100.0 )
+	// integrating only to R = RMAX 
+	if ( R > RMAX )
 	{
 		return 0;
 	}
@@ -210,9 +214,9 @@ int main( int argc, char* argv[] )
 	// initialzing potential parameters
 	pararead();
 
-	double LTEMP = 50.0;
-	double HTEMP = 50.0;
-	double STEP = 1.0;
+	double LTEMP = 300.0;
+	double HTEMP = 300.0;
+	double STEP = 5.0;
 
 	if ( rank == 0 )
 	{	
@@ -238,13 +242,13 @@ int main( int argc, char* argv[] )
 		auto numerator_results = hep::mpi_vegas(
 			MPI_COMM_WORLD,
 			hep::make_integrand<double>(numerator_integrand, 11),
-			std::vector<std::size_t>(8, 1e5)
+			std::vector<std::size_t>(10, 1e5)
 		);
 
 		auto denumerator_results = hep::mpi_vegas(
 			MPI_COMM_WORLD,
 			hep::make_integrand<double>(denumerator_integrand, 11),
-			std::vector<std::size_t>(8, 1e5)
+			std::vector<std::size_t>(10, 1e5)
 		);
 
 		auto numerator_result = hep::cumulative_result0( numerator_results.begin() + 1, numerator_results.end() );
@@ -252,6 +256,8 @@ int main( int argc, char* argv[] )
 
 		double numerator_chi_square_dof = hep::chi_square_dof0( numerator_results.begin() + 1, numerator_results.end() );
 		double denumerator_chi_square_dof = hep::chi_square_dof0( denumerator_results.begin() + 1, denumerator_results.end() );
+
+		double zero_moment = numerator_result.value() / denumerator_result.value() * COEFF * VOLUME;
 
 		if ( rank == 0 )
 		{
@@ -263,11 +269,11 @@ int main( int argc, char* argv[] )
 			cout << ">> N = " << denumerator_result.calls() << "; I = " << denumerator_result.value() << " +- " << denumerator_result.error() << endl;
 			cout << ">> chi^2/dof = " << denumerator_chi_square_dof << endl << endl;
 
-			file << setprecision(5) << TEMP << " " << setprecision(10) << numerator_result.value() << " " << denumerator_result.value() << endl;
+			file << setprecision(5) << TEMP << " " << setprecision(10) << numerator_result.value() << " " << denumerator_result.value() << " " << setprecision(10) << zero_moment << endl;
 
 			chrono::high_resolution_clock::time_point cycleEndTime = chrono::high_resolution_clock::now();
 
-			cout << "Cycle time: " << chrono::duration_cast<chrono::milliseconds>(cycleStartTime - cycleEndTime).count() / 1000.0 << " s" << endl; 
+			cout << "Cycle time: " << chrono::duration_cast<chrono::milliseconds>(cycleEndTime - cycleStartTime).count() / 1000.0 << " s" << endl; 
 		}
 	}
 
