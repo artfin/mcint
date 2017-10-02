@@ -59,6 +59,9 @@ CO2AR_BIN_PATH = bin/co2ar/
 co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
 
+co2ar_rconst_rep: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
+
 co2ar_rconst_jangles: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_jangles.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
@@ -70,14 +73,49 @@ co2ar_bound: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(C
 
 ##################################################################
 
-simple: simple.cpp
-	$(CCXX) $(CXXFLAGS) $^ -o $@
+##################################################################
+# DIATOMICS
+#
+
+DIATOMICS_SRC_PATH = src/diatomics/
+DIATOMICS_BIN_PATH = bin/diatomics/
+
+# optimal value of alpha: ~12.0 ( t = 300k )
+#
+# diatomics_rconst_nonrep -- R = const, full-dimensional MCMC for two atom
+# 	version of CO2-Ar (two particles with masses of co2 and ar)
+# 	Metropolis-Hastings algorithm outputs points WITHOUT repetition
+
+# diatomics_rconst_rep -- R = const, full-dimensional MCMC for two atom
+# 	version of CO2-Ar (two particles with masses of co2 and ar)
+# 	Metropolis-Hastings algorithm outputs points WITH repetition
+#
+diatomics_rconst_nonrep: $(DIATOMICS_SRC_PATH)diatomics_rconst_nonrep.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $^ -o $(DIATOMICS_BIN_PATH)$@
+
+diatomics_rconst_rep: $(DIATOMICS_SRC_PATH)diatomics_rconst_rep.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $^ -o $(DIATOMICS_BIN_PATH)$@
+
+diatomics_rconst_exact: $(DIATOMICS_SRC_PATH)diatomics_rconst_exact.cpp
+	$(CCXX) $(CXXFLAGS) $^ -o $(DIATOMICS_BIN_PATH)$@
+
+##################################################################
+
+##################################################################
+# TESTS
+
+TEST_SRC_PATH = src/test/
+TEST_BIN_PATH = bin/test/
+
+# 1d dimensional Markov chain
+1d-gaussian: $(TEST_SRC_PATH)1d-gaussian.cpp
+	$(CCXX) $(CXXFLAGS) $^ -o $(TEST_BIN_PATH)$@
+##################################################################
+
 
 2d: 2d.cpp
 	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
 
-diatomics: diatomics.cpp
-	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@
 
 2d-exp-sin: 2d-exp-sin.cpp
 	$(CCXX) $(CXXFLAGS) $(STFLAGS) $(LDFLAGS) $^ -o $@

@@ -36,6 +36,7 @@ int main( int argc, char* argv[] )
 	if ( argc != 2 )
 	{
 		cout << "USAGE: ./... (int) n" << endl;
+		exit( 1 );
 	}
 
 	int n = atoi( argv[1] );

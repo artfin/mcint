@@ -1,6 +1,6 @@
 #include <iostream>
 #include <random>
-#include <ctime>
+#include <chrono>
 #include <cmath>
 
 #include <iomanip> // std::atoi
@@ -59,7 +59,8 @@ double target( Vector3d x )
     double jx = x(0);
     double jy = x(1);
     double pR = x(2);
-    double h = pow(pR, 2) / ( 2 * MUAMU ) + ( pow(jx, 2) + pow(jy, 2) ) / (2 * MUAMU * pow(RDIST, 2)); //  + potential( RDIST ); 
+    double h = pow(pR, 2) / ( 2 * MUAMU ) + ( pow(jx, 2) + pow(jy, 2) ) / (2 * MUAMU * pow(RDIST, 2));
+
     return exp( - h * HTOJ / ( BOLTZCONST * temperature ));
 }
 
@@ -103,8 +104,6 @@ int main( int argc, char* argv[] )
     Vector3d x ( 10.0, 10.0, 10.0 );
     Vector3d xnew;
 
-    clock_t start = clock();
-    
     cout << "# Metropolis-Hastings sampler for diatomics" << endl;
     cout << "# moves-to-be-made = " << nsteps << endl;
     cout << "# burn-in = " << burnin << endl;
@@ -112,14 +111,18 @@ int main( int argc, char* argv[] )
     cout << "# temperature = " << temperature << endl;
     cout << "# R (a.u.) = " << RDIST << endl;  
     
-	size_t moves = 0;
-	size_t total_steps = 0;
+	chrono::high_resolution_clock::time_point startTime = chrono::high_resolution_clock::now();	
 
 	// burn-in
 	for ( size_t i = 0; i < burnin; i++ )
 	{
 		x = metro_step( x, alpha );
 	}
+	
+	cerr << "Burn-in finished. Time elapsed: " << chrono::duration_cast<chrono::milliseconds>( chrono::high_resolution_clock::now() - startTime).count() / 1000.0 << " s" << endl;
+
+	int moves = 0;
+	int attempted_moves = 0;
 
 	// recording
 	while ( moves < nsteps )
@@ -129,20 +132,20 @@ int main( int argc, char* argv[] )
         if ( xnew != x )
         {
             moves++;
-
-            if ( show_vecs == true )
-            {
-                cout << x(0) << " " << x(1) << " " << x(2) << endl;
-            }
+        }
+        
+		if ( show_vecs == true )
+        {
+            cout << x(0) << " " << x(1) << " " << x(2) << endl;
         }
 
         x = xnew;
-		total_steps++;
-    }
+		attempted_moves++;
+	}
 
     cerr << "-----------------------------------" << endl;
-    cerr << "Total steps: " << total_steps << "; moves: " << moves << "; percent: " << (double) moves / total_steps * 100 << "%" << endl;
-    cerr << "Time elapsed: " << (double) ( clock() - start ) / CLOCKS_PER_SEC << "s" << endl; 
+    cerr << "Attempted steps: " << attempted_moves << "; moves: " << moves << "; percent: " << (double) moves / attempted_moves * 100.0 << "%" << endl;
+    cerr << "Time elapsed: " << chrono::duration_cast<chrono::milliseconds>( chrono::high_resolution_clock::now() - startTime).count() / 1000.0 << " s" << endl; 
     cerr << "-----------------------------------" << endl;
 
     return 0;
