@@ -7,6 +7,8 @@ CCXX = g++
 CXXFLAGS = -std=c++11 -O3 -lstdc++ -march=native -mtune=native
 
 INCLUDE_EIGEN = -I /usr/local/include/eigen3
+INCLUDE_GSL = -lgsl -lgslcblas
+
 LDFLAGS = -lm
 
 MPI_PROGRAMS_PATH = ./mpi/mpi_diatomics.cpp
@@ -52,24 +54,32 @@ $(POT_OBJ)co2ar_potential_julia.o: $(POT_SRC)co2ar_potential_julia.cpp
 # 	output: R, theta, pR, pTheta, Jx, Jy, Jz distributions
 #  		( angular momentum in Cartesian coordinates )
 #  	FULL hamiltonian: kinetic + potential parts
+# 
+# co2ar_rconst_lagrange -- R = const, full-dimensional LAGRANGE phase space MCMC
+#		output: theta, rdot, thetadot, omega_x, omega_y, omega_z
+# 	lagrangian consists only of kinetic energy ( NO POTENTIAL PART )
+#
 
 CO2AR_SRC_PATH = src/co2ar/
 CO2AR_BIN_PATH = bin/co2ar/
 
-co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst.cpp
+co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
 
-co2ar_rconst_rep: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
+co2ar_rconst_autobinning: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_autobinning.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
 
 co2ar_rconst_jangles: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_jangles.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
-co2ar_rconst_jangles_icpertraj: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_jangles.cpp
+co2ar_rconst_jangles_icpertraj: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_jangles_icpertraj.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 co2ar_bound: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_bound.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE)
+
+co2ar_rconst_lagrange: $(CO2AR_SRC_PATH)co2ar_rconst_lagrange.cpp 
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@
 
 ##################################################################
 
@@ -82,18 +92,12 @@ DIATOMICS_BIN_PATH = bin/diatomics/
 
 # optimal value of alpha: ~12.0 ( t = 300k )
 #
-# diatomics_rconst_nonrep -- R = const, full-dimensional MCMC for two atom
-# 	version of CO2-Ar (two particles with masses of co2 and ar)
-# 	Metropolis-Hastings algorithm outputs points WITHOUT repetition
-
-# diatomics_rconst_rep -- R = const, full-dimensional MCMC for two atom
+# diatomics_rconst -- R = const, full-dimensional MCMC for two atom
 # 	version of CO2-Ar (two particles with masses of co2 and ar)
 # 	Metropolis-Hastings algorithm outputs points WITH repetition
 #
-diatomics_rconst_nonrep: $(DIATOMICS_SRC_PATH)diatomics_rconst_nonrep.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $^ -o $(DIATOMICS_BIN_PATH)$@
 
-diatomics_rconst_rep: $(DIATOMICS_SRC_PATH)diatomics_rconst_rep.cpp
+diatomics_rconst: $(DIATOMICS_SRC_PATH)diatomics_rconst_rep.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $^ -o $(DIATOMICS_BIN_PATH)$@
 
 diatomics_rconst_exact: $(DIATOMICS_SRC_PATH)diatomics_rconst_exact.cpp

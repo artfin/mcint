@@ -9,7 +9,7 @@
 // Eigen
 #include <Eigen/Dense>
 
-#include "co2ar_hamiltonian.h"
+#include "co2ar_hamiltonian.hpp"
 
 using namespace Eigen;
 using namespace std;
@@ -168,19 +168,20 @@ int main( int argc, char* argv[] )
         if ( xnew != x )
         {
             moves++;
-
-            if ( show_vecs == true )
-            {
-				jx = x(3);
-				jy = x(4);
-				jz = x(5);
-				j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
-				jtheta = acos( jz / j );
-				jphi = atan ( jy / jx );
-
-                cout << moves + 1 << " " << RDIST << " " << x(0) << " " << x(1) << " " << x(2) << " " << jphi << " " << jtheta << " " << j << endl;
-            }
         } 
+        
+		if ( show_vecs == true )
+        {
+			jx = xnew(3);
+			jy = xnew(4);
+			jz = xnew(5);
+			
+			j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
+			jtheta = acos( jz / j );
+			jphi = atan ( jy / jx );
+
+            cout << attempted_steps + 1 << " " << RDIST << " " << xnew(0) << " " << xnew(1) << " " << xnew(2) << " " << jphi << " " << jtheta << " " << j << endl;
+        }
 
         x = xnew;
     }

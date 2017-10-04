@@ -166,19 +166,19 @@ int main( int argc, char* argv[] )
         {
             moves++;
         	x = xnew;
-
-            if ( show_vecs == true )
-            {
-				jx = x(3);
-				jy = x(4);
-				jz = x(5);
-				j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
-				jtheta = acos( jz / j );
-				jphi = atan ( jy / jx );
-
-                cout << x(0) << " " << x(1) << " " << x(2) << " " << jphi << " " << jtheta << " " << j << endl;
-            }
         } 
+        
+		if ( show_vecs == true )
+        {
+			jx = x(3);
+			jy = x(4);
+			jz = x(5);
+			j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
+			jtheta = acos( jz / j );
+			jphi = atan ( jy / jx );
+
+            cout << x(0) << " " << x(1) << " " << x(2) << " " << jphi << " " << jtheta << " " << j << endl;
+        }
     }
 	
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();

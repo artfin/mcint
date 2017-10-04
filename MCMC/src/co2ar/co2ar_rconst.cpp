@@ -10,7 +10,7 @@
 #include <Eigen/Dense>
 
 // co2ar hamiltonian and potential
-#include "co2ar_hamiltonian.h"
+#include "co2ar_hamiltonian.hpp"
 
 using namespace Eigen;
 using namespace std;
@@ -169,12 +169,12 @@ int main( int argc, char* argv[] )
         {
             moves++;
         	x = xnew;
-
-            if ( show_vecs == true )
-            {
-            	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
-			}
         } 
+       
+	   	if ( show_vecs == true )
+        {
+         	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
+		}
 
     }
 

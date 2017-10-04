@@ -6,11 +6,7 @@
 #include <iomanip> // std::atoi
 #include <algorithm> // std::min
 
-// Eigen
 #include <Eigen/Dense>
-
-// co2ar hamiltonian and potential
-#include "co2ar_hamiltonian.hpp"
 
 using namespace Eigen;
 using namespace std;
@@ -18,6 +14,7 @@ using namespace std;
 const double mu1 = 14579.0; // ?
 const double mu2 = 36440.0; // ?
 const double l = 4.398;
+const double l2 = pow( l, 2 );
 
 // boltzmann constant
 const double BOLTZCONST = 1.38064e-23;
@@ -26,6 +23,7 @@ const double HTOJ = 4.35974417e-18;
 
 // ! ---------------------------
 const double RDIST = 20.0;
+const double RDIST2 = pow( RDIST, 2 );
 // -----------------------------
 
 const int DIM = 6;
@@ -56,11 +54,29 @@ double wrapMax( double x, double max )
 	return fmod( max + fmod(x, max), max );
 }
 
-// x = [ Theta, pR, pT, Jx, Jy, Jz ]
+// x = [ theta, rdot, theta_dot, omega_x, omega_y, omega_z ]
 double target( VectorXf x )
 {
-    double ke = kinetic_energy( RDIST, x[0], x[1], x[2], x[3], x[4], x[5] );
-    
+	double Theta = x[0];
+	double rdot = x[1];
+	double Theta_dot = x[2];
+	double Omega_x = x[3];
+	double Omega_y = x[4];
+	double Omega_z = x[5];
+
+	double rdot2 = pow( rdot, 2 );
+	double Theta_dot2 = pow( Theta_dot, 2 );
+	double sinTheta = sin( Theta );
+	double cosTheta = cos( Theta );
+	double sinTheta2 = pow( sinTheta, 2 );
+	double cosTheta2 = pow( cosTheta, 2 );
+
+	double kinetic_part = 0.5 * mu2 * rdot2 + 0.5 * mu1 * l2 * Theta_dot2;
+	double angular_part = 0.5 * ( mu1 * l2 * cosTheta2 + mu2 * RDIST2) * pow(Omega_x, 2) + 0.5 * ( mu1 * l2 + mu2 * RDIST2 ) * pow(Omega_y, 2) + 0.5 * mu1 * l2 * sinTheta2 * pow(Omega_z, 2) - mu1 * l2 * sinTheta * cosTheta * Omega_x * Omega_z;
+	double coriolis_part = mu1 * l2 * Omega_y * Theta_dot;
+
+    double ke = kinetic_part + angular_part + coriolis_part; 
+
 	return exp( -ke * HTOJ / (BOLTZCONST * temperature ));
 }
 
@@ -117,9 +133,6 @@ int main( int argc, char* argv[] )
 	
 	cout << "# file structure: " << endl;
 	cout << "# theta pR pT jx jy jz" << endl;
-
-	double jx, jy, jz;
-	double j, jtheta, jphi;
 
 	// burnin cycle
 	for ( size_t i = 0; i < burnin; i++ )

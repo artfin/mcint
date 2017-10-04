@@ -179,12 +179,12 @@ int main( int argc, char* argv[] )
         {
             moves++;
         	x = xnew;
-
-            if ( show_vecs == true )
-            {
-            	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << " " << x(6) << endl;
-			}
         } 
+        
+		if ( show_vecs == true )
+        {
+         	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << " " << x(6) << endl;
+		}
 
 		attempted_steps++;
     }
