@@ -2,14 +2,18 @@
 #include <cmath>
 #include <random>
 #include <chrono>
-
+#include <fstream>
 #include <iomanip> // std::atoi
 #include <algorithm> // std::min
 
 #include <Eigen/Dense>
 
+#include <gsl/gsl_histogram.h>
+
 using namespace Eigen;
 using namespace std;
+
+const int NBINS = 500;
 
 const double mu1 = 14579.0; // ?
 const double mu2 = 36440.0; // ?
@@ -33,6 +37,12 @@ const double temperature = 300;
 
 static mt19937 generator;
 
+void gsl_histogram_normalize( gsl_histogram* h )
+{
+	double sum = gsl_histogram_sum( h );
+	gsl_histogram_scale( h, 1.0 / sum );
+}
+
 static double nextDouble( const double &min = 0.0, const double &max = 1.0 )
 {
     uniform_real_distribution<double> distribution( min, max );
@@ -54,6 +64,22 @@ double wrapMax( double x, double max )
 	return fmod( max + fmod(x, max), max );
 }
 
+void save_histogram( gsl_histogram *histogram, string filename )
+{
+	ofstream file( filename );
+
+	double lower_bound, higher_bound, bin_content;
+	for ( int counter = 0; counter < NBINS; counter++ )
+	{
+		gsl_histogram_get_range( histogram, counter, &lower_bound, &higher_bound );
+		bin_content = gsl_histogram_get( histogram, counter );
+
+		file << lower_bound << " " << higher_bound << " " << bin_content << endl;
+	}
+	
+	file.close();	
+}
+
 // x = [ theta, rdot, theta_dot, omega_x, omega_y, omega_z ]
 double target( VectorXf x )
 {
@@ -72,12 +98,20 @@ double target( VectorXf x )
 	double cosTheta2 = pow( cosTheta, 2 );
 
 	double kinetic_part = 0.5 * mu2 * rdot2 + 0.5 * mu1 * l2 * Theta_dot2;
+	//cout << "kinetic_part: " << kinetic_part << endl;
+
 	double angular_part = 0.5 * ( mu1 * l2 * cosTheta2 + mu2 * RDIST2) * pow(Omega_x, 2) + 0.5 * ( mu1 * l2 + mu2 * RDIST2 ) * pow(Omega_y, 2) + 0.5 * mu1 * l2 * sinTheta2 * pow(Omega_z, 2) - mu1 * l2 * sinTheta * cosTheta * Omega_x * Omega_z;
+	//cout << "angular_part: " << angular_part << endl;
+
 	double coriolis_part = mu1 * l2 * Omega_y * Theta_dot;
+	//cout << "coriolis_part: " << coriolis_part << endl;
 
     double ke = kinetic_part + angular_part + coriolis_part; 
+	//cout << "ke: " << ke << endl;
 
-	return exp( -ke * HTOJ / (BOLTZCONST * temperature ));
+	double e = exp( -ke * HTOJ / (BOLTZCONST * temperature ));
+	//cout << "exp: " << e << endl << endl;
+	return e;
 }
 
 VectorXf metro_step( VectorXf x, double alpha )
@@ -120,7 +154,7 @@ int main( int argc, char* argv[] )
     cerr << "-----------" << endl;
 
     VectorXf x( DIM );
-    x << 0.5, 0.5, 0.5, 0.5, 0.5, 0.5;
+    x << 0.5, 0.0001, 0.0001, 0.0001, 0.00001, 0.00001;
 
 	VectorXf xnew;
 
@@ -132,7 +166,7 @@ int main( int argc, char* argv[] )
     cout << "# R (a. u.) = " << RDIST << endl;
 	
 	cout << "# file structure: " << endl;
-	cout << "# theta pR pT jx jy jz" << endl;
+	cout << "# theta rdot thetadot omegax omegay omegaz" << endl;
 
 	// burnin cycle
 	for ( size_t i = 0; i < burnin; i++ )
@@ -146,13 +180,26 @@ int main( int argc, char* argv[] )
 	size_t moves = 0;
 
 	int block_counter = 0;
-	int block_size = 100000;
+	int block_size = 1000000;
 
 	chrono::milliseconds time_for_block;
 	chrono::milliseconds time_for_blocks;
 
 	vector<chrono::high_resolution_clock::time_point> block_times;
 	block_times.push_back( chrono::high_resolution_clock::now() );
+	
+	double lbs[] = {0.0, -5e-4, -5e-4, -5e-4, -5e-4, -5e-4};
+	vector<double> lower_boundaries ( lbs, lbs + sizeof(lbs) / sizeof(double) );
+	double ubs[] =  {M_PI, 5e-4, 5e-4, 5e-4, 5e-4, 5e-4}; 
+	vector<double> upper_boundaries( ubs, ubs + sizeof(ubs) / sizeof(double) );
+
+	vector< gsl_histogram* > histograms;
+	for ( int i = 0; i < DIM; i++ )
+	{
+		gsl_histogram *h = gsl_histogram_alloc( NBINS );
+		gsl_histogram_set_ranges_uniform( h, lower_boundaries[i], upper_boundaries[i] );
+	  	histograms.push_back( h );	
+	}	
 
 	while ( moves < nsteps )  
 	{
@@ -183,13 +230,27 @@ int main( int argc, char* argv[] )
             moves++;
         	x = xnew;
         } 
-       
+		
+		for ( int i = 0; i < DIM; i++ )
+		{
+			gsl_histogram_increment( histograms[i], x(i) ); 
+		}
+
 	   	if ( show_vecs == true )
         {
          	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
 		}
 
     }
+
+	string names[] = {"theta.txt", "rdot.txt", "thetadot.txt", "omegax.txt", "omegay.txt", "omegaz.txt" };
+		
+	for ( int i = 0; i < DIM; i++ )
+	{
+		gsl_histogram_normalize( histograms[i] );
+		save_histogram( histograms[i], names[i] );
+		gsl_histogram_free( histograms[i] );
+	}
 
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
 

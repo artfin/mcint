@@ -2,15 +2,17 @@
 #include <cmath>
 #include <random>
 #include <chrono>
+#include <fstream>
 
 #include <iomanip> // std::atoi
 #include <algorithm> // std::min
 
 #include <Eigen/Dense>
+#include <gsl/gsl_histogram.h>
 
 // co2ar hamiltonian and potential
-#include "co2ar_hamiltonian.h"
-#include "co2ar_potential_julia.h"
+#include "co2ar_hamiltonian.hpp"
+#include "co2ar_potential_julia.hpp"
 
 using namespace Eigen;
 using namespace std;
@@ -27,8 +29,9 @@ const double HTOJ = 4.35974417e-18;
 const double CMTOH = 4.55633e-6;
 
 // temperature in K
-const double temperature = 100;
+const double temperature = 50;
 
+const int NBINS = 1000;
 const int DIM = 7;
 
 static mt19937 generator;
@@ -52,6 +55,36 @@ static void nextGaussianVec( VectorXf &v, VectorXf mean, const double sigma )
 double wrapMax( double x, double max )
 {
 	return fmod( max + fmod(x, max), max );
+}
+
+void gsl_histogram_normalize( gsl_histogram* h )
+{
+	double sum = gsl_histogram_sum( h );
+	gsl_histogram_scale( h, 1.0 / sum );
+}
+
+void save_histogram( gsl_histogram *histogram, string filename, int nsteps, int burnin, double alpha )
+{
+	ofstream file( filename );
+
+	file << "# Distributions of Hamiltonian variables for bound CO2-Ar dimers" << endl;
+    file << "# Metropolis-Hasitngs algorithm, initial parameters:" << endl;
+    file << "# nsteps = " << nsteps << endl;
+    file << "# burnin = " << burnin << endl;
+    file << "# alpha = " << alpha << endl;
+    file << "# temperature = " << temperature << endl;
+	
+
+	double lower_bound, higher_bound, bin_content;
+	for ( int counter = 0; counter < NBINS; counter++ )
+	{
+		gsl_histogram_get_range( histogram, counter, &lower_bound, &higher_bound );
+		bin_content = gsl_histogram_get( histogram, counter );
+
+		file << lower_bound << " " << higher_bound << " " << bin_content << endl;
+	}
+	
+	file.close();	
 }
 
 // x = [ R, theta, pR, pT, Jx, Jy, Jz ]
@@ -121,15 +154,6 @@ int main( int argc, char* argv[] )
     x << 6.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5;
 	VectorXf xnew( DIM );
 
-	cout << "# Distributions of Hamiltonian variables for bound CO2-Ar dimers" << endl;
-    cout << "# Metropolis-Hasitngs algorithm, initial parameters:" << endl;
-    cout << "# nsteps = " << nsteps << endl;
-    cout << "# burnin = " << burnin << endl;
-    cout << "# alpha = " << alpha << endl;
-    cout << "# temperature = " << temperature << endl;
-	
-	cout << "# file structure: R, theta, pR, pT, jx, jy, jz" << endl;
-
 	// burnin cycle
 	for ( size_t i = 0; i < burnin; i++ )
 	{
@@ -143,14 +167,26 @@ int main( int argc, char* argv[] )
 	size_t moves = 0;
 
 	int block_counter = 0;
-	int block_size = 100000;
+	int block_size = 1e6;
 
 	chrono::milliseconds time_for_block;
 	chrono::milliseconds time_for_blocks;
 
 	vector< chrono::high_resolution_clock::time_point> block_times;
-	
 	block_times.push_back( chrono::high_resolution_clock::now() );
+	
+	double lbs[] = {5.0, 0.0, -10.0, -30.0, -60.0, -60.0, -30.0};
+	vector<double> lower_boundaries ( lbs, lbs + sizeof(lbs) / sizeof(double) );
+	double ubs[] =  {15.0, M_PI, 10.0, 30.0, 60.0, 60.0, 30.0}; 
+	vector<double> upper_boundaries( ubs, ubs + sizeof(ubs) / sizeof(double) );
+
+	vector< gsl_histogram* > histograms;
+	for ( int i = 0; i < DIM; i++ )
+	{
+		gsl_histogram *h = gsl_histogram_alloc( NBINS );
+		gsl_histogram_set_ranges_uniform( h, lower_boundaries[i], upper_boundaries[i] );
+	  	histograms.push_back( h );	
+	}	
 
 	while ( moves < nsteps )  
 	{
@@ -180,6 +216,11 @@ int main( int argc, char* argv[] )
             moves++;
         	x = xnew;
         } 
+		
+		for ( int i = 0; i < DIM; i++ )
+		{
+			gsl_histogram_increment( histograms[i], x(i) ); 
+		}
         
 		if ( show_vecs == true )
         {
@@ -188,6 +229,15 @@ int main( int argc, char* argv[] )
 
 		attempted_steps++;
     }
+	
+	string names[] = {"r.txt", "theta.txt", "pr.txt", "pt.txt", "jx.txt", "jy.txt", "jz.txt"};
+		
+	for ( int i = 0; i < DIM; i++ )
+	{
+		gsl_histogram_normalize( histograms[i] );
+		save_histogram( histograms[i], names[i], nsteps, burnin, alpha );
+		gsl_histogram_free( histograms[i] );
+	}
 
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
 

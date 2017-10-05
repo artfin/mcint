@@ -36,7 +36,7 @@ $(POT_OBJ)co2ar_potential_julia.o: $(POT_SRC)co2ar_potential_julia.cpp
 
 ##################################################################
 # CO2-AR
-# simple -- 
+# alpha ~ 10.0
 # co2ar_rconst -- R = const, full-dimensional phase space MCMC 
 # 	output: theta, pR, pTheta, Jx, Jy, Jz distibutions
 # 		( angular momentum in Cartesian coordinates )
@@ -50,15 +50,19 @@ $(POT_OBJ)co2ar_potential_julia.o: $(POT_SRC)co2ar_potential_julia.cpp
 # co2ar_rconst_jangles_icpertraj -- the same as co2ar_rconst_jangles
 # 	but output is formatted for trajectory calculation
 #
+#
+# alpha ~ 1.0
 # co2ar_bound -- full-dimensional phase space MCMC, distributions for bound dimers ( H < 0 ) 
 # 	output: R, theta, pR, pTheta, Jx, Jy, Jz distributions
 #  		( angular momentum in Cartesian coordinates )
 #  	FULL hamiltonian: kinetic + potential parts
-# 
-# co2ar_rconst_lagrange -- R = const, full-dimensional LAGRANGE phase space MCMC
+#
+#
+# alpha ~ 1e-5
+# co2ar_rconst_lagrange_binning -- R = const, full-dimensional LAGRANGE phase space MCMC
 #		output: theta, rdot, thetadot, omega_x, omega_y, omega_z
 # 	lagrangian consists only of kinetic energy ( NO POTENTIAL PART )
-#
+#	using gsl-histogram for insitu binning of all lagrange variables
 
 CO2AR_SRC_PATH = src/co2ar/
 CO2AR_BIN_PATH = bin/co2ar/
@@ -78,8 +82,11 @@ co2ar_rconst_jangles_icpertraj: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)c
 co2ar_bound: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_bound.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE)
 
-co2ar_rconst_lagrange: $(CO2AR_SRC_PATH)co2ar_rconst_lagrange.cpp 
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@
+co2ar_bound_binning: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_bound_binning.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE)
+
+co2ar_rconst_lagrange_binning: $(CO2AR_SRC_PATH)co2ar_rconst_lagrange_binning.cpp 
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@
 
 ##################################################################
 
