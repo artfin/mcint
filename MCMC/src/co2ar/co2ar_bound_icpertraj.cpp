@@ -98,7 +98,7 @@ int main( int argc, char* argv[] )
 {
     if ( argc != 5 )
     {
-        cout << "Usage: ./ ... (int) moves_to_be_made (int) burn-in-steps (double) alpha (bool) show_vec" << endl;
+        cout << "Usage: ./ ... (int) inital_conditions_to_write (int) burn-in-steps (double) alpha (bool) show_vec" << endl;
         exit( 1 );
     }
 
@@ -137,10 +137,14 @@ int main( int argc, char* argv[] )
 	}
 
 	cerr << "Burn-in is finished" << endl;
+	
+	double jx, jy, jz;
+	double j, jtheta, jphi;
 
 	// running cycle
 	size_t attempted_steps = 0;
 	size_t moves = 0;
+	size_t wrote_vectors = 0;
 
 	int block_counter = 0;
 	int block_size = 100000;
@@ -152,7 +156,7 @@ int main( int argc, char* argv[] )
 	
 	block_times.push_back( chrono::high_resolution_clock::now() );
 
-	while ( moves < nsteps )  
+	while ( wrote_vectors < nsteps )  
 	{
 		if ( attempted_steps % block_size == 0 and attempted_steps != 0 )
 		{
@@ -178,14 +182,24 @@ int main( int argc, char* argv[] )
         if ( xnew != x )
         {
             moves++;
-        	x = xnew;
         } 
         
-		if ( show_vecs == true )
+		if ( show_vecs == true && xnew != x && moves % 10 == 0 )
         {
-         	cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << " " << x(6) << endl;
+			jx = xnew(4);
+			jy = xnew(5);
+			jz = xnew(6);
+
+			j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
+			jtheta = acos( jz / j );
+			jphi = atan ( jy / jx );
+
+            cout << wrote_vectors + 1 << " " << xnew(0) << " " << xnew(1) << " " << xnew(2) << " " << xnew(3) << " " << jphi << " " << jtheta << " " << j << endl;
+
+			wrote_vectors++;
 		}
 
+        x = xnew;
 		attempted_steps++;
     }
 

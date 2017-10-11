@@ -1,3 +1,4 @@
+#include <iostream>
 #include <math.h>
 #include <Eigen/Dense>
 
@@ -42,6 +43,48 @@ void fill_A_matrix(Matrix<double, 3, 2> &A, double &R, double &theta)
     A(1, 0) = 0;
     A(1, 1) = mu1 * l * l;
     A(2, 0) = A(2, 1) = 0;
+}
+
+// ham_vars = [R, theta, pR, pT, Jx, Jy, Jz]
+// omega = [omega_x, omega_y, omega_z]
+// q_dot = [ dot{r}, dot{theta} ]
+void lagrange_vars( VectorXf ham_vars, Vector3d &omega, Vector2d &q_dot )
+{
+	Vector3d j_vector( ham_vars(4), ham_vars(5), ham_vars(6) );
+	Vector2d p_vector( ham_vars(2), ham_vars(3) );
+
+	for ( int i = 0; i < 3; i++ )
+	{
+		cout << "j_vector[" << i << "] = " << j_vector(i) << endl;
+	}
+
+	//double R = ham_vars(0);
+	//double Theta = ham_vars(1);
+
+	//Matrix<double, 3, 3> I;
+	//fill_inertia_tensor( I, R, Theta );
+	//Matrix<double, 3, 3> I_inv = I.inverse();
+
+	//Matrix<double, 2, 2> a;
+	//fill_a_matrix( a, R, Theta );
+	//Matrix<double, 2, 2> a_inv = a.inverse();
+
+	//Matrix<double, 3, 2> A;
+	//fill_A_matrix( A, R, Theta );
+
+	//Matrix<double, 3, 3> t1 = I;
+	//t1.noalias() -= A * a_inv * A.transpose();
+	//Matrix<double, 3, 3> G11 = t1.inverse();
+
+	//Matrix<double, 2, 2> t2 = a;
+	//t2.noalias() -= A.transpose() * I_inv * A;
+	//Matrix<double, 2, 2> G22 = t2.inverse();
+
+	//Matrix<double, 3, 2> G12 = - G11 * A * a.inverse();
+	//Matrix<double, 2, 3> G21 = G12.transpose();
+
+	//omega = G11 * j_vector + G12 * p_vector;
+	//q_dot = G21 * j_vector + G22 * p_vector;
 }
 
 double kinetic_energy(double R, double theta, double pR, double pT, double Jx, double Jy, double Jz)

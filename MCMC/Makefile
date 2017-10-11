@@ -63,9 +63,20 @@ $(POT_OBJ)co2ar_potential_julia.o: $(POT_SRC)co2ar_potential_julia.cpp
 #		output: theta, rdot, thetadot, omega_x, omega_y, omega_z
 # 	lagrangian consists only of kinetic energy ( NO POTENTIAL PART )
 #	using gsl-histogram for insitu binning of all lagrange variables
+#
+# co2ar_rconst_lconst -- R = const, L = const ( rotational moment of CO2 )
+#   full-dimensional phase space MCMC
+#   output: R, theta, pR, pTheta, Jx, Jy, Jz distributions
+#   	( angular momentum in Cartesian coordinates )
+#   hamiltonian consists only of kinetic energy ( NO POTENTIAL PART )
+#
+#
 
 CO2AR_SRC_PATH = src/co2ar/
 CO2AR_BIN_PATH = bin/co2ar/
+
+co2ar_rconst_lconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_lconst.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
@@ -84,6 +95,9 @@ co2ar_bound: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(C
 
 co2ar_bound_binning: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_bound_binning.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE)
+
+co2ar_bound_icpertraj: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_bound_icpertraj.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) $(POT_INCLUDE)
 
 co2ar_rconst_lagrange_binning: $(CO2AR_SRC_PATH)co2ar_rconst_lagrange_binning.cpp 
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@
