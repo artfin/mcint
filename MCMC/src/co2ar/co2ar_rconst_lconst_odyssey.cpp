@@ -62,39 +62,6 @@ static void nextGaussianVec( VectorXf &v, VectorXf mean, const double sigma )
     }
 } 
 
-void gsl_histogram_normalize( gsl_histogram* h )
-{
-	double max = gsl_histogram_max( h );
-   	double min = gsl_histogram_min( h );
-	double step = ( max - min ) / NBINS;	
-
-	double sum = gsl_histogram_sum( h ) * step; 
-	gsl_histogram_scale( h, 1.0 / sum );
-}
-
-void save_histogram( gsl_histogram *histogram, string filename, int nsteps, int burnin, double alpha )
-{
-	ofstream file( filename );
-
-	file << "# Distributions of Hamiltonian variables for bound CO2-Ar dimers" << endl;
-    file << "# Metropolis-Hastings algorithm, initial parameters:" << endl;
-    file << "# nsteps = " << nsteps << endl;
-    file << "# burnin = " << burnin << endl;
-    file << "# alpha = " << alpha << endl;
-    file << "# temperature = " << temperature << endl;
-	
-
-	double lower_bound, higher_bound, bin_content;
-	for ( int counter = 0; counter < NBINS; counter++ )
-	{
-		gsl_histogram_get_range( histogram, counter, &lower_bound, &higher_bound );
-		bin_content = gsl_histogram_get( histogram, counter );
-
-		file << lower_bound << " " << higher_bound << " " << bin_content << endl;
-	}
-	
-	file.close();	
-}
 
 // wrap x -> [0, max)
 double wrapMax( double x, double max )
@@ -134,6 +101,51 @@ double linear_molecule_momentum( VectorXf x )
 
 	return pow( Jz, 2 ) * ( 1 + pow( cotan(Theta), 2 )) + pow( pTheta, 2 );
 }
+
+void save_histogram( gsl_histogram *histogram, string filename, int nsteps, int burnin, double alpha )
+{
+	ofstream file( filename );
+
+	file << "# Distributions of Hamiltonian variables for bound CO2-Ar dimers" << endl;
+    file << "# Metropolis-Hastings algorithm, initial parameters:" << endl;
+    file << "# nsteps = " << nsteps << endl;
+    file << "# burnin = " << burnin << endl;
+    file << "# alpha = " << alpha << endl;
+    file << "# temperature = " << temperature << endl;
+	
+
+	double lower_bound, higher_bound, bin_content;
+	for ( int counter = 0; counter < NBINS; counter++ )
+	{
+		gsl_histogram_get_range( histogram, counter, &lower_bound, &higher_bound );
+		bin_content = gsl_histogram_get( histogram, counter );
+
+		file << lower_bound << " " << higher_bound << " " << bin_content << endl;
+	}
+	
+	file.close();	
+}
+
+void gsl_histogram_normalize( gsl_histogram* h )
+{
+	double max = gsl_histogram_max( h );
+   	double min = gsl_histogram_min( h );
+	double step = ( max - min ) / NBINS;	
+
+	double sum = gsl_histogram_sum( h ) * step; 
+	gsl_histogram_scale( h, 1.0 / sum );
+}
+
+void save_all( vector< gsl_histogram* > histograms, int nsteps, int burnin, double alpha )
+{
+	string names[] = {"theta.txt", "pr.txt", "pt.txt", "jx.txt", "jy.txt", "jz.txt", "l2.txt" };
+	
+	for ( int i = 0; i < DIM + 1; i++ )
+	{
+		save_histogram( histograms[i], names[i], nsteps, burnin, alpha );
+	}
+}
+
 
 int main( int argc, char* argv[] )
 {
@@ -229,12 +241,15 @@ int main( int argc, char* argv[] )
 			time_for_block = chrono::duration_cast<chrono::milliseconds>( block_times.end()[-1] - block_times.end()[-2] );
 			time_for_blocks = chrono::duration_cast<chrono::milliseconds>( block_times.end()[-1] - block_times[0] );
 
+			save_all( histograms, nsteps, burnin, alpha );
+
 			cerr << endl;
 			cerr << "Block " << block_counter << " finished. " << endl;
 			cerr << "Moves attempted: " << attempted_steps << "; moves made: " << moves << endl;
 			cerr << "Vectors wrote: " << wrote_vectors << endl;
 			cerr << "Time for current block: " << time_for_block.count() / 1000.0 << " s" << endl;
 			cerr << "Total time elapsed: " << time_for_blocks.count() / 1000.0 << " s" << endl;
+			cerr << "Saved histograms." << endl;
 		}
 			
 		attempted_steps++;
@@ -250,21 +265,8 @@ int main( int argc, char* argv[] )
             moves++;
         } 
        
-	   	if ( show_vecs == true && xnew != x &&
-				L2 > LBOUND && L2 < UBOUND )
+	   	if ( xnew != x && L2 > LBOUND && L2 < UBOUND )
         {
-			jx = xnew(3);
-			jy = xnew(4);
-			jz = xnew(5);
-
-			j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
-			jtheta = acos( jz / j );
-			jphi = atan ( jy / jx );
-
-			cout << wrote_vectors + 1 << " " << RDIST << " " << xnew(0) << " " << xnew(1) << " " << xnew(2) << " " << jphi << " " << jtheta << " " << j << endl;
-
-			//cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
-		
 			for ( int i = 0; i < DIM; i++ )
 			{
 				gsl_histogram_increment( histograms[i], x(i) ); 
@@ -279,7 +281,7 @@ int main( int argc, char* argv[] )
     }
 	
 	string names[] = {"theta.txt", "pr.txt", "pt.txt", "jx.txt", "jy.txt", "jz.txt", "l2.txt" };
-		
+	
 	for ( int i = 0; i < DIM + 1; i++ )
 	{
 		gsl_histogram_normalize( histograms[i] );
