@@ -137,6 +137,7 @@ double linear_molecule_momentum( VectorXf x )
 
 int main( int argc, char* argv[] )
 {
+/*
     if ( argc != 5 )
     {
         cout << "Usage: ./ ... (int) vectors_to_write (int) burn-in-steps (double) alpha (bool) show_vec" << endl;
@@ -147,6 +148,11 @@ int main( int argc, char* argv[] )
     const int burnin = atoi( argv[2] );
     const double alpha = atof( argv[3] );
     const bool show_vecs = atoi( argv[4] );
+*/
+    const int nsteps = 1000000;
+    const int burnin = 2000000;
+    const double alpha = 8.0;
+    const bool show_vecs = 1.0;
 
     setprecision( 3 );
 
