@@ -78,7 +78,7 @@ CO2AR_BIN_PATH = bin/co2ar/
 co2ar_rconst_lconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_lconst.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
-co2ar_rconst_lconst_odyssey: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_lconst_odyssey.cpp
+co2ar_rconst_lconst_mpi: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_lconst_mpi.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
