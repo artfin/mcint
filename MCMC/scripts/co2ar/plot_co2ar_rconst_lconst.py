@@ -18,23 +18,55 @@ def read_file ( filename ):
     return lists
 
 #-----------------------------------------------------------------------------------------
-theta_lb, theta_rb, theta = read_file( '../../out/co2ar/co2ar_rconst_lconst/theta.txt' )
-pr_lb, pr_rb, pr = read_file( '../../out/co2ar/co2ar_rconst_lconst/pr.txt' )
-ptheta_lb, ptheta_rb, ptheta = read_file( '../../out/co2ar/co2ar_rconst_lconst/pt.txt' )
-jx_lb, jx_rb, jx = read_file( '../../out/co2ar/co2ar_rconst_lconst/jx.txt' )
-jy_lb, jy_rb, jy = read_file( '../../out/co2ar/co2ar_rconst_lconst/jy.txt' )
-jz_lb, jz_rb, jz = read_file( '../../out/co2ar/co2ar_rconst_lconst/jz.txt' )
-l2_lb, l2_rb, l2 = read_file( '../../out/co2ar/co2ar_rconst_lconst/l2.txt' )
+theta_lb_20, theta_rb_20, theta_20 = read_file( '../../out/co2ar/co2ar_rconst_lconst/20_binning/theta.txt' )
+theta_lb_50, theta_rb_50, theta_50 = read_file( '../../out/co2ar/co2ar_rconst_lconst/50/theta.txt' )
+theta_lb_100, theta_rb_100, theta_100 = read_file( '../../out/co2ar/co2ar_rconst_lconst/100/theta.txt' )
+
+pr_lb_20, pr_rb_20, pr_20 = read_file( '../../out/co2ar/co2ar_rconst_lconst/20_binning/pr.txt' )
+pr_lb_50, pr_rb_50, pr_50 = read_file( '../../out/co2ar/co2ar_rconst_lconst/50/pr.txt' )
+pr_lb_100, pr_rb_100, pr_100 = read_file( '../../out/co2ar/co2ar_rconst_lconst/100/pr.txt' )
+
+ptheta_lb_20, ptheta_rb_20, ptheta_20 = read_file( '../../out/co2ar/co2ar_rconst_lconst/20_binning/pt.txt' )
+ptheta_lb_50, ptheta_rb_50, ptheta_50 = read_file( '../../out/co2ar/co2ar_rconst_lconst/50/pt.txt' )
+ptheta_lb_100, ptheta_rb_100, ptheta_100 = read_file( '../../out/co2ar/co2ar_rconst_lconst/100/pt.txt' )
+
+jx_lb_20, jx_rb_20, jx_20 = read_file( '../../out/co2ar/co2ar_rconst_lconst/20_binning/jx.txt' )
+jx_lb_50, jx_rb_50, jx_50 = read_file( '../../out/co2ar/co2ar_rconst_lconst/50/jx.txt' )
+jx_lb_100, jx_rb_100, jx_100 = read_file( '../../out/co2ar/co2ar_rconst_lconst/100/jx.txt' )
+
+jy_lb_20, jy_rb_20, jy_20 = read_file( '../../out/co2ar/co2ar_rconst_lconst/20_binning/jy.txt' )
+jy_lb_50, jy_rb_50, jy_50 = read_file( '../../out/co2ar/co2ar_rconst_lconst/50/jy.txt' )
+jy_lb_100, jy_rb_100, jy_100 = read_file( '../../out/co2ar/co2ar_rconst_lconst/100/jy.txt' )
+
+jz_lb_20, jz_rb_20, jz_20 = read_file( '../../out/co2ar/co2ar_rconst_lconst/20_binning/jz.txt' )
+jz_lb_50, jz_rb_50, jz_50 = read_file( '../../out/co2ar/co2ar_rconst_lconst/50/jz.txt' )
+jz_lb_100, jz_rb_100, jz_100 = read_file( '../../out/co2ar/co2ar_rconst_lconst/100/jz.txt' )
 #-----------------------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------------------
-theta_med = [ 0.5 * (lb + ub) for lb, ub in zip( theta_lb, theta_rb)]
-pr_med = [ 0.5 * (lb + ub) for lb, ub in zip( pr_lb, pr_rb) ]
-ptheta_med = [ 0.5 * (lb + ub) for lb, ub in zip( ptheta_lb, ptheta_rb) ]
-jx_med = [ 0.5 * (lb + ub) for lb, ub in zip( jx_lb, jx_rb) ]
-jy_med = [ 0.5 * (lb + ub) for lb, ub in zip( jy_lb, jy_rb) ] 
-jz_med = [ 0.5 * (lb + ub) for lb, ub in zip( jz_lb, jz_rb) ]
-l2_med = [ 0.5 * (lb + ub) for lb, ub in zip( l2_lb, l2_rb) ]
+theta_med_20 = [ 0.5 * (lb + ub) for lb, ub in zip( theta_lb_20, theta_rb_20)]
+theta_med_50 = [ 0.5 * (lb + ub) for lb, ub in zip( theta_lb_50, theta_rb_50)]
+theta_med_100 = [ 0.5 * (lb + ub) for lb, ub in zip( theta_lb_100, theta_rb_100)]
+
+pr_med_20 = [ 0.5 * (lb + ub) for lb, ub in zip( pr_lb_20, pr_rb_20) ]
+pr_med_50 = [ 0.5 * (lb + ub) for lb, ub in zip( pr_lb_50, pr_rb_50) ]
+pr_med_100 = [ 0.5 * (lb + ub) for lb, ub in zip( pr_lb_100, pr_rb_100) ]
+
+ptheta_med_20 = [ 0.5 * (lb + ub) for lb, ub in zip( ptheta_lb_20, ptheta_rb_20) ]
+ptheta_med_50 = [ 0.5 * (lb + ub) for lb, ub in zip( ptheta_lb_50, ptheta_rb_50) ]
+ptheta_med_100 = [ 0.5 * (lb + ub) for lb, ub in zip( ptheta_lb_100, ptheta_rb_100) ]
+
+jx_med_20 = [ 0.5 * (lb + ub) for lb, ub in zip( jx_lb_20, jx_rb_20) ]
+jx_med_50 = [ 0.5 * (lb + ub) for lb, ub in zip( jx_lb_50, jx_rb_50) ]
+jx_med_100 = [ 0.5 * (lb + ub) for lb, ub in zip( jx_lb_100, jx_rb_100) ]
+
+jy_med_20 = [ 0.5 * (lb + ub) for lb, ub in zip( jy_lb_20, jy_rb_20) ] 
+jy_med_50 = [ 0.5 * (lb + ub) for lb, ub in zip( jy_lb_50, jy_rb_50) ] 
+jy_med_100 = [ 0.5 * (lb + ub) for lb, ub in zip( jy_lb_100, jy_rb_100) ] 
+
+jz_med_20 = [ 0.5 * (lb + ub) for lb, ub in zip( jz_lb_20, jz_rb_20) ]
+jz_med_50 = [ 0.5 * (lb + ub) for lb, ub in zip( jz_lb_50, jz_rb_50) ]
+jz_med_100 = [ 0.5 * (lb + ub) for lb, ub in zip( jz_lb_100, jz_rb_100) ]
 #-----------------------------------------------------------------------------------------
 
 lw = 2.0
@@ -42,46 +74,53 @@ x = np.linspace( 0, np.pi, 100 )
 #-----------------------------------------------------------------------------------------
 #plt.subplot( 1, 3, 1 )
 #plt.title(r'$\Theta$ distribution')
-#plt.plot( theta_med, theta, linestyle = 'solid', color = 'k' )
-#plt.plot(x, 0.5 * np.sin(x), linestyle = 'dashed', color = 'r', alpha = 0.7 )
+#plt.plot( theta_med_20, theta_20, linestyle = 'solid', color = 'r' )
+#plt.plot( theta_med_50, theta_50, linestyle = 'solid', color = 'g' )
+#plt.plot( theta_med_100, theta_100, linestyle = 'solid', color = 'b' )
+#plt.plot(x, 0.5 * np.sin(x), linestyle = 'dashed', color = 'k', alpha = 0.7 )
 #plt.grid(linestyle = ':', alpha = 0.7)
 #-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
 #plt.subplot( 1, 3, 2 )
 #plt.title(r'$p_R$ distribution')
-#plt.plot( pr_med, pr, linestyle = 'solid', color = 'k' )
+#plt.plot( pr_med_20, pr_20, linestyle = 'solid', color = 'r' )
+#plt.plot( pr_med_50, pr_50, linestyle = 'solid', color = 'g' )
+#plt.plot( pr_med_100, pr_100, linestyle = 'solid', color = 'b' )
 #plt.grid(linestyle = ':', alpha = 0.7)
 #-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
-#plt.subplot(1, 3, 3 )
-#plt.title( r'$L^2$ distribution' )
-#plt.plot( l2_med, l2, linestyle = 'solid', color = 'k' )
-#plt.grid( linestyle = ':', alpha = 0.7 )
-
 #plt.subplot( 1, 3, 3 )
 #plt.title(r'$p_\Theta$ distribution')
-#plt.plot( ptheta_med, ptheta, linestyle = 'solid', color = 'k' )
-#plt.xlim( (-10, 10) ) 
+#plt.plot( ptheta_med_20, ptheta_20, linestyle = 'solid', color = 'r' )
+#plt.plot( ptheta_med_50, ptheta_50, linestyle = 'solid', color = 'g' )
+#plt.plot( ptheta_med_100, ptheta_100, linestyle = 'solid', color = 'b' )
+#plt.xlim( (-30, 30) ) 
 #plt.grid(linestyle = ':', alpha = 0.7)
 #-----------------------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------------------
 plt.subplot( 1, 3, 1 )
 plt.title(r'$J_x$ distribution')
-plt.plot( jx_med, jx, linestyle = 'solid', color = 'k' )
+plt.plot( jx_med_20, jx_20, linestyle = 'solid', color = 'r' )
+#plt.plot( jx_med_50, jx_50, linestyle = 'solid', color = 'g' )
+#plt.plot( jx_med_100, jx_100, linestyle = 'solid', color = 'b' )
 plt.grid(linestyle = ':', alpha = 0.7)
 #-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
 plt.subplot( 1, 3, 2 )
 plt.title(r'$J_y$ distribution')
-plt.plot( jy_med, jy, linestyle = 'solid', color = 'k' )
+plt.plot( jy_med_20, jy_20, linestyle = 'solid', color = 'r' )
+#plt.plot( jy_med_50, jy_50, linestyle = 'solid', color = 'g' )
+#plt.plot( jy_med_100, jy_100, linestyle = 'solid', color = 'b' )
 plt.grid(linestyle = ':', alpha = 0.7)
 #-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
 plt.subplot( 1, 3, 3 )
 plt.title(r'$J_z$ distribution')
-plt.plot( jz_med, jz, linestyle = 'solid', color = 'k' )
-plt.xlim( (-10, 10) ) 
+plt.plot( jz_med_20, jz_20, linestyle = 'solid', color = 'r' )
+#plt.plot( jz_med_50, jz_50, linestyle = 'solid', color = 'g' )
+#plt.plot( jz_med_100, jz_100, linestyle = 'solid', color = 'b' )
+plt.xlim( (-50, 50) ) 
 plt.grid(linestyle = ':', alpha = 0.7)
 #-----------------------------------------------------------------------------------------
 

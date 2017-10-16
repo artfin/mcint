@@ -11,7 +11,7 @@ const double amu = 9.1093835 * pow(10, -31); // amu to  kg
 const double mu1 = 7.0035 * dalton / amu; // amu
 const double mu2 = mu1; // amu
 const double mu3 = 14.007 * dalton / amu; // amu
-const double l1 = 2.0744; // bohrs
+const double l1 = 4.1488; // bohrs
 const double l2 = l1; // bohrs
 
 const double l1_sq = l1 * l1;
@@ -122,46 +122,10 @@ double kinetic_energy(double q1, double q2, double q3, double q4, double p1, dou
 
 	G12.noalias() = - G11 * A * a.inverse();
 
-	// cout << "p vector: " << endl << p_vector << endl;
-	// cout << "a: " << endl << a << endl;
-	// cout << "G22: " << endl << G22 << endl;
-
 	double ang_term = 0.5 * j_vector.transpose() * G11 * j_vector;
 	double kin_term = 0.5 * p_vector.transpose() * G22 * p_vector;
 	double cor_term = j_vector.transpose() * G12 * p_vector;
 
-	// cout << "angular term: " << ang_term << endl;
-	// cout << "kin term: " << kin_term << endl;
-	// cout << "cor term: " << cor_term << endl;
-
 	return ang_term + kin_term + cor_term; 
 }
-
-/*
-int main()
-{
-	double q1 = 1.95;
-	double q2 = 5.28;
-	double q3 = 0.14;
-	double q4 = 4.44;
-
-	double p1 = -24.04;
-	double p2 = 49.58;
-	double p3 = 36.22;
-	double p4 = 1.48;
-
-	double Jx = -4.20;
-	double Jy = -22.97;
-	double Jz = -2.96;
-
-	double h = kinetic_energy(q1, q2, q3, q4, p1, p2, p3, p4, Jx, Jy, Jz);
-	cout << "hamiltonian value: " << h << endl;
-
-	return 0;
-}
-*/
-
-
-
-
 

@@ -4,7 +4,7 @@
 #include <chrono>
 #include <fstream>
 
-#include <iomanip> // std::atoi
+#include <iomanip> 
 #include <algorithm> // std::min
 #include <gsl/gsl_histogram.h>
 
@@ -34,8 +34,8 @@ const int NBINS = 500;
 const int DIM = 6;
 
 // boundaries for L2
-const double LBOUND = 19.5;
-const double UBOUND = 20.5;
+const double LBOUND = 199.5;
+const double UBOUND = 200.5;
 
 // temperature in K
 const double temperature = 300;
@@ -137,7 +137,6 @@ double linear_molecule_momentum( VectorXf x )
 
 int main( int argc, char* argv[] )
 {
-/*
     if ( argc != 5 )
     {
         cout << "Usage: ./ ... (int) vectors_to_write (int) burn-in-steps (double) alpha (bool) show_vec" << endl;
@@ -148,12 +147,7 @@ int main( int argc, char* argv[] )
     const int burnin = atoi( argv[2] );
     const double alpha = atof( argv[3] );
     const bool show_vecs = atoi( argv[4] );
-*/
-    const int nsteps = 1000000;
-    const int burnin = 2000000;
-    const double alpha = 8.0;
-    const bool show_vecs = 1.0;
-
+    
     setprecision( 3 );
 
     cerr << "-----------" << endl;
@@ -265,12 +259,12 @@ int main( int argc, char* argv[] )
 
 			//cout << x(0) << " " << x(1) << " " << x(2) << " " << x(3) << " " << x(4) << " " << x(5) << endl;
 		
-			for ( int i = 0; i < DIM; i++ )
-			{
-				gsl_histogram_increment( histograms[i], x(i) ); 
-			}
+			//for ( int i = 0; i < DIM; i++ )
+			//{
+				//gsl_histogram_increment( histograms[i], x(i) ); 
+			//}
 
-			gsl_histogram_increment( histograms[DIM], L2 );
+			//gsl_histogram_increment( histograms[DIM], L2 );
 			
 			wrote_vectors++;
 		}
@@ -282,8 +276,8 @@ int main( int argc, char* argv[] )
 		
 	for ( int i = 0; i < DIM + 1; i++ )
 	{
-		gsl_histogram_normalize( histograms[i] );
-		save_histogram( histograms[i], names[i], nsteps, burnin, alpha );
+		//gsl_histogram_normalize( histograms[i] );
+		//save_histogram( histograms[i], names[i], nsteps, burnin, alpha );
 		gsl_histogram_free( histograms[i] );
 	}
 

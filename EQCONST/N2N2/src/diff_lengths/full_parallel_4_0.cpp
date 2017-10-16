@@ -1,6 +1,3 @@
-// calculating equilibrium constant for N2N2 WITHOUT CORIOLIS INTERACTION
-
-#include "hamiltonian.h"
 #include "hep/mc-mpi.hpp"
 
 #include <math.h>
@@ -12,6 +9,8 @@
 #include <fstream>
 #include <iomanip> // setprecision
 
+#include "n2n2_hamiltonian.hpp"
+
 extern "C" void potinit(void);
 extern "C" void potn2n2(double* rr, double* theta1, double* theta2, double* phi, double* res);
 
@@ -19,13 +18,13 @@ using namespace std;
 using namespace std::placeholders;
 
 // cm^-1 to hartree
-const double CMTOH = 1 / 2.1947 * pow(10, -5);
+const double CMTOH = 1.0 / 2.1947 * pow(10, -5);
 // hartree to joules
 const double HTOJ = 4.35974417 * pow(10, -18);
 // boltzmann constant
 const long double BOLTZCONST = 1.38064852 * pow(10, -23);
 // avogadro number
-const double AVOGADRO  = 6.022 * pow(10, 23); 
+const double AVOGADRO  = 6.022140857 * pow(10, 23); 
 // pascals to atmospheres
 const double PATOATM = 101325.0;
 // universal gas consant
@@ -38,38 +37,12 @@ const long double PLANKCONST2 = pow(PLANKCONST, 2);
 // dalton to kg
 const long double DA = 1.660539040 * pow(10, -27);
 
-const double N2_LENGTH = 1.0975 * pow(10, -10);
+const double BOHRTOM = 0.529177 * pow( 10, -10 );
+const double N2_LENGTH = 8.2976 * BOHRTOM;
 
 // particles molar masses, g/mol
 const double N2_MOLARMASS = 28.0;
 const double COMPLEX_MOLARMASS = 56.0;
-
-struct stop_after_precision
-{
-	stop_after_precision( double rel_error )
-			: rel_error( rel_error )
-	{
-	}
-
-	bool operator()(std::vector<hep::vegas_result<double>> const& r)
-	{
-		// hep::mpi_vegas_verbose_callback<double>(r);
-
-		// compute cumulative result
-		auto const result = hep::cumulative_result0(r.begin(), r.end());
-	
-		if ( result.error() < abs(rel_error * result.value()) )
-		{
-			cout << ">> relative error " << (result.error() / result.value() ) << " is smaller than the limit " << rel_error << endl;
-			
-			return false;
-		}
-
-		return true;
-	}
-
-	double rel_error;
-};
 
 double integrand_( hep::mc_point<double> const& x, double Temperature )
 {
@@ -144,7 +117,7 @@ double calculate_qtr( double mass, double Temperature )
 int main( int argc, char* argv[] )
 {
 	// initialize MPI
-	MPI_Init( &argc, &argv ); // ??
+	MPI_Init( &argc, &argv ); 
 
 	int rank;
 	MPI_Comm_rank( MPI_COMM_WORLD, &rank );
@@ -159,16 +132,15 @@ int main( int argc, char* argv[] )
 	}
 
 	const double LTEMP = 100.0;
-	const double HTEMP = 100.0;
+	const double HTEMP = 350.0;
 	const double STEP = 10.0;
 
 	clock_t full_clock = clock();
 	clock_t cycle_clock;
 
 	ofstream file;
-	file.open( "wout_cor.dat" );
+	file.open( "full_4_0.txt" );
 
-	//hep::mpi_vegas_callback<double>(stop_after_precision(0.001));
 	hep::mpi_vegas_callback<double>( hep::mpi_vegas_verbose_callback<double> );
 
 	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP )
@@ -180,7 +152,7 @@ int main( int argc, char* argv[] )
 		auto results = hep::mpi_vegas(
 			MPI_COMM_WORLD,
 			hep::make_integrand<double>( integrand, 11 ),
-			std::vector<std::size_t>(20, 2e5)
+			std::vector<std::size_t>(20, 3e5)
 		);
 
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
@@ -202,14 +174,8 @@ int main( int argc, char* argv[] )
 		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7 * DA * pow(N2_LENGTH, 2);
 		double Q_N2 = Qtr_N2 * Qrot_N2;
    		
-		/*	
-		cout << "Qtr_complex: " << Qtr_complex << endl;
-		cout << "Qtr_N2: " << Qtr_N2 << endl;
-		cout << "Qrot_N2: " << Qrot_N2 << endl;
-		cout << "Q_N2: " << Q_N2 << endl;
-		*/
 
-		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2; // 2 is purely hypothethical, it seems to me that it should be there due to degeneracy of rotation about one of eulera angles 	
+		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2; 
 
 		if ( rank == 0 )
 		{

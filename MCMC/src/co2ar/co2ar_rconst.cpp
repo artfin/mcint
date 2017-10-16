@@ -9,7 +9,7 @@
 // Eigen
 #include <Eigen/Dense>
 
-// co2ar hamiltonian and potential
+// co2ar hamiltonian
 #include "co2ar_hamiltonian.hpp"
 
 using namespace Eigen;
