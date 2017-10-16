@@ -6,7 +6,7 @@ CCXX = g++
 
 F = gfortran
 
-CXXFLAGS = -std=c++11 -lm -Wall 
+CXXFLAGS = -std=c++11 -lm -Wall -O3 -march=native -mtune=native 
 LINK_GFORTRAN = -lgfortran
 
 INCLUDE_HEP = -I/home/artfin/Downloads/hep-mc-0.5/include -I/n/home11/artfin/hep-mc-0.5/include

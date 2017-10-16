@@ -1,0 +1,2240 @@
+--- Computing FULL EQCONST for N2N2 (Avoird potential) --- 
+iteration 0 finished.
+this iteration: N=300000 E=2.55091e+07 +- 4.91147e+06 (19.2537%)
+all iterations: N=300000 E=2.55091e+07 +- 4.91147e+06 (19.2537%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.81203e+07 +- 1.79517e+06 (4.70923%)
+all iterations: N=600000 E=3.66341e+07 +- 1.68608e+06 (4.60248%) chi^2/dof=5.81608
+
+iteration 2 finished.
+this iteration: N=300000 E=3.53856e+07 +- 562995 (1.59103%)
+all iterations: N=900000 E=3.55108e+07 +- 534012 (1.5038%) chi^2/dof=3.15469
+
+iteration 3 finished.
+this iteration: N=300000 E=3.50419e+07 +- 364748 (1.04089%)
+all iterations: N=1200000 E=3.51911e+07 +- 301194 (0.855883%) chi^2/dof=2.2784
+
+iteration 4 finished.
+this iteration: N=300000 E=3.52073e+07 +- 252653 (0.717616%)
+all iterations: N=1500000 E=3.52006e+07 +- 193569 (0.549901%) chi^2/dof=1.70923
+
+iteration 5 finished.
+this iteration: N=300000 E=3.5313e+07 +- 224339 (0.635286%)
+all iterations: N=1800000 E=3.52486e+07 +- 146555 (0.415775%) chi^2/dof=1.39618
+
+iteration 6 finished.
+this iteration: N=300000 E=3.51433e+07 +- 209950 (0.59741%)
+all iterations: N=2100000 E=3.52141e+07 +- 120173 (0.341263%) chi^2/dof=1.19166
+
+iteration 7 finished.
+this iteration: N=300000 E=3.58342e+07 +- 216517 (0.60422%)
+all iterations: N=2400000 E=3.53601e+07 +- 105073 (0.297152%) chi^2/dof=1.91727
+
+iteration 8 finished.
+this iteration: N=300000 E=3.51745e+07 +- 204078 (0.580186%)
+all iterations: N=2700000 E=3.53212e+07 +- 93418.3 (0.264482%) chi^2/dof=1.75934
+
+iteration 9 finished.
+this iteration: N=300000 E=3.55437e+07 +- 202147 (0.568728%)
+all iterations: N=3000000 E=3.53604e+07 +- 84800.9 (0.239819%) chi^2/dof=1.67472
+
+iteration 10 finished.
+this iteration: N=300000 E=3.55998e+07 +- 217581 (0.611187%)
+all iterations: N=3300000 E=3.5392e+07 +- 79012 (0.223249%) chi^2/dof=1.61237
+
+iteration 11 finished.
+this iteration: N=300000 E=3.53324e+07 +- 204580 (0.579014%)
+all iterations: N=3600000 E=3.53842e+07 +- 73705.9 (0.208302%) chi^2/dof=1.4725
+
+iteration 12 finished.
+this iteration: N=300000 E=3.55658e+07 +- 356432 (1.00218%)
+all iterations: N=3900000 E=3.53917e+07 +- 72178.8 (0.203943%) chi^2/dof=1.37052
+
+iteration 13 finished.
+this iteration: N=300000 E=3.63087e+07 +- 361889 (0.9967%)
+all iterations: N=4200000 E=3.54268e+07 +- 70784.6 (0.199806%) chi^2/dof=1.74012
+
+iteration 14 finished.
+this iteration: N=300000 E=3.56422e+07 +- 249921 (0.701193%)
+all iterations: N=4500000 E=3.54428e+07 +- 68105.7 (0.192157%) chi^2/dof=1.66497
+
+iteration 15 finished.
+this iteration: N=300000 E=3.53488e+07 +- 209016 (0.591295%)
+all iterations: N=4800000 E=3.54337e+07 +- 64754.8 (0.182749%) chi^2/dof=1.56615
+
+iteration 16 finished.
+this iteration: N=300000 E=3.57165e+07 +- 262744 (0.735637%)
+all iterations: N=5100000 E=3.54499e+07 +- 62873.5 (0.177359%) chi^2/dof=1.53649
+
+iteration 17 finished.
+this iteration: N=300000 E=3.52512e+07 +- 234177 (0.66431%)
+all iterations: N=5400000 E=3.54366e+07 +- 60722.9 (0.171357%) chi^2/dof=1.48563
+
+iteration 18 finished.
+this iteration: N=300000 E=3.52566e+07 +- 203800 (0.578048%)
+all iterations: N=5700000 E=3.54219e+07 +- 58194.7 (0.16429%) chi^2/dof=1.44287
+
+iteration 19 finished.
+this iteration: N=300000 E=3.59301e+07 +- 237930 (0.662202%)
+all iterations: N=6000000 E=3.54506e+07 +- 56528.4 (0.159457%) chi^2/dof=1.59348
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.54519e+07 +- 56532.2
+>> chi^2/dof = 1.45436
+Time needed: 273.37s
+Temperature: 100; EQCONST: 0.00142822
+
+iteration 0 finished.
+this iteration: N=300000 E=2.47904e+07 +- 4.86258e+06 (19.6148%)
+all iterations: N=300000 E=2.47904e+07 +- 4.86258e+06 (19.6148%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.65278e+07 +- 1.73175e+06 (4.7409%)
+all iterations: N=600000 E=3.52066e+07 +- 1.63138e+06 (4.63372%) chi^2/dof=5.17071
+
+iteration 2 finished.
+this iteration: N=300000 E=3.42633e+07 +- 571190 (1.66706%)
+all iterations: N=900000 E=3.43663e+07 +- 539101 (1.56869%) chi^2/dof=2.73428
+
+iteration 3 finished.
+this iteration: N=300000 E=3.46101e+07 +- 385110 (1.11271%)
+all iterations: N=1200000 E=3.45277e+07 +- 313366 (0.90758%) chi^2/dof=1.86798
+
+iteration 4 finished.
+this iteration: N=300000 E=3.50221e+07 +- 490580 (1.40077%)
+all iterations: N=1500000 E=3.4671e+07 +- 264087 (0.761696%) chi^2/dof=1.58133
+
+iteration 5 finished.
+this iteration: N=300000 E=3.45944e+07 +- 349870 (1.01135%)
+all iterations: N=1800000 E=3.46432e+07 +- 210782 (0.608436%) chi^2/dof=1.27117
+
+iteration 6 finished.
+this iteration: N=300000 E=3.4279e+07 +- 241630 (0.704893%)
+all iterations: N=2100000 E=3.44858e+07 +- 158839 (0.460593%) chi^2/dof=1.27431
+
+iteration 7 finished.
+this iteration: N=300000 E=3.48165e+07 +- 211650 (0.607901%)
+all iterations: N=2400000 E=3.46049e+07 +- 127042 (0.367121%) chi^2/dof=1.31534
+
+iteration 8 finished.
+this iteration: N=300000 E=3.44547e+07 +- 213843 (0.62065%)
+all iterations: N=2700000 E=3.45658e+07 +- 109221 (0.315982%) chi^2/dof=1.1965
+
+iteration 9 finished.
+this iteration: N=300000 E=3.50456e+07 +- 233564 (0.666457%)
+all iterations: N=3000000 E=3.46519e+07 +- 98938.1 (0.28552%) chi^2/dof=1.44838
+
+iteration 10 finished.
+this iteration: N=300000 E=3.44871e+07 +- 210827 (0.611322%)
+all iterations: N=3300000 E=3.46221e+07 +- 89565.9 (0.258696%) chi^2/dof=1.35357
+
+iteration 11 finished.
+this iteration: N=300000 E=3.45677e+07 +- 199153 (0.576124%)
+all iterations: N=3600000 E=3.4613e+07 +- 81685.2 (0.235996%) chi^2/dof=1.23618
+
+iteration 12 finished.
+this iteration: N=300000 E=3.47069e+07 +- 215403 (0.620634%)
+all iterations: N=3900000 E=3.46248e+07 +- 76377.7 (0.220587%) chi^2/dof=1.14701
+
+iteration 13 finished.
+this iteration: N=300000 E=3.48728e+07 +- 205846 (0.590277%)
+all iterations: N=4200000 E=3.46548e+07 +- 71607.4 (0.206631%) chi^2/dof=1.15691
+
+iteration 14 finished.
+this iteration: N=300000 E=3.41388e+07 +- 191398 (0.560646%)
+all iterations: N=4500000 E=3.45914e+07 +- 67067.3 (0.193884%) chi^2/dof=1.52963
+
+iteration 15 finished.
+this iteration: N=300000 E=3.63497e+07 +- 1.89246e+06 (5.20626%)
+all iterations: N=4800000 E=3.45936e+07 +- 67025.2 (0.19375%) chi^2/dof=1.48513
+
+iteration 16 finished.
+this iteration: N=300000 E=3.54323e+07 +- 719653 (2.03107%)
+all iterations: N=5100000 E=3.46008e+07 +- 66736.4 (0.192875%) chi^2/dof=1.47646
+
+iteration 17 finished.
+this iteration: N=300000 E=3.50616e+07 +- 445076 (1.26941%)
+all iterations: N=5400000 E=3.4611e+07 +- 65998.6 (0.190687%) chi^2/dof=1.45126
+
+iteration 18 finished.
+this iteration: N=300000 E=3.40872e+07 +- 301905 (0.885685%)
+all iterations: N=5700000 E=3.45871e+07 +- 64476 (0.186416%) chi^2/dof=1.53025
+
+iteration 19 finished.
+this iteration: N=300000 E=3.46924e+07 +- 229015 (0.660129%)
+all iterations: N=6000000 E=3.45948e+07 +- 62063.2 (0.1794%) chi^2/dof=1.46003
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.45964e+07 +- 62068.3
+>> chi^2/dof = 1.31524
+Time needed: 272.59s
+Temperature: 110; EQCONST: 0.000907654
+
+iteration 0 finished.
+this iteration: N=300000 E=2.42182e+07 +- 4.82371e+06 (19.9177%)
+all iterations: N=300000 E=2.42182e+07 +- 4.82371e+06 (19.9177%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.43372e+07 +- 1.32432e+06 (3.85681%)
+all iterations: N=600000 E=3.3628e+07 +- 1.27707e+06 (3.79764%) chi^2/dof=4.09214
+
+iteration 2 finished.
+this iteration: N=300000 E=3.33563e+07 +- 460317 (1.38%)
+all iterations: N=900000 E=3.33875e+07 +- 433045 (1.29703%) chi^2/dof=2.0661
+
+iteration 3 finished.
+this iteration: N=300000 E=3.37438e+07 +- 290709 (0.861516%)
+all iterations: N=1200000 E=3.36331e+07 +- 241365 (0.717641%) chi^2/dof=1.53299
+
+iteration 4 finished.
+this iteration: N=300000 E=3.41273e+07 +- 300797 (0.881397%)
+all iterations: N=1500000 E=3.38267e+07 +- 188252 (0.55652%) chi^2/dof=1.56019
+
+iteration 5 finished.
+this iteration: N=300000 E=3.40384e+07 +- 287300 (0.844046%)
+all iterations: N=1800000 E=3.38903e+07 +- 157460 (0.464618%) chi^2/dof=1.32413
+
+iteration 6 finished.
+this iteration: N=300000 E=3.34879e+07 +- 219846 (0.656494%)
+all iterations: N=2100000 E=3.37539e+07 +- 128013 (0.379254%) chi^2/dof=1.47241
+
+iteration 7 finished.
+this iteration: N=300000 E=3.3882e+07 +- 200626 (0.592133%)
+all iterations: N=2400000 E=3.37909e+07 +- 107916 (0.319365%) chi^2/dof=1.30345
+
+iteration 8 finished.
+this iteration: N=300000 E=3.34775e+07 +- 191816 (0.572969%)
+all iterations: N=2700000 E=3.37156e+07 +- 94053 (0.27896%) chi^2/dof=1.39404
+
+iteration 9 finished.
+this iteration: N=300000 E=3.3925e+07 +- 196058 (0.577915%)
+all iterations: N=3000000 E=3.37548e+07 +- 84800.2 (0.251224%) chi^2/dof=1.34218
+
+iteration 10 finished.
+this iteration: N=300000 E=3.39143e+07 +- 202611 (0.597421%)
+all iterations: N=3300000 E=3.37785e+07 +- 78225.1 (0.231582%) chi^2/dof=1.26074
+
+iteration 11 finished.
+this iteration: N=300000 E=3.35832e+07 +- 192588 (0.573466%)
+all iterations: N=3600000 E=3.37509e+07 +- 72474.7 (0.214734%) chi^2/dof=1.22642
+
+iteration 12 finished.
+this iteration: N=300000 E=3.3677e+07 +- 204283 (0.606596%)
+all iterations: N=3900000 E=3.37426e+07 +- 68303.6 (0.202425%) chi^2/dof=1.1339
+
+iteration 13 finished.
+this iteration: N=300000 E=3.37158e+07 +- 197202 (0.584895%)
+all iterations: N=4200000 E=3.37397e+07 +- 64541.7 (0.191293%) chi^2/dof=1.04795
+
+iteration 14 finished.
+this iteration: N=300000 E=3.50392e+07 +- 1.97179e+06 (5.62738%)
+all iterations: N=4500000 E=3.37411e+07 +- 64507.2 (0.191183%) chi^2/dof=1.00409
+
+iteration 15 finished.
+this iteration: N=300000 E=3.32141e+07 +- 871001 (2.62238%)
+all iterations: N=4800000 E=3.37383e+07 +- 64331 (0.190677%) chi^2/dof=0.961419
+
+iteration 16 finished.
+this iteration: N=300000 E=3.37435e+07 +- 389260 (1.15358%)
+all iterations: N=5100000 E=3.37384e+07 +- 63470.1 (0.188124%) chi^2/dof=0.901341
+
+iteration 17 finished.
+this iteration: N=300000 E=3.37387e+07 +- 246492 (0.730591%)
+all iterations: N=5400000 E=3.37384e+07 +- 61465.1 (0.182181%) chi^2/dof=0.848321
+
+iteration 18 finished.
+this iteration: N=300000 E=3.3399e+07 +- 209332 (0.626762%)
+all iterations: N=5700000 E=3.37115e+07 +- 58975.4 (0.174942%) chi^2/dof=0.935687
+
+iteration 19 finished.
+this iteration: N=300000 E=3.41311e+07 +- 212529 (0.622684%)
+all iterations: N=6000000 E=3.37415e+07 +- 56828 (0.168422%) chi^2/dof=1.07691
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.37428e+07 +- 56831.9
+>> chi^2/dof = 0.920175
+Time needed: 272.48s
+Temperature: 120; EQCONST: 0.000598441
+
+iteration 0 finished.
+this iteration: N=300000 E=2.37522e+07 +- 4.79206e+06 (20.1752%)
+all iterations: N=300000 E=2.37522e+07 +- 4.79206e+06 (20.1752%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.35981e+07 +- 1.3069e+06 (3.8898%)
+all iterations: N=600000 E=3.29165e+07 +- 1.26085e+06 (3.83045%) chi^2/dof=3.92927
+
+removed non-finite number: 0
+iteration 2 finished.
+this iteration: N=300000 E=3.26049e+07 +- 461647 (1.41588%)
+all iterations: N=900000 E=3.26418e+07 +- 433503 (1.32806%) chi^2/dof=1.99155
+
+iteration 3 finished.
+this iteration: N=300000 E=3.30705e+07 +- 302676 (0.915244%)
+all iterations: N=1200000 E=3.293e+07 +- 248170 (0.75363%) chi^2/dof=1.5469
+
+iteration 4 finished.
+this iteration: N=300000 E=3.33367e+07 +- 294326 (0.882888%)
+all iterations: N=1500000 E=3.3099e+07 +- 189728 (0.573212%) chi^2/dof=1.43917
+
+iteration 5 finished.
+this iteration: N=300000 E=3.31597e+07 +- 254513 (0.767537%)
+all iterations: N=1800000 E=3.31207e+07 +- 152113 (0.45927%) chi^2/dof=1.15866
+
+iteration 6 finished.
+this iteration: N=300000 E=3.27979e+07 +- 215231 (0.656232%)
+all iterations: N=2100000 E=3.30132e+07 +- 124221 (0.376278%) chi^2/dof=1.21551
+
+iteration 7 finished.
+this iteration: N=300000 E=3.33082e+07 +- 204848 (0.615006%)
+all iterations: N=2400000 E=3.30925e+07 +- 106217 (0.320971%) chi^2/dof=1.25852
+
+iteration 8 finished.
+this iteration: N=300000 E=3.29875e+07 +- 198141 (0.600655%)
+all iterations: N=2700000 E=3.30691e+07 +- 93614.7 (0.283088%) chi^2/dof=1.12846
+
+iteration 9 finished.
+this iteration: N=300000 E=3.32395e+07 +- 198708 (0.597808%)
+all iterations: N=3000000 E=3.31e+07 +- 84687.1 (0.255852%) chi^2/dof=1.06993
+
+iteration 10 finished.
+this iteration: N=300000 E=3.3131e+07 +- 198660 (0.59962%)
+all iterations: N=3300000 E=3.31048e+07 +- 77903.9 (0.235325%) chi^2/dof=0.965
+
+iteration 11 finished.
+this iteration: N=300000 E=3.2974e+07 +- 187308 (0.568048%)
+all iterations: N=3600000 E=3.30855e+07 +- 71930.5 (0.217408%) chi^2/dof=0.915056
+
+iteration 12 finished.
+this iteration: N=300000 E=3.29144e+07 +- 194040 (0.58953%)
+all iterations: N=3900000 E=3.30648e+07 +- 67445.5 (0.20398%) chi^2/dof=0.895768
+
+iteration 13 finished.
+this iteration: N=300000 E=3.32171e+07 +- 213406 (0.642456%)
+all iterations: N=4200000 E=3.30787e+07 +- 64310.2 (0.194416%) chi^2/dof=0.86248
+
+iteration 14 finished.
+this iteration: N=300000 E=3.35919e+07 +- 778119 (2.31639%)
+all iterations: N=4500000 E=3.30821e+07 +- 64091.7 (0.193735%) chi^2/dof=0.831739
+
+iteration 15 finished.
+this iteration: N=300000 E=4.19056e+07 +- 8.69919e+06 (20.759%)
+all iterations: N=4800000 E=3.30826e+07 +- 64089.9 (0.193727%) chi^2/dof=0.84487
+
+iteration 16 finished.
+this iteration: N=300000 E=3.33852e+07 +- 1.43971e+06 (4.31241%)
+all iterations: N=5100000 E=3.30832e+07 +- 64026.5 (0.193532%) chi^2/dof=0.794822
+
+iteration 17 finished.
+this iteration: N=300000 E=3.35519e+07 +- 495477 (1.47675%)
+all iterations: N=5400000 E=3.30909e+07 +- 63498.5 (0.191891%) chi^2/dof=0.799833
+
+iteration 18 finished.
+this iteration: N=300000 E=3.2914e+07 +- 301842 (0.917064%)
+all iterations: N=5700000 E=3.30834e+07 +- 62138.4 (0.187823%) chi^2/dof=0.773684
+
+iteration 19 finished.
+this iteration: N=300000 E=3.35718e+07 +- 234916 (0.69974%)
+all iterations: N=6000000 E=3.31154e+07 +- 60072.4 (0.181403%) chi^2/dof=0.945598
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.31168e+07 +- 60077.1
+>> chi^2/dof = 0.786002
+Time needed: 271.2s
+Temperature: 130; EQCONST: 0.000409694
+
+iteration 0 finished.
+this iteration: N=300000 E=2.33653e+07 +- 4.76577e+06 (20.3968%)
+all iterations: N=300000 E=2.33653e+07 +- 4.76577e+06 (20.3968%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.31123e+07 +- 1.30486e+06 (3.94073%)
+all iterations: N=600000 E=3.24325e+07 +- 1.25854e+06 (3.88049%) chi^2/dof=3.89116
+
+iteration 2 finished.
+this iteration: N=300000 E=3.20024e+07 +- 470347 (1.46972%)
+all iterations: N=900000 E=3.20552e+07 +- 440585 (1.37446%) chi^2/dof=1.99682
+
+iteration 3 finished.
+this iteration: N=300000 E=3.20882e+07 +- 270288 (0.842327%)
+all iterations: N=1200000 E=3.20792e+07 +- 230389 (0.718189%) chi^2/dof=1.33258
+
+iteration 4 finished.
+this iteration: N=300000 E=3.28774e+07 +- 256712 (0.780816%)
+all iterations: N=1500000 E=3.24353e+07 +- 171463 (0.528632%) chi^2/dof=2.33822
+
+iteration 5 finished.
+this iteration: N=300000 E=3.25705e+07 +- 251097 (0.770933%)
+all iterations: N=1800000 E=3.24783e+07 +- 141599 (0.435981%) chi^2/dof=1.91013
+
+iteration 6 finished.
+this iteration: N=300000 E=3.23309e+07 +- 217287 (0.672074%)
+all iterations: N=2100000 E=3.24343e+07 +- 118632 (0.365762%) chi^2/dof=1.64564
+
+iteration 7 finished.
+this iteration: N=300000 E=3.27893e+07 +- 197206 (0.601435%)
+all iterations: N=2400000 E=3.25287e+07 +- 101656 (0.312513%) chi^2/dof=1.75042
+
+iteration 8 finished.
+this iteration: N=300000 E=3.23769e+07 +- 196543 (0.607045%)
+all iterations: N=2700000 E=3.24966e+07 +- 90293.5 (0.277855%) chi^2/dof=1.5904
+
+iteration 9 finished.
+this iteration: N=300000 E=3.26827e+07 +- 199743 (0.61116%)
+all iterations: N=3000000 E=3.25282e+07 +- 82277.4 (0.252942%) chi^2/dof=1.4937
+
+iteration 10 finished.
+this iteration: N=300000 E=3.2527e+07 +- 197986 (0.608681%)
+all iterations: N=3300000 E=3.2528e+07 +- 75977.9 (0.233577%) chi^2/dof=1.34433
+
+iteration 11 finished.
+this iteration: N=300000 E=3.25876e+07 +- 203852 (0.625552%)
+all iterations: N=3600000 E=3.25353e+07 +- 71193.8 (0.21882%) chi^2/dof=1.22894
+
+iteration 12 finished.
+this iteration: N=300000 E=3.2376e+07 +- 202523 (0.625535%)
+all iterations: N=3900000 E=3.25178e+07 +- 67164.6 (0.206547%) chi^2/dof=1.17238
+
+iteration 13 finished.
+this iteration: N=300000 E=3.27065e+07 +- 197210 (0.602969%)
+all iterations: N=4200000 E=3.25374e+07 +- 63578.5 (0.195401%) chi^2/dof=1.14535
+
+iteration 14 finished.
+this iteration: N=300000 E=3.23008e+07 +- 188284 (0.582909%)
+all iterations: N=4500000 E=3.25132e+07 +- 60237 (0.185269%) chi^2/dof=1.16478
+
+iteration 15 finished.
+this iteration: N=300000 E=3.25565e+07 +- 193496 (0.594338%)
+all iterations: N=4800000 E=3.2517e+07 +- 57514.5 (0.176875%) chi^2/dof=1.09017
+
+iteration 16 finished.
+this iteration: N=300000 E=3.25553e+07 +- 193797 (0.595286%)
+all iterations: N=5100000 E=3.25201e+07 +- 55137.5 (0.169549%) chi^2/dof=1.02428
+
+iteration 17 finished.
+this iteration: N=300000 E=3.25237e+07 +- 189256 (0.5819%)
+all iterations: N=5400000 E=3.25204e+07 +- 52936.7 (0.16278%) chi^2/dof=0.964045
+
+iteration 18 finished.
+this iteration: N=300000 E=3.24044e+07 +- 188609 (0.582046%)
+all iterations: N=5700000 E=3.25119e+07 +- 50967.3 (0.156765%) chi^2/dof=0.92995
+
+iteration 19 finished.
+this iteration: N=300000 E=3.30034e+07 +- 274101 (0.830524%)
+all iterations: N=6000000 E=3.25283e+07 +- 50108.4 (0.154045%) chi^2/dof=1.04457
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.25294e+07 +- 50111.2
+>> chi^2/dof = 0.897207
+Time needed: 274.34s
+Temperature: 140; EQCONST: 0.000288307
+
+iteration 0 finished.
+this iteration: N=300000 E=2.3039e+07 +- 4.7436e+06 (20.5894%)
+all iterations: N=300000 E=2.3039e+07 +- 4.7436e+06 (20.5894%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.25262e+07 +- 1.2952e+06 (3.98201%)
+all iterations: N=600000 E=3.1868e+07 +- 1.24946e+06 (3.92074%) chi^2/dof=3.72243
+
+iteration 2 finished.
+this iteration: N=300000 E=3.17771e+07 +- 484299 (1.52405%)
+all iterations: N=900000 E=3.17889e+07 +- 451564 (1.42051%) chi^2/dof=1.86351
+
+iteration 3 finished.
+this iteration: N=300000 E=3.19009e+07 +- 287197 (0.900279%)
+all iterations: N=1200000 E=3.18687e+07 +- 242337 (0.760423%) chi^2/dof=1.25694
+
+iteration 4 finished.
+this iteration: N=300000 E=3.23034e+07 +- 249456 (0.772227%)
+all iterations: N=1500000 E=3.20798e+07 +- 173820 (0.541838%) chi^2/dof=1.33339
+
+iteration 5 finished.
+this iteration: N=300000 E=3.22367e+07 +- 250643 (0.777507%)
+all iterations: N=1800000 E=3.21307e+07 +- 142834 (0.44454%) chi^2/dof=1.11967
+
+iteration 6 finished.
+this iteration: N=300000 E=3.1839e+07 +- 217853 (0.684234%)
+all iterations: N=2100000 E=3.2043e+07 +- 119449 (0.372778%) chi^2/dof=1.14208
+
+iteration 7 finished.
+this iteration: N=300000 E=3.26803e+07 +- 274267 (0.839243%)
+all iterations: N=2400000 E=3.21446e+07 +- 109514 (0.340691%) chi^2/dof=1.62718
+
+iteration 8 finished.
+this iteration: N=300000 E=3.16613e+07 +- 247448 (0.781549%)
+all iterations: N=2700000 E=3.20655e+07 +- 100144 (0.312312%) chi^2/dof=1.8226
+
+iteration 9 finished.
+this iteration: N=300000 E=3.23865e+07 +- 205687 (0.6351%)
+all iterations: N=3000000 E=3.2127e+07 +- 90039.5 (0.280261%) chi^2/dof=1.83891
+
+iteration 10 finished.
+this iteration: N=300000 E=3.22746e+07 +- 196849 (0.609917%)
+all iterations: N=3300000 E=3.21525e+07 +- 81880.5 (0.254663%) chi^2/dof=1.70153
+
+iteration 11 finished.
+this iteration: N=300000 E=3.19931e+07 +- 187582 (0.586321%)
+all iterations: N=3600000 E=3.2127e+07 +- 75042.8 (0.233582%) chi^2/dof=1.602
+
+iteration 12 finished.
+this iteration: N=300000 E=3.20961e+07 +- 205593 (0.640553%)
+all iterations: N=3900000 E=3.21234e+07 +- 70493.7 (0.219447%) chi^2/dof=1.47016
+
+iteration 13 finished.
+this iteration: N=300000 E=3.22679e+07 +- 198281 (0.614485%)
+all iterations: N=4200000 E=3.21396e+07 +- 66420.8 (0.206664%) chi^2/dof=1.39334
+
+iteration 14 finished.
+this iteration: N=300000 E=3.19018e+07 +- 193439 (0.606359%)
+all iterations: N=4500000 E=3.21145e+07 +- 62820.7 (0.195615%) chi^2/dof=1.3904
+
+iteration 15 finished.
+this iteration: N=300000 E=3.30111e+07 +- 821395 (2.48824%)
+all iterations: N=4800000 E=3.21197e+07 +- 62637.7 (0.195013%) chi^2/dof=1.37667
+
+iteration 16 finished.
+this iteration: N=300000 E=3.25783e+07 +- 525193 (1.61209%)
+all iterations: N=5100000 E=3.21262e+07 +- 62197 (0.193602%) chi^2/dof=1.33762
+
+iteration 17 finished.
+this iteration: N=300000 E=3.26002e+07 +- 325068 (0.997135%)
+all iterations: N=5400000 E=3.21429e+07 +- 61088.8 (0.190054%) chi^2/dof=1.37961
+
+iteration 18 finished.
+this iteration: N=300000 E=3.19773e+07 +- 236801 (0.740528%)
+all iterations: N=5700000 E=3.21326e+07 +- 59152.2 (0.184088%) chi^2/dof=1.32843
+
+iteration 19 finished.
+this iteration: N=300000 E=3.26014e+07 +- 205640 (0.630772%)
+all iterations: N=6000000 E=3.21684e+07 +- 56847.1 (0.176717%) chi^2/dof=1.51114
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.21697e+07 +- 56851.2
+>> chi^2/dof = 1.38929
+Time needed: 272.55s
+Temperature: 150; EQCONST: 0.000209022
+
+iteration 0 finished.
+this iteration: N=300000 E=2.27603e+07 +- 4.72463e+06 (20.7583%)
+all iterations: N=300000 E=2.27603e+07 +- 4.72463e+06 (20.7583%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.20613e+07 +- 1.2908e+06 (4.02605%)
+all iterations: N=600000 E=3.14152e+07 +- 1.24517e+06 (3.96358%) chi^2/dof=3.60629
+
+iteration 2 finished.
+this iteration: N=300000 E=3.15499e+07 +- 501809 (1.59052%)
+all iterations: N=900000 E=3.15311e+07 +- 465434 (1.47611%) chi^2/dof=1.80818
+
+iteration 3 finished.
+this iteration: N=300000 E=3.12449e+07 +- 273697 (0.875974%)
+all iterations: N=1200000 E=3.13184e+07 +- 235928 (0.753321%) chi^2/dof=1.29913
+
+iteration 4 finished.
+this iteration: N=300000 E=3.2004e+07 +- 292425 (0.913712%)
+all iterations: N=1500000 E=3.15887e+07 +- 183618 (0.581278%) chi^2/dof=1.80686
+
+iteration 5 finished.
+this iteration: N=300000 E=3.19667e+07 +- 276595 (0.86526%)
+all iterations: N=1800000 E=3.17043e+07 +- 152978 (0.482514%) chi^2/dof=1.70466
+
+iteration 6 finished.
+this iteration: N=300000 E=3.1508e+07 +- 212039 (0.672969%)
+all iterations: N=2100000 E=3.16371e+07 +- 124061 (0.392137%) chi^2/dof=1.51454
+
+iteration 7 finished.
+this iteration: N=300000 E=3.20546e+07 +- 263304 (0.821424%)
+all iterations: N=2400000 E=3.1713e+07 +- 112227 (0.353885%) chi^2/dof=1.59208
+
+iteration 8 finished.
+this iteration: N=300000 E=3.18308e+07 +- 268308 (0.842921%)
+all iterations: N=2700000 E=3.17305e+07 +- 103535 (0.326295%) chi^2/dof=1.41358
+
+iteration 9 finished.
+this iteration: N=300000 E=3.17919e+07 +- 215038 (0.676392%)
+all iterations: N=3000000 E=3.17421e+07 +- 93285.7 (0.293887%) chi^2/dof=1.26387
+
+iteration 10 finished.
+this iteration: N=300000 E=3.17819e+07 +- 213898 (0.673018%)
+all iterations: N=3300000 E=3.17484e+07 +- 85507.6 (0.269328%) chi^2/dof=1.1404
+
+iteration 11 finished.
+this iteration: N=300000 E=3.18694e+07 +- 200769 (0.629975%)
+all iterations: N=3600000 E=3.1767e+07 +- 78669.8 (0.247646%) chi^2/dof=1.06467
+
+iteration 12 finished.
+this iteration: N=300000 E=3.19048e+07 +- 215885 (0.676653%)
+all iterations: N=3900000 E=3.17832e+07 +- 73915 (0.23256%) chi^2/dof=1.00591
+
+iteration 13 finished.
+this iteration: N=300000 E=3.18851e+07 +- 203493 (0.638208%)
+all iterations: N=4200000 E=3.1795e+07 +- 69473.9 (0.218505%) chi^2/dof=0.94558
+
+iteration 14 finished.
+this iteration: N=300000 E=3.14489e+07 +- 188308 (0.598775%)
+all iterations: N=4500000 E=3.17536e+07 +- 65179.4 (0.205266%) chi^2/dof=1.09046
+
+iteration 15 finished.
+this iteration: N=300000 E=3.28441e+07 +- 1.2138e+06 (3.69564%)
+all iterations: N=4800000 E=3.17567e+07 +- 65085.7 (0.204951%) chi^2/dof=1.07142
+
+iteration 16 finished.
+this iteration: N=300000 E=3.25647e+07 +- 605517 (1.85943%)
+all iterations: N=5100000 E=3.17659e+07 +- 64712.9 (0.203718%) chi^2/dof=1.11445
+
+iteration 17 finished.
+this iteration: N=300000 E=3.17348e+07 +- 279319 (0.880168%)
+all iterations: N=5400000 E=3.17644e+07 +- 63043.1 (0.198471%) chi^2/dof=1.04959
+
+iteration 18 finished.
+this iteration: N=300000 E=3.17049e+07 +- 224100 (0.706831%)
+all iterations: N=5700000 E=3.176e+07 +- 60687.4 (0.191081%) chi^2/dof=0.994908
+
+iteration 19 finished.
+this iteration: N=300000 E=3.21987e+07 +- 308497 (0.958103%)
+all iterations: N=6000000 E=3.17763e+07 +- 59546.2 (0.187392%) chi^2/dof=1.04503
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.17778e+07 +- 59550.9
+>> chi^2/dof = 0.900741
+Time needed: 272.44s
+Temperature: 160; EQCONST: 0.000154433
+
+iteration 0 finished.
+this iteration: N=300000 E=2.25193e+07 +- 4.70823e+06 (20.9075%)
+all iterations: N=300000 E=2.25193e+07 +- 4.70823e+06 (20.9075%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.2451e+07 +- 1.4841e+06 (4.57336%)
+all iterations: N=600000 E=3.15534e+07 +- 1.41545e+06 (4.48588%) chi^2/dof=4.04758
+
+iteration 2 finished.
+this iteration: N=300000 E=3.12973e+07 +- 556733 (1.77886%)
+all iterations: N=900000 E=3.13316e+07 +- 518097 (1.65359%) chi^2/dof=2.03797
+
+iteration 3 finished.
+this iteration: N=300000 E=3.1237e+07 +- 317135 (1.01526%)
+all iterations: N=1200000 E=3.12627e+07 +- 270485 (0.865199%) chi^2/dof=1.36673
+
+iteration 4 finished.
+this iteration: N=300000 E=3.13674e+07 +- 327154 (1.04298%)
+all iterations: N=1500000 E=3.13052e+07 +- 208462 (0.665903%) chi^2/dof=1.04024
+
+iteration 5 finished.
+this iteration: N=300000 E=3.15156e+07 +- 308656 (0.979374%)
+all iterations: N=1800000 E=3.13711e+07 +- 172753 (0.550674%) chi^2/dof=0.896026
+
+iteration 6 finished.
+this iteration: N=300000 E=3.12041e+07 +- 235848 (0.755821%)
+all iterations: N=2100000 E=3.13128e+07 +- 139366 (0.445075%) chi^2/dof=0.801078
+
+iteration 7 finished.
+this iteration: N=300000 E=3.135e+07 +- 198002 (0.631585%)
+all iterations: N=2400000 E=3.13251e+07 +- 113966 (0.363815%) chi^2/dof=0.690002
+
+iteration 8 finished.
+this iteration: N=300000 E=3.1238e+07 +- 199557 (0.638827%)
+all iterations: N=2700000 E=3.13037e+07 +- 98964.2 (0.316142%) chi^2/dof=0.621718
+
+iteration 9 finished.
+this iteration: N=300000 E=3.16304e+07 +- 204724 (0.647238%)
+all iterations: N=3000000 E=3.13656e+07 +- 89099.8 (0.284069%) chi^2/dof=0.781914
+
+iteration 10 finished.
+this iteration: N=300000 E=3.13689e+07 +- 203519 (0.648794%)
+all iterations: N=3300000 E=3.13661e+07 +- 81620.6 (0.260219%) chi^2/dof=0.703746
+
+iteration 11 finished.
+this iteration: N=300000 E=3.13198e+07 +- 190676 (0.608804%)
+all iterations: N=3600000 E=3.1359e+07 +- 75035.1 (0.239278%) chi^2/dof=0.644296
+
+iteration 12 finished.
+this iteration: N=300000 E=3.14237e+07 +- 201962 (0.642707%)
+all iterations: N=3900000 E=3.13668e+07 +- 70337.5 (0.224242%) chi^2/dof=0.598134
+
+iteration 13 finished.
+this iteration: N=300000 E=3.16656e+07 +- 197791 (0.624623%)
+all iterations: N=4200000 E=3.14004e+07 +- 66271.8 (0.211054%) chi^2/dof=0.708012
+
+iteration 14 finished.
+this iteration: N=300000 E=3.10166e+07 +- 181569 (0.585394%)
+all iterations: N=4500000 E=3.13552e+07 +- 62254.6 (0.198546%) chi^2/dof=0.939071
+
+iteration 15 finished.
+this iteration: N=300000 E=3.3189e+07 +- 1.74493e+06 (5.25755%)
+all iterations: N=4800000 E=3.13576e+07 +- 62215 (0.198405%) chi^2/dof=0.950001
+
+iteration 16 finished.
+this iteration: N=300000 E=3.2264e+07 +- 680111 (2.10795%)
+all iterations: N=5100000 E=3.13651e+07 +- 61956.3 (0.197533%) chi^2/dof=1.00073
+
+iteration 17 finished.
+this iteration: N=300000 E=3.17932e+07 +- 354739 (1.11577%)
+all iterations: N=5400000 E=3.13778e+07 +- 61032.4 (0.194509%) chi^2/dof=1.025
+
+iteration 18 finished.
+this iteration: N=300000 E=3.12645e+07 +- 299783 (0.958859%)
+all iterations: N=5700000 E=3.13733e+07 +- 59805.6 (0.190626%) chi^2/dof=0.975665
+
+iteration 19 finished.
+this iteration: N=300000 E=3.18588e+07 +- 321468 (1.00904%)
+all iterations: N=6000000 E=3.13895e+07 +- 58796.7 (0.187313%) chi^2/dof=1.04037
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.13909e+07 +- 58801.3
+>> chi^2/dof = 0.900952
+Time needed: 272.72s
+Temperature: 170; EQCONST: 0.000116129
+
+iteration 0 finished.
+this iteration: N=300000 E=2.2309e+07 +- 4.69389e+06 (21.0404%)
+all iterations: N=300000 E=2.2309e+07 +- 4.69389e+06 (21.0404%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.20246e+07 +- 1.43882e+06 (4.49288%)
+all iterations: N=600000 E=3.11901e+07 +- 1.37565e+06 (4.41052%) chi^2/dof=3.91625
+
+iteration 2 finished.
+this iteration: N=300000 E=3.13556e+07 +- 640246 (2.04189%)
+all iterations: N=900000 E=3.13262e+07 +- 580458 (1.85295%) chi^2/dof=1.96408
+
+iteration 3 finished.
+this iteration: N=300000 E=3.133e+07 +- 349671 (1.11609%)
+all iterations: N=1200000 E=3.13289e+07 +- 299522 (0.956056%) chi^2/dof=1.3094
+
+iteration 4 finished.
+this iteration: N=300000 E=3.15784e+07 +- 292413 (0.925993%)
+all iterations: N=1500000 E=3.14567e+07 +- 209236 (0.665155%) chi^2/dof=1.0708
+
+iteration 5 finished.
+this iteration: N=300000 E=3.11121e+07 +- 251624 (0.808767%)
+all iterations: N=1800000 E=3.13158e+07 +- 160881 (0.513738%) chi^2/dof=1.07832
+
+iteration 6 finished.
+this iteration: N=300000 E=3.092e+07 +- 208233 (0.673458%)
+all iterations: N=2100000 E=3.11678e+07 +- 127311 (0.408468%) chi^2/dof=1.27577
+
+iteration 7 finished.
+this iteration: N=300000 E=3.1236e+07 +- 201493 (0.645066%)
+all iterations: N=2400000 E=3.11873e+07 +- 107627 (0.345099%) chi^2/dof=1.10519
+
+iteration 8 finished.
+this iteration: N=300000 E=3.0963e+07 +- 218618 (0.706062%)
+all iterations: N=2700000 E=3.11435e+07 +- 96559.9 (0.310048%) chi^2/dof=1.07296
+
+iteration 9 finished.
+this iteration: N=300000 E=3.12299e+07 +- 211865 (0.678404%)
+all iterations: N=3000000 E=3.11584e+07 +- 87864.6 (0.281993%) chi^2/dof=0.969049
+
+iteration 10 finished.
+this iteration: N=300000 E=3.13789e+07 +- 211549 (0.674177%)
+all iterations: N=3300000 E=3.11908e+07 +- 81144 (0.260153%) chi^2/dof=0.964776
+
+iteration 11 finished.
+this iteration: N=300000 E=3.10861e+07 +- 198148 (0.637418%)
+all iterations: N=3600000 E=3.11758e+07 +- 75091.5 (0.240865%) chi^2/dof=0.898823
+
+iteration 12 finished.
+this iteration: N=300000 E=3.1147e+07 +- 199864 (0.641678%)
+all iterations: N=3900000 E=3.11722e+07 +- 70293.9 (0.225502%) chi^2/dof=0.82543
+
+iteration 13 finished.
+this iteration: N=300000 E=3.12656e+07 +- 191686 (0.61309%)
+all iterations: N=4200000 E=3.11833e+07 +- 65996.2 (0.21164%) chi^2/dof=0.778023
+
+iteration 14 finished.
+this iteration: N=300000 E=3.0791e+07 +- 181622 (0.589856%)
+all iterations: N=4500000 E=3.11375e+07 +- 62028.1 (0.199207%) chi^2/dof=1.01685
+
+iteration 15 finished.
+this iteration: N=300000 E=3.31385e+07 +- 2.20091e+06 (6.64155%)
+all iterations: N=4800000 E=3.11391e+07 +- 62003.5 (0.199118%) chi^2/dof=1.00412
+
+iteration 16 finished.
+this iteration: N=300000 E=3.20704e+07 +- 765857 (2.38805%)
+all iterations: N=5100000 E=3.11452e+07 +- 61801.3 (0.19843%) chi^2/dof=1.03318
+
+iteration 17 finished.
+this iteration: N=300000 E=3.11467e+07 +- 318222 (1.02169%)
+all iterations: N=5400000 E=3.11452e+07 +- 60667.8 (0.19479%) chi^2/dof=0.972406
+
+iteration 18 finished.
+this iteration: N=300000 E=3.12247e+07 +- 267795 (0.857638%)
+all iterations: N=5700000 E=3.11491e+07 +- 59168.4 (0.189952%) chi^2/dof=0.923039
+
+iteration 19 finished.
+this iteration: N=300000 E=3.1397e+07 +- 253391 (0.807054%)
+all iterations: N=6000000 E=3.11619e+07 +- 57618.5 (0.1849%) chi^2/dof=0.922224
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.11633e+07 +- 57622.8
+>> chi^2/dof = 0.775806
+Time needed: 272.23s
+Temperature: 180; EQCONST: 8.91401e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.21238e+07 +- 4.68126e+06 (21.1593%)
+all iterations: N=300000 E=2.21238e+07 +- 4.68126e+06 (21.1593%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.16565e+07 +- 1.40295e+06 (4.43179%)
+all iterations: N=600000 E=3.08709e+07 +- 1.3439e+06 (4.35328%) chi^2/dof=3.80499
+
+iteration 2 finished.
+this iteration: N=300000 E=3.0795e+07 +- 589964 (1.91578%)
+all iterations: N=900000 E=3.08073e+07 +- 540203 (1.75349%) chi^2/dof=1.90383
+
+iteration 3 finished.
+this iteration: N=300000 E=3.064e+07 +- 312699 (1.02056%)
+all iterations: N=1200000 E=3.06819e+07 +- 270629 (0.882045%) chi^2/dof=1.29316
+
+iteration 4 finished.
+this iteration: N=300000 E=3.12333e+07 +- 268443 (0.859476%)
+all iterations: N=1500000 E=3.09599e+07 +- 190586 (0.61559%) chi^2/dof=1.493
+
+iteration 5 finished.
+this iteration: N=300000 E=3.04359e+07 +- 233363 (0.766736%)
+all iterations: N=1800000 E=3.07502e+07 +- 147613 (0.480039%) chi^2/dof=1.79921
+
+iteration 6 finished.
+this iteration: N=300000 E=3.0716e+07 +- 201101 (0.65471%)
+all iterations: N=2100000 E=3.07383e+07 +- 118997 (0.387129%) chi^2/dof=1.50248
+
+iteration 7 finished.
+this iteration: N=300000 E=3.11292e+07 +- 213741 (0.686626%)
+all iterations: N=2400000 E=3.08308e+07 +- 103970 (0.337228%) chi^2/dof=1.65259
+
+iteration 8 finished.
+this iteration: N=300000 E=3.05439e+07 +- 207992 (0.680961%)
+all iterations: N=2700000 E=3.07734e+07 +- 92998.1 (0.302203%) chi^2/dof=1.63624
+
+iteration 9 finished.
+this iteration: N=300000 E=3.10763e+07 +- 194634 (0.62631%)
+all iterations: N=3000000 E=3.08297e+07 +- 83911.5 (0.272177%) chi^2/dof=1.67346
+
+iteration 10 finished.
+this iteration: N=300000 E=3.09079e+07 +- 198027 (0.640702%)
+all iterations: N=3300000 E=3.08416e+07 +- 77261.4 (0.25051%) chi^2/dof=1.51933
+
+iteration 11 finished.
+this iteration: N=300000 E=3.0741e+07 +- 185551 (0.603594%)
+all iterations: N=3600000 E=3.08267e+07 +- 71325.3 (0.231375%) chi^2/dof=1.40398
+
+iteration 12 finished.
+this iteration: N=300000 E=3.07208e+07 +- 194150 (0.631983%)
+all iterations: N=3900000 E=3.08141e+07 +- 66950.3 (0.217271%) chi^2/dof=1.30885
+
+iteration 13 finished.
+this iteration: N=300000 E=3.09563e+07 +- 199911 (0.645784%)
+all iterations: N=4200000 E=3.08285e+07 +- 63484.7 (0.205929%) chi^2/dof=1.24314
+
+iteration 14 finished.
+this iteration: N=300000 E=3.03731e+07 +- 182589 (0.601153%)
+all iterations: N=4500000 E=3.07794e+07 +- 59963.6 (0.194818%) chi^2/dof=1.55072
+
+iteration 15 finished.
+this iteration: N=300000 E=3.34628e+07 +- 2.83552e+06 (8.47364%)
+all iterations: N=4800000 E=3.07806e+07 +- 59950.2 (0.194766%) chi^2/dof=1.50702
+
+iteration 16 finished.
+this iteration: N=300000 E=3.1872e+07 +- 831439 (2.60868%)
+all iterations: N=5100000 E=3.07862e+07 +- 59795 (0.194227%) chi^2/dof=1.51998
+
+iteration 17 finished.
+this iteration: N=300000 E=3.11546e+07 +- 421629 (1.35334%)
+all iterations: N=5400000 E=3.07935e+07 +- 59202.6 (0.192257%) chi^2/dof=1.4746
+
+iteration 18 finished.
+this iteration: N=300000 E=3.06384e+07 +- 304773 (0.994741%)
+all iterations: N=5700000 E=3.07878e+07 +- 58116.3 (0.188764%) chi^2/dof=1.40653
+
+iteration 19 finished.
+this iteration: N=300000 E=3.1305e+07 +- 254758 (0.813793%)
+all iterations: N=6000000 E=3.08134e+07 +- 56660.6 (0.183883%) chi^2/dof=1.53867
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.08147e+07 +- 56664.8
+>> chi^2/dof = 1.43269
+Time needed: 272.06s
+Temperature: 190; EQCONST: 6.91071e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.19596e+07 +- 4.67004e+06 (21.2665%)
+all iterations: N=300000 E=2.19596e+07 +- 4.67004e+06 (21.2665%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.12916e+07 +- 1.38992e+06 (4.44182%)
+all iterations: N=600000 E=3.05323e+07 +- 1.33217e+06 (4.36315%) chi^2/dof=3.66821
+
+iteration 2 finished.
+this iteration: N=300000 E=3.06159e+07 +- 588626 (1.92262%)
+all iterations: N=900000 E=3.06022e+07 +- 538410 (1.75938%) chi^2/dof=1.83575
+
+iteration 3 finished.
+this iteration: N=300000 E=3.04471e+07 +- 319225 (1.04846%)
+all iterations: N=1200000 E=3.04875e+07 +- 274589 (0.900663%) chi^2/dof=1.24431
+
+iteration 4 finished.
+this iteration: N=300000 E=3.10655e+07 +- 351374 (1.13107%)
+all iterations: N=1500000 E=3.07066e+07 +- 216360 (0.704602%) chi^2/dof=1.35334
+
+iteration 5 finished.
+this iteration: N=300000 E=3.07494e+07 +- 285091 (0.927141%)
+all iterations: N=1800000 E=3.07223e+07 +- 172347 (0.560985%) chi^2/dof=1.08553
+
+iteration 6 finished.
+this iteration: N=300000 E=3.01771e+07 +- 208880 (0.69218%)
+all iterations: N=2100000 E=3.05014e+07 +- 132937 (0.43584%) chi^2/dof=1.58018
+
+iteration 7 finished.
+this iteration: N=300000 E=3.10221e+07 +- 251082 (0.809363%)
+all iterations: N=2400000 E=3.06155e+07 +- 117486 (0.383748%) chi^2/dof=1.83426
+
+iteration 8 finished.
+this iteration: N=300000 E=3.06454e+07 +- 247043 (0.806135%)
+all iterations: N=2700000 E=3.0621e+07 +- 106099 (0.346492%) chi^2/dof=1.60647
+
+iteration 9 finished.
+this iteration: N=300000 E=3.07926e+07 +- 205102 (0.666075%)
+all iterations: N=3000000 E=3.06572e+07 +- 94236.9 (0.307389%) chi^2/dof=1.48936
+
+iteration 10 finished.
+this iteration: N=300000 E=3.09479e+07 +- 252278 (0.81517%)
+all iterations: N=3300000 E=3.06928e+07 +- 88279 (0.287621%) chi^2/dof=1.45696
+
+iteration 11 finished.
+this iteration: N=300000 E=3.06331e+07 +- 230723 (0.753183%)
+all iterations: N=3600000 E=3.06852e+07 +- 82449.8 (0.268696%) chi^2/dof=1.32982
+
+iteration 12 finished.
+this iteration: N=300000 E=3.04861e+07 +- 192055 (0.629975%)
+all iterations: N=3900000 E=3.06542e+07 +- 75763.3 (0.247155%) chi^2/dof=1.29458
+
+iteration 13 finished.
+this iteration: N=300000 E=3.08037e+07 +- 190577 (0.618683%)
+all iterations: N=4200000 E=3.06746e+07 +- 70403.8 (0.229518%) chi^2/dof=1.23585
+
+iteration 14 finished.
+this iteration: N=300000 E=3.02972e+07 +- 181966 (0.600602%)
+all iterations: N=4500000 E=3.06255e+07 +- 65660.6 (0.214399%) chi^2/dof=1.41478
+
+iteration 15 finished.
+this iteration: N=300000 E=3.04371e+07 +- 182156 (0.598468%)
+all iterations: N=4800000 E=3.06038e+07 +- 61770.1 (0.201838%) chi^2/dof=1.38355
+
+iteration 16 finished.
+this iteration: N=300000 E=3.08353e+07 +- 303922 (0.985629%)
+all iterations: N=5100000 E=3.0613e+07 +- 60532.5 (0.197735%) chi^2/dof=1.33191
+
+iteration 17 finished.
+this iteration: N=300000 E=3.07454e+07 +- 268635 (0.873742%)
+all iterations: N=5400000 E=3.06194e+07 +- 59051.9 (0.192858%) chi^2/dof=1.26716
+
+iteration 18 finished.
+this iteration: N=300000 E=3.03221e+07 +- 198312 (0.654017%)
+all iterations: N=5700000 E=3.05952e+07 +- 56596 (0.184983%) chi^2/dof=1.31143
+
+iteration 19 finished.
+this iteration: N=300000 E=3.09677e+07 +- 241336 (0.779313%)
+all iterations: N=6000000 E=3.06146e+07 +- 55101.1 (0.179983%) chi^2/dof=1.3613
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.06158e+07 +- 55105
+>> chi^2/dof = 1.24608
+Time needed: 273.08s
+Temperature: 200; EQCONST: 5.45088e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.18129e+07 +- 4.66001e+06 (21.3636%)
+all iterations: N=300000 E=2.18129e+07 +- 4.66001e+06 (21.3636%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.10929e+07 +- 1.38408e+06 (4.45143%)
+all iterations: N=600000 E=3.03406e+07 +- 1.32679e+06 (4.373%) chi^2/dof=3.64424
+
+iteration 2 finished.
+this iteration: N=300000 E=3.0335e+07 +- 569694 (1.87801%)
+all iterations: N=900000 E=3.03359e+07 +- 523478 (1.72561%) chi^2/dof=1.82213
+
+iteration 3 finished.
+this iteration: N=300000 E=3.022e+07 +- 306787 (1.01518%)
+all iterations: N=1200000 E=3.02497e+07 +- 264682 (0.874992%) chi^2/dof=1.2269
+
+iteration 4 finished.
+this iteration: N=300000 E=3.08949e+07 +- 372899 (1.20699%)
+all iterations: N=1500000 E=3.04658e+07 +- 215838 (0.70846%) chi^2/dof=1.41791
+
+iteration 5 finished.
+this iteration: N=300000 E=3.04706e+07 +- 325734 (1.06901%)
+all iterations: N=1800000 E=3.04673e+07 +- 179923 (0.590546%) chi^2/dof=1.13436
+
+iteration 6 finished.
+this iteration: N=300000 E=3.01775e+07 +- 227922 (0.755272%)
+all iterations: N=2100000 E=3.0356e+07 +- 141223 (0.465223%) chi^2/dof=1.11132
+
+iteration 7 finished.
+this iteration: N=300000 E=3.07246e+07 +- 201764 (0.656684%)
+all iterations: N=2400000 E=3.04772e+07 +- 115698 (0.37962%) chi^2/dof=1.27254
+
+iteration 8 finished.
+this iteration: N=300000 E=3.01512e+07 +- 195005 (0.646759%)
+all iterations: N=2700000 E=3.03923e+07 +- 99502.6 (0.327394%) chi^2/dof=1.37195
+
+iteration 9 finished.
+this iteration: N=300000 E=3.0526e+07 +- 194378 (0.636764%)
+all iterations: N=3000000 E=3.04201e+07 +- 88572.2 (0.291164%) chi^2/dof=1.26112
+
+iteration 10 finished.
+this iteration: N=300000 E=3.05519e+07 +- 198478 (0.649642%)
+all iterations: N=3300000 E=3.0442e+07 +- 80883.8 (0.265698%) chi^2/dof=1.17177
+
+iteration 11 finished.
+this iteration: N=300000 E=3.0239e+07 +- 187747 (0.620876%)
+all iterations: N=3600000 E=3.04102e+07 +- 74283.5 (0.244272%) chi^2/dof=1.15484
+
+iteration 12 finished.
+this iteration: N=300000 E=3.02553e+07 +- 198695 (0.656729%)
+all iterations: N=3900000 E=3.03912e+07 +- 69579.9 (0.228948%) chi^2/dof=1.10302
+
+iteration 13 finished.
+this iteration: N=300000 E=3.04101e+07 +- 190173 (0.625359%)
+all iterations: N=4200000 E=3.03934e+07 +- 65343.6 (0.214992%) chi^2/dof=1.01884
+
+iteration 14 finished.
+this iteration: N=300000 E=3.19917e+07 +- 2.13367e+06 (6.66943%)
+all iterations: N=4500000 E=3.03949e+07 +- 65313 (0.214881%) chi^2/dof=0.98611
+
+iteration 15 finished.
+this iteration: N=300000 E=3.02114e+07 +- 749611 (2.48122%)
+all iterations: N=4800000 E=3.03936e+07 +- 65066.5 (0.21408%) chi^2/dof=0.924338
+
+iteration 16 finished.
+this iteration: N=300000 E=3.05457e+07 +- 383909 (1.25683%)
+all iterations: N=5100000 E=3.03978e+07 +- 64151.6 (0.21104%) chi^2/dof=0.876112
+
+iteration 17 finished.
+this iteration: N=300000 E=3.04848e+07 +- 322171 (1.05682%)
+all iterations: N=5400000 E=3.04011e+07 +- 62916.4 (0.206954%) chi^2/dof=0.828707
+
+iteration 18 finished.
+this iteration: N=300000 E=3.03615e+07 +- 247921 (0.816562%)
+all iterations: N=5700000 E=3.03987e+07 +- 60983.3 (0.200611%) chi^2/dof=0.784
+
+iteration 19 finished.
+this iteration: N=300000 E=3.07743e+07 +- 213577 (0.694012%)
+all iterations: N=6000000 E=3.0427e+07 +- 58639.7 (0.192722%) chi^2/dof=0.893217
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.04284e+07 +- 58644.4
+>> chi^2/dof = 0.752974
+Time needed: 277.94s
+Temperature: 210; EQCONST: 4.34959e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.16811e+07 +- 4.65099e+06 (21.4519%)
+all iterations: N=300000 E=2.16811e+07 +- 4.65099e+06 (21.4519%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.08962e+07 +- 1.37727e+06 (4.45773%)
+all iterations: N=600000 E=3.01532e+07 +- 1.32058e+06 (4.37958%) chi^2/dof=3.60915
+
+iteration 2 finished.
+this iteration: N=300000 E=3.02173e+07 +- 562067 (1.86008%)
+all iterations: N=900000 E=3.02075e+07 +- 517173 (1.71207%) chi^2/dof=1.80557
+
+iteration 3 finished.
+this iteration: N=300000 E=3.01258e+07 +- 311918 (1.03539%)
+all iterations: N=1200000 E=3.01476e+07 +- 267099 (0.885971%) chi^2/dof=1.20982
+
+iteration 4 finished.
+this iteration: N=300000 E=3.05228e+07 +- 309245 (1.01316%)
+all iterations: N=1500000 E=3.03079e+07 +- 202139 (0.666951%) chi^2/dof=1.11821
+
+iteration 5 finished.
+this iteration: N=300000 E=3.01026e+07 +- 267849 (0.889787%)
+all iterations: N=1800000 E=3.02334e+07 +- 161348 (0.533676%) chi^2/dof=0.969447
+
+iteration 6 finished.
+this iteration: N=300000 E=3.00271e+07 +- 212664 (0.70824%)
+all iterations: N=2100000 E=3.0158e+07 +- 128540 (0.426221%) chi^2/dof=0.907377
+
+iteration 7 finished.
+this iteration: N=300000 E=3.04093e+07 +- 206207 (0.678105%)
+all iterations: N=2400000 E=3.02284e+07 +- 109082 (0.360861%) chi^2/dof=0.930536
+
+iteration 8 finished.
+this iteration: N=300000 E=2.99081e+07 +- 206898 (0.691778%)
+all iterations: N=2700000 E=3.01587e+07 +- 96492.6 (0.319949%) chi^2/dof=1.04852
+
+iteration 9 finished.
+this iteration: N=300000 E=3.04239e+07 +- 196504 (0.645889%)
+all iterations: N=3000000 E=3.02102e+07 +- 86613.6 (0.286703%) chi^2/dof=1.09501
+
+iteration 10 finished.
+this iteration: N=300000 E=3.03581e+07 +- 192020 (0.632518%)
+all iterations: N=3300000 E=3.02352e+07 +- 78953.3 (0.26113%) chi^2/dof=1.03479
+
+iteration 11 finished.
+this iteration: N=300000 E=3.01767e+07 +- 186435 (0.61781%)
+all iterations: N=3600000 E=3.02263e+07 +- 72702.6 (0.240528%) chi^2/dof=0.948299
+
+iteration 12 finished.
+this iteration: N=300000 E=3.00956e+07 +- 181854 (0.604254%)
+all iterations: N=3900000 E=3.02083e+07 +- 67507.7 (0.223474%) chi^2/dof=0.906408
+
+iteration 13 finished.
+this iteration: N=300000 E=3.04011e+07 +- 184073 (0.605482%)
+all iterations: N=4200000 E=3.02312e+07 +- 63379.8 (0.20965%) chi^2/dof=0.911022
+
+iteration 14 finished.
+this iteration: N=300000 E=2.98836e+07 +- 186390 (0.623721%)
+all iterations: N=4500000 E=3.01951e+07 +- 60005.5 (0.198726%) chi^2/dof=1.06858
+
+iteration 15 finished.
+this iteration: N=300000 E=3.07672e+07 +- 695194 (2.25953%)
+all iterations: N=4800000 E=3.01994e+07 +- 59783.3 (0.197962%) chi^2/dof=1.04215
+
+iteration 16 finished.
+this iteration: N=300000 E=3.07485e+07 +- 469967 (1.52842%)
+all iterations: N=5100000 E=3.02081e+07 +- 59305.4 (0.196323%) chi^2/dof=1.06098
+
+iteration 17 finished.
+this iteration: N=300000 E=3.00773e+07 +- 245335 (0.815679%)
+all iterations: N=5400000 E=3.02009e+07 +- 57645 (0.190872%) chi^2/dof=1.01436
+
+iteration 18 finished.
+this iteration: N=300000 E=3.01239e+07 +- 217298 (0.721346%)
+all iterations: N=5700000 E=3.01958e+07 +- 55717.8 (0.184522%) chi^2/dof=0.964517
+
+iteration 19 finished.
+this iteration: N=300000 E=3.03648e+07 +- 209826 (0.69102%)
+all iterations: N=6000000 E=3.0207e+07 +- 53851.5 (0.178275%) chi^2/dof=0.945616
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.02081e+07 +- 53855.2
+>> chi^2/dof = 0.811437
+Time needed: 265.67s
+Temperature: 220; EQCONST: 3.5025e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.1562e+07 +- 4.64283e+06 (21.5325%)
+all iterations: N=300000 E=2.1562e+07 +- 4.64283e+06 (21.5325%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.07252e+07 +- 1.37042e+06 (4.46025%)
+all iterations: N=600000 E=2.99909e+07 +- 1.31436e+06 (4.38254%) chi^2/dof=3.58304
+
+iteration 2 finished.
+this iteration: N=300000 E=3.00862e+07 +- 548496 (1.82308%)
+all iterations: N=900000 E=3.0072e+07 +- 506188 (1.68325%) chi^2/dof=1.79376
+
+iteration 3 finished.
+this iteration: N=300000 E=3.0033e+07 +- 308269 (1.02643%)
+all iterations: N=1200000 E=3.00436e+07 +- 263287 (0.876351%) chi^2/dof=1.19728
+
+iteration 4 finished.
+this iteration: N=300000 E=3.04843e+07 +- 328283 (1.07689%)
+all iterations: N=1500000 E=3.02161e+07 +- 205391 (0.679741%) chi^2/dof=1.17215
+
+iteration 5 finished.
+this iteration: N=300000 E=2.99168e+07 +- 281529 (0.94104%)
+all iterations: N=1800000 E=3.01121e+07 +- 165927 (0.55103%) chi^2/dof=1.0852
+
+iteration 6 finished.
+this iteration: N=300000 E=2.98617e+07 +- 225209 (0.754173%)
+all iterations: N=2100000 E=3.0024e+07 +- 133585 (0.444927%) chi^2/dof=1.0379
+
+iteration 7 finished.
+this iteration: N=300000 E=3.02818e+07 +- 211907 (0.699783%)
+all iterations: N=2400000 E=3.00973e+07 +- 113005 (0.375465%) chi^2/dof=1.04087
+
+iteration 8 finished.
+this iteration: N=300000 E=2.98691e+07 +- 216621 (0.725235%)
+all iterations: N=2700000 E=3.00485e+07 +- 100191 (0.333432%) chi^2/dof=1.0198
+
+iteration 9 finished.
+this iteration: N=300000 E=3.03709e+07 +- 220751 (0.726851%)
+all iterations: N=3000000 E=3.01036e+07 +- 91234.2 (0.303068%) chi^2/dof=1.103
+
+iteration 10 finished.
+this iteration: N=300000 E=3.01373e+07 +- 202417 (0.671649%)
+all iterations: N=3300000 E=3.01093e+07 +- 83175.9 (0.276247%) chi^2/dof=0.995005
+
+iteration 11 finished.
+this iteration: N=300000 E=3.01732e+07 +- 193228 (0.640396%)
+all iterations: N=3600000 E=3.01193e+07 +- 76398.5 (0.253653%) chi^2/dof=0.912953
+
+iteration 12 finished.
+this iteration: N=300000 E=3.00808e+07 +- 201035 (0.668317%)
+all iterations: N=3900000 E=3.01144e+07 +- 71415.5 (0.237147%) chi^2/dof=0.839544
+
+iteration 13 finished.
+this iteration: N=300000 E=3.03838e+07 +- 200541 (0.660027%)
+all iterations: N=4200000 E=3.01447e+07 +- 67276.8 (0.223179%) chi^2/dof=0.898126
+
+iteration 14 finished.
+this iteration: N=300000 E=2.98222e+07 +- 184476 (0.618585%)
+all iterations: N=4500000 E=3.01069e+07 +- 63204.9 (0.209935%) chi^2/dof=1.0267
+
+iteration 15 finished.
+this iteration: N=300000 E=3.15882e+07 +- 1.58926e+06 (5.03117%)
+all iterations: N=4800000 E=3.01092e+07 +- 63154.9 (0.209753%) chi^2/dof=1.01608
+
+iteration 16 finished.
+this iteration: N=300000 E=3.10598e+07 +- 657207 (2.11594%)
+all iterations: N=5100000 E=3.01179e+07 +- 62865.3 (0.208731%) chi^2/dof=1.08215
+
+iteration 17 finished.
+this iteration: N=300000 E=3.02991e+07 +- 318683 (1.05179%)
+all iterations: N=5400000 E=3.01247e+07 +- 61676.8 (0.204738%) chi^2/dof=1.0368
+
+iteration 18 finished.
+this iteration: N=300000 E=2.99224e+07 +- 240251 (0.802912%)
+all iterations: N=5700000 E=3.01122e+07 +- 59739.6 (0.19839%) chi^2/dof=1.01615
+
+iteration 19 finished.
+this iteration: N=300000 E=3.03622e+07 +- 275705 (0.908053%)
+all iterations: N=6000000 E=3.01234e+07 +- 58384.8 (0.193819%) chi^2/dof=1.00402
+
+>> Cumulative result: 
+>> N = 5700000; I = 3.01247e+07 +- 58389.4
+>> chi^2/dof = 0.870857
+Time needed: 195.74s
+Temperature: 230; EQCONST: 2.85959e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.14539e+07 +- 4.63542e+06 (21.6064%)
+all iterations: N=300000 E=2.14539e+07 +- 4.63542e+06 (21.6064%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.05218e+07 +- 1.3638e+06 (4.46828%)
+all iterations: N=600000 E=2.97994e+07 +- 1.30835e+06 (4.39052%) chi^2/dof=3.52193
+
+iteration 2 finished.
+this iteration: N=300000 E=2.98789e+07 +- 536955 (1.79711%)
+all iterations: N=900000 E=2.98674e+07 +- 496748 (1.66318%) chi^2/dof=1.76254
+
+iteration 3 finished.
+this iteration: N=300000 E=2.98221e+07 +- 298559 (1.00113%)
+all iterations: N=1200000 E=2.98341e+07 +- 255896 (0.85773%) chi^2/dof=1.17707
+
+iteration 4 finished.
+this iteration: N=300000 E=3.02154e+07 +- 301889 (0.999124%)
+all iterations: N=1500000 E=2.99935e+07 +- 195204 (0.650819%) chi^2/dof=1.11482
+
+iteration 5 finished.
+this iteration: N=300000 E=2.98804e+07 +- 251629 (0.842119%)
+all iterations: N=1800000 E=2.9951e+07 +- 154235 (0.514957%) chi^2/dof=0.917074
+
+iteration 6 finished.
+this iteration: N=300000 E=2.95221e+07 +- 204189 (0.691647%)
+all iterations: N=2100000 E=2.97952e+07 +- 123071 (0.413056%) chi^2/dof=1.23245
+
+iteration 7 finished.
+this iteration: N=300000 E=3.00618e+07 +- 192389 (0.639977%)
+all iterations: N=2400000 E=2.98726e+07 +- 103673 (0.347051%) chi^2/dof=1.25104
+
+iteration 8 finished.
+this iteration: N=300000 E=2.96291e+07 +- 197995 (0.668246%)
+all iterations: N=2700000 E=2.98202e+07 +- 91844.4 (0.307994%) chi^2/dof=1.2431
+
+iteration 9 finished.
+this iteration: N=300000 E=3.01393e+07 +- 216183 (0.717279%)
+all iterations: N=3000000 E=2.9869e+07 +- 84531.9 (0.283009%) chi^2/dof=1.31004
+
+iteration 10 finished.
+this iteration: N=300000 E=2.98388e+07 +- 198271 (0.664474%)
+all iterations: N=3300000 E=2.98644e+07 +- 77759.6 (0.260376%) chi^2/dof=1.181
+
+iteration 11 finished.
+this iteration: N=300000 E=2.97898e+07 +- 186042 (0.624517%)
+all iterations: N=3600000 E=2.98533e+07 +- 71745 (0.240325%) chi^2/dof=1.08608
+
+iteration 12 finished.
+this iteration: N=300000 E=2.98995e+07 +- 194493 (0.650487%)
+all iterations: N=3900000 E=2.98588e+07 +- 67311.3 (0.225432%) chi^2/dof=0.999724
+
+iteration 13 finished.
+this iteration: N=300000 E=3.00194e+07 +- 189071 (0.629832%)
+all iterations: N=4200000 E=2.98769e+07 +- 63412.6 (0.212246%) chi^2/dof=0.972045
+
+iteration 14 finished.
+this iteration: N=300000 E=2.96117e+07 +- 190681 (0.643939%)
+all iterations: N=4500000 E=2.98505e+07 +- 60172.4 (0.20158%) chi^2/dof=1.02702
+
+iteration 15 finished.
+this iteration: N=300000 E=3.03849e+07 +- 579831 (1.90829%)
+all iterations: N=4800000 E=2.98562e+07 +- 59851 (0.200465%) chi^2/dof=1.01459
+
+iteration 16 finished.
+this iteration: N=300000 E=3.04858e+07 +- 636668 (2.08841%)
+all iterations: N=5100000 E=2.98617e+07 +- 59588.3 (0.199548%) chi^2/dof=1.01176
+
+iteration 17 finished.
+this iteration: N=300000 E=2.96541e+07 +- 329626 (1.11157%)
+all iterations: N=5400000 E=2.98551e+07 +- 58637.9 (0.196408%) chi^2/dof=0.974825
+
+iteration 18 finished.
+this iteration: N=300000 E=3.00192e+07 +- 264512 (0.881144%)
+all iterations: N=5700000 E=2.98628e+07 +- 57248.1 (0.191704%) chi^2/dof=0.941049
+
+iteration 19 finished.
+this iteration: N=300000 E=3.01214e+07 +- 228385 (0.758215%)
+all iterations: N=6000000 E=2.98781e+07 +- 55530.1 (0.185856%) chi^2/dof=0.95501
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.98793e+07 +- 55534.1
+>> chi^2/dof = 0.824553
+Time needed: 191.04s
+Temperature: 240; EQCONST: 2.34194e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.13553e+07 +- 4.62866e+06 (21.6745%)
+all iterations: N=300000 E=2.13553e+07 +- 4.62866e+06 (21.6745%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.03605e+07 +- 1.35851e+06 (4.47459%)
+all iterations: N=600000 E=2.96463e+07 +- 1.30352e+06 (4.39692%) chi^2/dof=3.48486
+
+iteration 2 finished.
+this iteration: N=300000 E=2.96232e+07 +- 521176 (1.75935%)
+all iterations: N=900000 E=2.96264e+07 +- 483930 (1.63344%) chi^2/dof=1.74256
+
+iteration 3 finished.
+this iteration: N=300000 E=2.95802e+07 +- 290563 (0.982289%)
+all iterations: N=1200000 E=2.95925e+07 +- 249109 (0.8418%) chi^2/dof=1.16394
+
+iteration 4 finished.
+this iteration: N=300000 E=2.99742e+07 +- 307903 (1.02723%)
+all iterations: N=1500000 E=2.97435e+07 +- 193664 (0.651113%) chi^2/dof=1.10525
+
+iteration 5 finished.
+this iteration: N=300000 E=2.96741e+07 +- 260257 (0.877052%)
+all iterations: N=1800000 E=2.97188e+07 +- 155368 (0.522794%) chi^2/dof=0.89337
+
+iteration 6 finished.
+this iteration: N=300000 E=2.93192e+07 +- 198128 (0.675762%)
+all iterations: N=2100000 E=2.95666e+07 +- 122260 (0.413506%) chi^2/dof=1.16421
+
+iteration 7 finished.
+this iteration: N=300000 E=3.01018e+07 +- 194364 (0.645688%)
+all iterations: N=2400000 E=2.97183e+07 +- 103488 (0.348231%) chi^2/dof=1.77388
+
+iteration 8 finished.
+this iteration: N=300000 E=2.94999e+07 +- 184914 (0.626829%)
+all iterations: N=2700000 E=2.96662e+07 +- 90307.4 (0.304412%) chi^2/dof=1.68494
+
+iteration 9 finished.
+this iteration: N=300000 E=2.99735e+07 +- 199577 (0.665843%)
+all iterations: N=3000000 E=2.97185e+07 +- 82276.3 (0.276852%) chi^2/dof=1.71634
+
+iteration 10 finished.
+this iteration: N=300000 E=2.97289e+07 +- 191903 (0.645507%)
+all iterations: N=3300000 E=2.97201e+07 +- 75619.2 (0.254438%) chi^2/dof=1.54496
+
+iteration 11 finished.
+this iteration: N=300000 E=2.96003e+07 +- 176507 (0.596299%)
+all iterations: N=3600000 E=2.97015e+07 +- 69508.8 (0.234024%) chi^2/dof=1.43986
+
+iteration 12 finished.
+this iteration: N=300000 E=2.97229e+07 +- 191873 (0.645537%)
+all iterations: N=3900000 E=2.9704e+07 +- 65352.6 (0.220013%) chi^2/dof=1.32079
+
+iteration 13 finished.
+this iteration: N=300000 E=2.99012e+07 +- 238606 (0.797983%)
+all iterations: N=4200000 E=2.97178e+07 +- 63031.2 (0.212099%) chi^2/dof=1.26805
+
+iteration 14 finished.
+this iteration: N=300000 E=2.9444e+07 +- 239378 (0.812995%)
+all iterations: N=4500000 E=2.97e+07 +- 60953.5 (0.205231%) chi^2/dof=1.26484
+
+iteration 15 finished.
+this iteration: N=300000 E=2.95549e+07 +- 212802 (0.720021%)
+all iterations: N=4800000 E=2.9689e+07 +- 58597.1 (0.19737%) chi^2/dof=1.20916
+
+iteration 16 finished.
+this iteration: N=300000 E=2.95582e+07 +- 198982 (0.673188%)
+all iterations: N=5100000 E=2.96786e+07 +- 56210.5 (0.189398%) chi^2/dof=1.15845
+
+iteration 17 finished.
+this iteration: N=300000 E=2.94681e+07 +- 185755 (0.630362%)
+all iterations: N=5400000 E=2.96609e+07 +- 53801.2 (0.181387%) chi^2/dof=1.1595
+
+iteration 18 finished.
+this iteration: N=300000 E=2.97057e+07 +- 185947 (0.625966%)
+all iterations: N=5700000 E=2.96644e+07 +- 51681.4 (0.17422%) chi^2/dof=1.09806
+
+iteration 19 finished.
+this iteration: N=300000 E=2.9994e+07 +- 182593 (0.608764%)
+all iterations: N=6000000 E=2.96888e+07 +- 49727.8 (0.167497%) chi^2/dof=1.1991
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.96898e+07 +- 49730.7
+>> chi^2/dof = 1.08561
+Time needed: 190.53s
+Temperature: 250; EQCONST: 1.93657e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.12651e+07 +- 4.62246e+06 (21.7373%)
+all iterations: N=300000 E=2.12651e+07 +- 4.62246e+06 (21.7373%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.02274e+07 +- 1.35461e+06 (4.48139%)
+all iterations: N=600000 E=2.95186e+07 +- 1.29994e+06 (4.4038%) chi^2/dof=3.46192
+
+iteration 2 finished.
+this iteration: N=300000 E=2.9412e+07 +- 507006 (1.72381%)
+all iterations: N=900000 E=2.94261e+07 +- 472351 (1.60521%) chi^2/dof=1.73388
+
+iteration 3 finished.
+this iteration: N=300000 E=2.95239e+07 +- 288438 (0.976967%)
+all iterations: N=1200000 E=2.94973e+07 +- 246170 (0.834552%) chi^2/dof=1.16632
+
+iteration 4 finished.
+this iteration: N=300000 E=2.97675e+07 +- 300425 (1.00924%)
+all iterations: N=1500000 E=2.96058e+07 +- 190411 (0.643153%) chi^2/dof=0.995723
+
+iteration 5 finished.
+this iteration: N=300000 E=3.00333e+07 +- 286747 (0.954765%)
+all iterations: N=1800000 E=2.97366e+07 +- 158624 (0.533428%) chi^2/dof=1.10498
+
+iteration 6 finished.
+this iteration: N=300000 E=2.91061e+07 +- 207542 (0.713053%)
+all iterations: N=2100000 E=2.95041e+07 +- 126029 (0.427156%) chi^2/dof=1.89194
+
+iteration 7 finished.
+this iteration: N=300000 E=2.98151e+07 +- 196970 (0.660639%)
+all iterations: N=2400000 E=2.95945e+07 +- 106158 (0.35871%) chi^2/dof=1.87431
+
+iteration 8 finished.
+this iteration: N=300000 E=2.93484e+07 +- 186134 (0.634222%)
+all iterations: N=2700000 E=2.95341e+07 +- 92214.8 (0.312232%) chi^2/dof=1.80479
+
+iteration 9 finished.
+this iteration: N=300000 E=2.978e+07 +- 199269 (0.669137%)
+all iterations: N=3000000 E=2.95775e+07 +- 83688.2 (0.282946%) chi^2/dof=1.74368
+
+iteration 10 finished.
+this iteration: N=300000 E=2.95884e+07 +- 196617 (0.664509%)
+all iterations: N=3300000 E=2.95791e+07 +- 77003.1 (0.260329%) chi^2/dof=1.56957
+
+iteration 11 finished.
+this iteration: N=300000 E=2.95426e+07 +- 180652 (0.611496%)
+all iterations: N=3600000 E=2.95735e+07 +- 70836.4 (0.239526%) chi^2/dof=1.43003
+
+iteration 12 finished.
+this iteration: N=300000 E=2.92844e+07 +- 179794 (0.61396%)
+all iterations: N=3900000 E=2.95347e+07 +- 65905.7 (0.223147%) chi^2/dof=1.49736
+
+iteration 13 finished.
+this iteration: N=300000 E=2.99546e+07 +- 284245 (0.948922%)
+all iterations: N=4200000 E=2.95561e+07 +- 64202.5 (0.217223%) chi^2/dof=1.54149
+
+iteration 14 finished.
+this iteration: N=300000 E=2.91917e+07 +- 266578 (0.913201%)
+all iterations: N=4500000 E=2.95361e+07 +- 62417.8 (0.211327%) chi^2/dof=1.55756
+
+iteration 15 finished.
+this iteration: N=300000 E=2.94932e+07 +- 210329 (0.713143%)
+all iterations: N=4800000 E=2.95326e+07 +- 59838.5 (0.202618%) chi^2/dof=1.45627
+
+iteration 16 finished.
+this iteration: N=300000 E=2.95855e+07 +- 191222 (0.646338%)
+all iterations: N=5100000 E=2.95374e+07 +- 57107.7 (0.193341%) chi^2/dof=1.36959
+
+iteration 17 finished.
+this iteration: N=300000 E=2.93489e+07 +- 185562 (0.632261%)
+all iterations: N=5400000 E=2.95211e+07 +- 54581.4 (0.18489%) chi^2/dof=1.34444
+
+iteration 18 finished.
+this iteration: N=300000 E=2.93717e+07 +- 186202 (0.633949%)
+all iterations: N=5700000 E=2.95092e+07 +- 52377.4 (0.177495%) chi^2/dof=1.30266
+
+iteration 19 finished.
+this iteration: N=300000 E=2.99421e+07 +- 186413 (0.622577%)
+all iterations: N=6000000 E=2.95409e+07 +- 50424.8 (0.170695%) chi^2/dof=1.49711
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.95419e+07 +- 50427.8
+>> chi^2/dof = 1.40219
+Time needed: 188.87s
+Temperature: 260; EQCONST: 1.61516e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.11821e+07 +- 4.61676e+06 (21.7955%)
+all iterations: N=300000 E=2.11821e+07 +- 4.61676e+06 (21.7955%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=3.01922e+07 +- 1.35303e+06 (4.4814%)
+all iterations: N=600000 E=2.94795e+07 +- 1.29842e+06 (4.40448%) chi^2/dof=3.50747
+
+iteration 2 finished.
+this iteration: N=300000 E=2.94631e+07 +- 525664 (1.78415%)
+all iterations: N=900000 E=2.94654e+07 +- 487248 (1.65363%) chi^2/dof=1.7538
+
+iteration 3 finished.
+this iteration: N=300000 E=2.92419e+07 +- 317759 (1.08666%)
+all iterations: N=1200000 E=2.93086e+07 +- 266161 (0.908133%) chi^2/dof=1.21841
+
+iteration 4 finished.
+this iteration: N=300000 E=2.95986e+07 +- 293080 (0.990181%)
+all iterations: N=1500000 E=2.94397e+07 +- 197035 (0.669285%) chi^2/dof=1.04795
+
+iteration 5 finished.
+this iteration: N=300000 E=2.91644e+07 +- 234785 (0.805039%)
+all iterations: N=1800000 E=2.93259e+07 +- 150929 (0.514661%) chi^2/dof=0.999611
+
+iteration 6 finished.
+this iteration: N=300000 E=2.90195e+07 +- 194860 (0.671481%)
+all iterations: N=2100000 E=2.9211e+07 +- 119323 (0.408485%) chi^2/dof=1.09064
+
+iteration 7 finished.
+this iteration: N=300000 E=2.96628e+07 +- 188769 (0.636384%)
+all iterations: N=2400000 E=2.934e+07 +- 100862 (0.343769%) chi^2/dof=1.51938
+
+iteration 8 finished.
+this iteration: N=300000 E=2.9352e+07 +- 206296 (0.702834%)
+all iterations: N=2700000 E=2.93423e+07 +- 90611.6 (0.308809%) chi^2/dof=1.3298
+
+iteration 9 finished.
+this iteration: N=300000 E=2.97785e+07 +- 205375 (0.689674%)
+all iterations: N=3000000 E=2.94134e+07 +- 82901.4 (0.281849%) chi^2/dof=1.60164
+
+iteration 10 finished.
+this iteration: N=300000 E=2.95829e+07 +- 194230 (0.65656%)
+all iterations: N=3300000 E=2.94395e+07 +- 76246.7 (0.258994%) chi^2/dof=1.50593
+
+iteration 11 finished.
+this iteration: N=300000 E=2.93238e+07 +- 187555 (0.6396%)
+all iterations: N=3600000 E=2.94231e+07 +- 70633.1 (0.24006%) chi^2/dof=1.3987
+
+iteration 12 finished.
+this iteration: N=300000 E=2.94249e+07 +- 193226 (0.656675%)
+all iterations: N=3900000 E=2.94233e+07 +- 66339.7 (0.225467%) chi^2/dof=1.28215
+
+iteration 13 finished.
+this iteration: N=300000 E=2.96644e+07 +- 198853 (0.670342%)
+all iterations: N=4200000 E=2.94475e+07 +- 62930.2 (0.213703%) chi^2/dof=1.28529
+
+iteration 14 finished.
+this iteration: N=300000 E=2.9308e+07 +- 188255 (0.642335%)
+all iterations: N=4500000 E=2.94334e+07 +- 59683.8 (0.202775%) chi^2/dof=1.22876
+
+iteration 15 finished.
+this iteration: N=300000 E=2.93854e+07 +- 182129 (0.619793%)
+all iterations: N=4800000 E=2.94288e+07 +- 56716.1 (0.192723%) chi^2/dof=1.15104
+
+iteration 16 finished.
+this iteration: N=300000 E=2.95064e+07 +- 249221 (0.844633%)
+all iterations: N=5100000 E=2.94326e+07 +- 55302.1 (0.187894%) chi^2/dof=1.08486
+
+iteration 17 finished.
+this iteration: N=300000 E=2.94944e+07 +- 266834 (0.904695%)
+all iterations: N=5400000 E=2.94351e+07 +- 54151.4 (0.183968%) chi^2/dof=1.02406
+
+iteration 18 finished.
+this iteration: N=300000 E=2.92938e+07 +- 211315 (0.721362%)
+all iterations: N=5700000 E=2.94264e+07 +- 52456.4 (0.178263%) chi^2/dof=0.990481
+
+iteration 19 finished.
+this iteration: N=300000 E=2.96531e+07 +- 205477 (0.692935%)
+all iterations: N=6000000 E=2.94403e+07 +- 50826.3 (0.172642%) chi^2/dof=0.998465
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.94413e+07 +- 50829.3
+>> chi^2/dof = 0.87616
+Time needed: 190.76s
+Temperature: 270; EQCONST: 1.35824e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.11057e+07 +- 4.6115e+06 (21.8496%)
+all iterations: N=300000 E=2.11057e+07 +- 4.6115e+06 (21.8496%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.99586e+07 +- 1.34284e+06 (4.4823%)
+all iterations: N=600000 E=2.92666e+07 +- 1.28929e+06 (4.40531%) chi^2/dof=3.39739
+
+iteration 2 finished.
+this iteration: N=300000 E=2.91843e+07 +- 518512 (1.77668%)
+all iterations: N=900000 E=2.91958e+07 +- 481066 (1.64772%) chi^2/dof=1.70045
+
+iteration 3 finished.
+this iteration: N=300000 E=2.93019e+07 +- 294132 (1.0038%)
+all iterations: N=1200000 E=2.92731e+07 +- 250943 (0.85725%) chi^2/dof=1.14544
+
+iteration 4 finished.
+this iteration: N=300000 E=2.95055e+07 +- 344103 (1.16623%)
+all iterations: N=1500000 E=2.93538e+07 +- 202754 (0.690727%) chi^2/dof=0.933541
+
+iteration 5 finished.
+this iteration: N=300000 E=2.96575e+07 +- 325376 (1.09711%)
+all iterations: N=1800000 E=2.94387e+07 +- 172079 (0.584534%) chi^2/dof=0.872349
+
+iteration 6 finished.
+this iteration: N=300000 E=2.90072e+07 +- 238194 (0.821156%)
+all iterations: N=2100000 E=2.92907e+07 +- 139487 (0.476216%) chi^2/dof=1.08633
+
+iteration 7 finished.
+this iteration: N=300000 E=2.93301e+07 +- 203692 (0.69448%)
+all iterations: N=2400000 E=2.93033e+07 +- 115088 (0.392749%) chi^2/dof=0.934784
+
+iteration 8 finished.
+this iteration: N=300000 E=2.91559e+07 +- 199828 (0.685378%)
+all iterations: N=2700000 E=2.92666e+07 +- 99730.5 (0.340766%) chi^2/dof=0.868998
+
+iteration 9 finished.
+this iteration: N=300000 E=2.95125e+07 +- 187555 (0.63551%)
+all iterations: N=3000000 E=2.93208e+07 +- 88055.6 (0.300318%) chi^2/dof=0.92132
+
+iteration 10 finished.
+this iteration: N=300000 E=2.94844e+07 +- 192846 (0.65406%)
+all iterations: N=3300000 E=2.9349e+07 +- 80100.4 (0.272924%) chi^2/dof=0.888763
+
+iteration 11 finished.
+this iteration: N=300000 E=2.93672e+07 +- 183072 (0.623389%)
+all iterations: N=3600000 E=2.93519e+07 +- 73383.7 (0.250013%) chi^2/dof=0.80872
+
+iteration 12 finished.
+this iteration: N=300000 E=2.95221e+07 +- 247676 (0.838951%)
+all iterations: N=3900000 E=2.93657e+07 +- 70360.2 (0.2396%) chi^2/dof=0.777471
+
+iteration 13 finished.
+this iteration: N=300000 E=2.97197e+07 +- 249092 (0.838138%)
+all iterations: N=4200000 E=2.93918e+07 +- 67710.8 (0.230373%) chi^2/dof=0.861581
+
+iteration 14 finished.
+this iteration: N=300000 E=2.91008e+07 +- 191507 (0.658084%)
+all iterations: N=4500000 E=2.93595e+07 +- 63838.1 (0.217436%) chi^2/dof=0.946697
+
+iteration 15 finished.
+this iteration: N=300000 E=2.92218e+07 +- 181582 (0.621392%)
+all iterations: N=4800000 E=2.93443e+07 +- 60224.7 (0.205234%) chi^2/dof=0.917701
+
+iteration 16 finished.
+this iteration: N=300000 E=2.91903e+07 +- 179379 (0.614516%)
+all iterations: N=5100000 E=2.93287e+07 +- 57092.8 (0.194665%) chi^2/dof=0.901777
+
+iteration 17 finished.
+this iteration: N=300000 E=2.89462e+07 +- 169334 (0.584993%)
+all iterations: N=5400000 E=2.92897e+07 +- 54100.5 (0.184708%) chi^2/dof=1.11825
+
+iteration 18 finished.
+this iteration: N=300000 E=2.92716e+07 +- 177858 (0.607612%)
+all iterations: N=5700000 E=2.92882e+07 +- 51759 (0.176723%) chi^2/dof=1.05665
+
+iteration 19 finished.
+this iteration: N=300000 E=2.96917e+07 +- 211751 (0.713168%)
+all iterations: N=6000000 E=2.93109e+07 +- 50278.8 (0.171536%) chi^2/dof=1.18136
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.93119e+07 +- 50281.8
+>> chi^2/dof = 1.07109
+Time needed: 196.53s
+Temperature: 280; EQCONST: 1.14812e-05
+
+iteration 0 finished.
+this iteration: N=300000 E=2.10349e+07 +- 4.60664e+06 (21.8999%)
+all iterations: N=300000 E=2.10349e+07 +- 4.60664e+06 (21.8999%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.97159e+07 +- 1.33069e+06 (4.47802%)
+all iterations: N=600000 E=2.90474e+07 +- 1.27842e+06 (4.40115%) chi^2/dof=3.27769
+
+iteration 2 finished.
+this iteration: N=300000 E=2.89261e+07 +- 532348 (1.84037%)
+all iterations: N=900000 E=2.8944e+07 +- 491442 (1.69791%) chi^2/dof=1.64268
+
+iteration 3 finished.
+this iteration: N=300000 E=2.90981e+07 +- 294350 (1.01158%)
+all iterations: N=1200000 E=2.90574e+07 +- 252520 (0.869037%) chi^2/dof=1.11924
+
+iteration 4 finished.
+this iteration: N=300000 E=2.93371e+07 +- 247441 (0.843441%)
+all iterations: N=1500000 E=2.92001e+07 +- 176735 (0.605256%) chi^2/dof=0.995862
+
+iteration 5 finished.
+this iteration: N=300000 E=2.89621e+07 +- 214557 (0.740819%)
+all iterations: N=1800000 E=2.91039e+07 +- 136414 (0.468715%) chi^2/dof=0.943294
+
+iteration 6 finished.
+this iteration: N=300000 E=2.90307e+07 +- 193845 (0.667723%)
+all iterations: N=2100000 E=2.90797e+07 +- 111559 (0.383633%) chi^2/dof=0.801962
+
+iteration 7 finished.
+this iteration: N=300000 E=2.94475e+07 +- 200874 (0.682141%)
+all iterations: N=2400000 E=2.91664e+07 +- 97528 (0.334385%) chi^2/dof=1.05356
+
+iteration 8 finished.
+this iteration: N=300000 E=2.91966e+07 +- 206990 (0.708951%)
+all iterations: N=2700000 E=2.91719e+07 +- 88225.3 (0.302433%) chi^2/dof=0.924046
+
+iteration 9 finished.
+this iteration: N=300000 E=2.95753e+07 +- 202547 (0.684853%)
+all iterations: N=3000000 E=2.92362e+07 +- 80885.2 (0.276661%) chi^2/dof=1.19183
+
+iteration 10 finished.
+this iteration: N=300000 E=2.9315e+07 +- 195852 (0.668095%)
+all iterations: N=3300000 E=2.92477e+07 +- 74760.4 (0.255611%) chi^2/dof=1.08646
+
+iteration 11 finished.
+this iteration: N=300000 E=2.93846e+07 +- 194901 (0.663277%)
+all iterations: N=3600000 E=2.92653e+07 +- 69801.5 (0.238513%) chi^2/dof=1.02682
+
+iteration 12 finished.
+this iteration: N=300000 E=2.93272e+07 +- 201862 (0.688309%)
+all iterations: N=3900000 E=2.92719e+07 +- 65968.9 (0.225366%) chi^2/dof=0.948263
+
+iteration 13 finished.
+this iteration: N=300000 E=2.95424e+07 +- 193453 (0.654833%)
+all iterations: N=4200000 E=2.93001e+07 +- 62438.4 (0.2131%) chi^2/dof=1.01004
+
+iteration 14 finished.
+this iteration: N=300000 E=2.88776e+07 +- 195371 (0.676549%)
+all iterations: N=4500000 E=2.92609e+07 +- 59474.9 (0.203257%) chi^2/dof=1.24089
+
+iteration 15 finished.
+this iteration: N=300000 E=2.93674e+07 +- 403670 (1.37455%)
+all iterations: N=4800000 E=2.92632e+07 +- 58839.7 (0.201071%) chi^2/dof=1.16271
+
+iteration 16 finished.
+this iteration: N=300000 E=2.98958e+07 +- 674560 (2.25637%)
+all iterations: N=5100000 E=2.92679e+07 +- 58617.1 (0.200278%) chi^2/dof=1.1446
+
+iteration 17 finished.
+this iteration: N=300000 E=2.94987e+07 +- 417847 (1.41649%)
+all iterations: N=5400000 E=2.92724e+07 +- 58048.7 (0.198305%) chi^2/dof=1.09486
+
+iteration 18 finished.
+this iteration: N=300000 E=2.89313e+07 +- 233264 (0.806267%)
+all iterations: N=5700000 E=2.92525e+07 +- 56330.7 (0.192567%) chi^2/dof=1.1459
+
+iteration 19 finished.
+this iteration: N=300000 E=2.97585e+07 +- 299532 (1.00654%)
+all iterations: N=6000000 E=2.92698e+07 +- 55360.2 (0.189138%) chi^2/dof=1.23066
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.9271e+07 +- 55364.2
+>> chi^2/dof = 1.12148
+Time needed: 247.88s
+Temperature: 290; EQCONST: 9.79045e-06
+
+iteration 0 finished.
+this iteration: N=300000 E=2.09693e+07 +- 4.60212e+06 (21.9469%)
+all iterations: N=300000 E=2.09693e+07 +- 4.60212e+06 (21.9469%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.96429e+07 +- 1.32626e+06 (4.47411%)
+all iterations: N=600000 E=2.89778e+07 +- 1.27439e+06 (4.39783%) chi^2/dof=3.27968
+
+iteration 2 finished.
+this iteration: N=300000 E=2.8737e+07 +- 518290 (1.80356%)
+all iterations: N=900000 E=2.87712e+07 +- 480104 (1.6687%) chi^2/dof=1.65515
+
+iteration 3 finished.
+this iteration: N=300000 E=2.89391e+07 +- 286895 (0.991374%)
+all iterations: N=1200000 E=2.88949e+07 +- 246274 (0.852309%) chi^2/dof=1.1335
+
+iteration 4 finished.
+this iteration: N=300000 E=2.93312e+07 +- 274505 (0.935881%)
+all iterations: N=1500000 E=2.90895e+07 +- 183313 (0.630169%) chi^2/dof=1.19997
+
+iteration 5 finished.
+this iteration: N=300000 E=2.90304e+07 +- 232758 (0.801772%)
+all iterations: N=1800000 E=2.90669e+07 +- 144012 (0.495452%) chi^2/dof=0.967933
+
+iteration 6 finished.
+this iteration: N=300000 E=2.92541e+07 +- 270698 (0.925334%)
+all iterations: N=2100000 E=2.91082e+07 +- 127140 (0.436784%) chi^2/dof=0.868768
+
+iteration 7 finished.
+this iteration: N=300000 E=2.92854e+07 +- 251239 (0.857898%)
+all iterations: N=2400000 E=2.91443e+07 +- 113441 (0.389241%) chi^2/dof=0.801284
+
+iteration 8 finished.
+this iteration: N=300000 E=2.91041e+07 +- 203895 (0.700572%)
+all iterations: N=2700000 E=2.91348e+07 +- 99131.3 (0.340251%) chi^2/dof=0.704843
+
+iteration 9 finished.
+this iteration: N=300000 E=2.9273e+07 +- 208557 (0.712455%)
+all iterations: N=3000000 E=2.91603e+07 +- 89532 (0.307034%) chi^2/dof=0.666355
+
+iteration 10 finished.
+this iteration: N=300000 E=2.91476e+07 +- 214373 (0.735475%)
+all iterations: N=3300000 E=2.91584e+07 +- 82616.2 (0.283336%) chi^2/dof=0.600019
+
+iteration 11 finished.
+this iteration: N=300000 E=2.92286e+07 +- 194039 (0.663866%)
+all iterations: N=3600000 E=2.91692e+07 +- 76013.1 (0.260594%) chi^2/dof=0.555535
+
+iteration 12 finished.
+this iteration: N=300000 E=2.91444e+07 +- 201875 (0.692673%)
+all iterations: N=3900000 E=2.91661e+07 +- 71137.3 (0.243904%) chi^2/dof=0.510336
+
+iteration 13 finished.
+this iteration: N=300000 E=2.94932e+07 +- 197447 (0.669468%)
+all iterations: N=4200000 E=2.92037e+07 +- 66926.1 (0.22917%) chi^2/dof=0.657934
+
+iteration 14 finished.
+this iteration: N=300000 E=2.87369e+07 +- 176070 (0.612699%)
+all iterations: N=4500000 E=2.91447e+07 +- 62559.1 (0.21465%) chi^2/dof=1.04962
+
+iteration 15 finished.
+this iteration: N=300000 E=3.06766e+07 +- 1.55269e+06 (5.0615%)
+all iterations: N=4800000 E=2.91472e+07 +- 62508.4 (0.214458%) chi^2/dof=1.04442
+
+iteration 16 finished.
+this iteration: N=300000 E=3.01628e+07 +- 639418 (2.11989%)
+all iterations: N=5100000 E=2.91568e+07 +- 62211.9 (0.21337%) chi^2/dof=1.13532
+
+iteration 17 finished.
+this iteration: N=300000 E=2.92813e+07 +- 283202 (0.967176%)
+all iterations: N=5400000 E=2.91626e+07 +- 60763 (0.20836%) chi^2/dof=1.07938
+
+iteration 18 finished.
+this iteration: N=300000 E=2.91706e+07 +- 216656 (0.742719%)
+all iterations: N=5700000 E=2.91631e+07 +- 58505.7 (0.200615%) chi^2/dof=1.01948
+
+iteration 19 finished.
+this iteration: N=300000 E=2.95351e+07 +- 305894 (1.0357%)
+all iterations: N=6000000 E=2.91763e+07 +- 57464 (0.196955%) chi^2/dof=1.04091
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.91776e+07 +- 57468.5
+>> chi^2/dof = 0.922031
+Time needed: 272.11s
+Temperature: 300; EQCONST: 8.37837e-06
+
+iteration 0 finished.
+this iteration: N=300000 E=2.09083e+07 +- 4.59791e+06 (21.9909%)
+all iterations: N=300000 E=2.09083e+07 +- 4.59791e+06 (21.9909%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.95583e+07 +- 1.32146e+06 (4.47069%)
+all iterations: N=600000 E=2.88983e+07 +- 1.27005e+06 (4.39488%) chi^2/dof=3.26923
+
+iteration 2 finished.
+this iteration: N=300000 E=2.85729e+07 +- 506121 (1.77133%)
+all iterations: N=900000 E=2.86175e+07 +- 470163 (1.64292%) chi^2/dof=1.66294
+
+iteration 3 finished.
+this iteration: N=300000 E=2.89187e+07 +- 292819 (1.01256%)
+all iterations: N=1200000 E=2.88345e+07 +- 248555 (0.862006%) chi^2/dof=1.20718
+
+iteration 4 finished.
+this iteration: N=300000 E=2.93582e+07 +- 373673 (1.27281%)
+all iterations: N=1500000 E=2.89951e+07 +- 206953 (0.713752%) chi^2/dof=1.24586
+
+iteration 5 finished.
+this iteration: N=300000 E=2.95642e+07 +- 308799 (1.0445%)
+all iterations: N=1800000 E=2.91715e+07 +- 171916 (0.589327%) chi^2/dof=1.46546
+
+iteration 6 finished.
+this iteration: N=300000 E=2.86628e+07 +- 230387 (0.803784%)
+all iterations: N=2100000 E=2.89896e+07 +- 137783 (0.475286%) chi^2/dof=1.74326
+
+iteration 7 finished.
+this iteration: N=300000 E=2.92286e+07 +- 216926 (0.742168%)
+all iterations: N=2400000 E=2.90583e+07 +- 116306 (0.400249%) chi^2/dof=1.61788
+
+iteration 8 finished.
+this iteration: N=300000 E=2.88524e+07 +- 189035 (0.655177%)
+all iterations: N=2700000 E=2.90018e+07 +- 99058.1 (0.341559%) chi^2/dof=1.52317
+
+iteration 9 finished.
+this iteration: N=300000 E=2.91143e+07 +- 188500 (0.647449%)
+all iterations: N=3000000 E=2.90261e+07 +- 87687.5 (0.302099%) chi^2/dof=1.38495
+
+iteration 10 finished.
+this iteration: N=300000 E=2.90872e+07 +- 186566 (0.641402%)
+all iterations: N=3300000 E=2.90372e+07 +- 79359 (0.273302%) chi^2/dof=1.25523
+
+iteration 11 finished.
+this iteration: N=300000 E=2.8958e+07 +- 176396 (0.609143%)
+all iterations: N=3600000 E=2.90238e+07 +- 72372.1 (0.249354%) chi^2/dof=1.15634
+
+iteration 12 finished.
+this iteration: N=300000 E=2.88886e+07 +- 185298 (0.641425%)
+all iterations: N=3900000 E=2.90059e+07 +- 67412.8 (0.23241%) chi^2/dof=1.09852
+
+iteration 13 finished.
+this iteration: N=300000 E=2.91929e+07 +- 244836 (0.838686%)
+all iterations: N=4200000 E=2.90191e+07 +- 64994.1 (0.22397%) chi^2/dof=1.0557
+
+iteration 14 finished.
+this iteration: N=300000 E=2.89129e+07 +- 357633 (1.23693%)
+all iterations: N=4500000 E=2.90157e+07 +- 63946.7 (0.220387%) chi^2/dof=0.986392
+
+iteration 15 finished.
+this iteration: N=300000 E=2.87192e+07 +- 275737 (0.960115%)
+all iterations: N=4800000 E=2.90006e+07 +- 62293.5 (0.214801%) chi^2/dof=0.993797
+
+iteration 16 finished.
+this iteration: N=300000 E=2.94069e+07 +- 244498 (0.831432%)
+all iterations: N=5100000 E=2.90253e+07 +- 60365 (0.207974%) chi^2/dof=1.09376
+
+iteration 17 finished.
+this iteration: N=300000 E=2.90181e+07 +- 214200 (0.738159%)
+all iterations: N=5400000 E=2.90248e+07 +- 58101.9 (0.20018%) chi^2/dof=1.02949
+
+iteration 18 finished.
+this iteration: N=300000 E=2.87901e+07 +- 187200 (0.650223%)
+all iterations: N=5700000 E=2.90042e+07 +- 55490.6 (0.191319%) chi^2/dof=1.05195
+
+iteration 19 finished.
+this iteration: N=300000 E=2.93453e+07 +- 179084 (0.610263%)
+all iterations: N=6000000 E=2.90341e+07 +- 53004.3 (0.182559%) chi^2/dof=1.17084
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.90351e+07 +- 53007.9
+>> chi^2/dof = 1.06234
+Time needed: 275.66s
+Temperature: 310; EQCONST: 7.1937e-06
+
+iteration 0 finished.
+this iteration: N=300000 E=2.08513e+07 +- 4.59398e+06 (22.0321%)
+all iterations: N=300000 E=2.08513e+07 +- 4.59398e+06 (22.0321%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.94568e+07 +- 1.31611e+06 (4.46794%)
+all iterations: N=600000 E=2.88041e+07 +- 1.26521e+06 (4.39248%) chi^2/dof=3.24275
+
+iteration 2 finished.
+this iteration: N=300000 E=2.84798e+07 +- 495029 (1.73817%)
+all iterations: N=900000 E=2.85229e+07 +- 460999 (1.61624%) chi^2/dof=1.64985
+
+iteration 3 finished.
+this iteration: N=300000 E=2.88051e+07 +- 286807 (0.995681%)
+all iterations: N=1200000 E=2.87263e+07 +- 243524 (0.847738%) chi^2/dof=1.18995
+
+iteration 4 finished.
+this iteration: N=300000 E=2.93985e+07 +- 365909 (1.24465%)
+all iterations: N=1500000 E=2.89327e+07 +- 202730 (0.700697%) chi^2/dof=1.47705
+
+iteration 5 finished.
+this iteration: N=300000 E=2.9841e+07 +- 356046 (1.19314%)
+all iterations: N=1800000 E=2.9155e+07 +- 176173 (0.604264%) chi^2/dof=2.16461
+
+iteration 6 finished.
+this iteration: N=300000 E=2.85197e+07 +- 233076 (0.817247%)
+all iterations: N=2100000 E=2.8924e+07 +- 140542 (0.485902%) chi^2/dof=2.59195
+
+iteration 7 finished.
+this iteration: N=300000 E=2.9081e+07 +- 199155 (0.684829%)
+all iterations: N=2400000 E=2.89762e+07 +- 114829 (0.396286%) chi^2/dof=2.28093
+
+iteration 8 finished.
+this iteration: N=300000 E=2.87007e+07 +- 184680 (0.643467%)
+all iterations: N=2700000 E=2.88994e+07 +- 97515.9 (0.337432%) chi^2/dof=2.19641
+
+iteration 9 finished.
+this iteration: N=300000 E=2.91839e+07 +- 190776 (0.653702%)
+all iterations: N=3000000 E=2.89584e+07 +- 86830 (0.299844%) chi^2/dof=2.14828
+
+iteration 10 finished.
+this iteration: N=300000 E=2.90076e+07 +- 219157 (0.755515%)
+all iterations: N=3300000 E=2.8965e+07 +- 80725 (0.278698%) chi^2/dof=1.93783
+
+iteration 11 finished.
+this iteration: N=300000 E=2.87743e+07 +- 200708 (0.697524%)
+all iterations: N=3600000 E=2.89385e+07 +- 74894.3 (0.258805%) chi^2/dof=1.83234
+
+iteration 12 finished.
+this iteration: N=300000 E=2.87704e+07 +- 186990 (0.649939%)
+all iterations: N=3900000 E=2.89152e+07 +- 69525 (0.240444%) chi^2/dof=1.73769
+
+iteration 13 finished.
+this iteration: N=300000 E=2.88499e+07 +- 178662 (0.619279%)
+all iterations: N=4200000 E=2.89067e+07 +- 64792 (0.224142%) chi^2/dof=1.61295
+
+iteration 14 finished.
+this iteration: N=300000 E=2.98777e+07 +- 1.44294e+06 (4.82949%)
+all iterations: N=4500000 E=2.89086e+07 +- 64726.8 (0.223901%) chi^2/dof=1.53002
+
+iteration 15 finished.
+this iteration: N=300000 E=2.90518e+07 +- 1.01584e+06 (3.49666%)
+all iterations: N=4800000 E=2.89092e+07 +- 64595.8 (0.223444%) chi^2/dof=1.42934
+
+iteration 16 finished.
+this iteration: N=300000 E=2.92246e+07 +- 459120 (1.571%)
+all iterations: N=5100000 E=2.89153e+07 +- 63965.8 (0.221218%) chi^2/dof=1.36893
+
+iteration 17 finished.
+this iteration: N=300000 E=2.91757e+07 +- 269945 (0.925238%)
+all iterations: N=5400000 E=2.89292e+07 +- 62242.2 (0.215154%) chi^2/dof=1.34025
+
+iteration 18 finished.
+this iteration: N=300000 E=2.88809e+07 +- 214980 (0.744366%)
+all iterations: N=5700000 E=2.89254e+07 +- 59786.8 (0.206693%) chi^2/dof=1.26837
+
+iteration 19 finished.
+this iteration: N=300000 E=2.92973e+07 +- 193685 (0.661101%)
+all iterations: N=6000000 E=2.89578e+07 +- 57127.1 (0.197277%) chi^2/dof=1.37877
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.8959e+07 +- 57131.5
+>> chi^2/dof = 1.28236
+Time needed: 270.19s
+Temperature: 320; EQCONST: 6.21964e-06
+
+iteration 0 finished.
+this iteration: N=300000 E=2.07981e+07 +- 4.59031e+06 (22.0708%)
+all iterations: N=300000 E=2.07981e+07 +- 4.59031e+06 (22.0708%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.9155e+07 +- 1.2996e+06 (4.45755%)
+all iterations: N=600000 E=2.85349e+07 +- 1.25045e+06 (4.38218%) chi^2/dof=3.06849
+
+iteration 2 finished.
+this iteration: N=300000 E=2.82772e+07 +- 465529 (1.6463%)
+all iterations: N=900000 E=2.83086e+07 +- 436276 (1.54114%) chi^2/dof=1.55289
+
+iteration 3 finished.
+this iteration: N=300000 E=2.8751e+07 +- 270879 (0.942154%)
+all iterations: N=1200000 E=2.86279e+07 +- 230129 (0.803862%) chi^2/dof=1.28269
+
+iteration 4 finished.
+this iteration: N=300000 E=2.90079e+07 +- 279951 (0.965084%)
+all iterations: N=1500000 E=2.87812e+07 +- 177774 (0.617675%) chi^2/dof=1.23689
+
+iteration 5 finished.
+this iteration: N=300000 E=2.88892e+07 +- 259640 (0.898745%)
+all iterations: N=1800000 E=2.88156e+07 +- 146685 (0.509047%) chi^2/dof=1.01309
+
+iteration 6 finished.
+this iteration: N=300000 E=2.8867e+07 +- 209003 (0.724021%)
+all iterations: N=2100000 E=2.88326e+07 +- 120066 (0.416423%) chi^2/dof=0.850971
+
+iteration 7 finished.
+this iteration: N=300000 E=2.93132e+07 +- 237805 (0.811255%)
+all iterations: N=2400000 E=2.89302e+07 +- 107179 (0.370476%) chi^2/dof=1.19447
+
+iteration 8 finished.
+this iteration: N=300000 E=2.89145e+07 +- 254644 (0.88068%)
+all iterations: N=2700000 E=2.89278e+07 +- 98785.8 (0.34149%) chi^2/dof=1.04557
+
+iteration 9 finished.
+this iteration: N=300000 E=2.94685e+07 +- 282100 (0.957295%)
+all iterations: N=3000000 E=2.89869e+07 +- 93234.6 (0.321644%) chi^2/dof=1.29296
+
+iteration 10 finished.
+this iteration: N=300000 E=2.9072e+07 +- 232071 (0.798265%)
+all iterations: N=3300000 E=2.89987e+07 +- 86513.8 (0.298337%) chi^2/dof=1.17523
+
+iteration 11 finished.
+this iteration: N=300000 E=2.89415e+07 +- 197420 (0.682133%)
+all iterations: N=3600000 E=2.89895e+07 +- 79239.2 (0.273338%) chi^2/dof=1.07479
+
+iteration 12 finished.
+this iteration: N=300000 E=2.89224e+07 +- 195862 (0.677197%)
+all iterations: N=3900000 E=2.89801e+07 +- 73455.5 (0.253469%) chi^2/dof=0.993625
+
+iteration 13 finished.
+this iteration: N=300000 E=2.91222e+07 +- 188165 (0.646122%)
+all iterations: N=4200000 E=2.89989e+07 +- 68426.4 (0.235962%) chi^2/dof=0.955253
+
+iteration 14 finished.
+this iteration: N=300000 E=2.85048e+07 +- 176037 (0.617568%)
+all iterations: N=4500000 E=2.8934e+07 +- 63777.7 (0.220425%) chi^2/dof=1.37578
+
+iteration 15 finished.
+this iteration: N=300000 E=2.8781e+07 +- 178179 (0.619086%)
+all iterations: N=4800000 E=2.89166e+07 +- 60046.9 (0.207655%) chi^2/dof=1.32763
+
+iteration 16 finished.
+this iteration: N=300000 E=2.8792e+07 +- 187789 (0.652226%)
+all iterations: N=5100000 E=2.89051e+07 +- 57194.2 (0.197869%) chi^2/dof=1.26964
+
+iteration 17 finished.
+this iteration: N=300000 E=2.90079e+07 +- 188579 (0.650095%)
+all iterations: N=5400000 E=2.89137e+07 +- 54732.2 (0.189295%) chi^2/dof=1.21096
+
+iteration 18 finished.
+this iteration: N=300000 E=2.88637e+07 +- 183818 (0.636849%)
+all iterations: N=5700000 E=2.89097e+07 +- 52456.3 (0.181449%) chi^2/dof=1.14747
+
+iteration 19 finished.
+this iteration: N=300000 E=2.92394e+07 +- 183488 (0.627537%)
+all iterations: N=6000000 E=2.89346e+07 +- 50435.7 (0.17431%) chi^2/dof=1.2442
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.89356e+07 +- 50438.8
+>> chi^2/dof = 1.13876
+Time needed: 273.63s
+Temperature: 330; EQCONST: 5.41097e-06
+
+iteration 0 finished.
+this iteration: N=300000 E=2.07482e+07 +- 4.58687e+06 (22.1073%)
+all iterations: N=300000 E=2.07482e+07 +- 4.58687e+06 (22.1073%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.90732e+07 +- 1.29614e+06 (4.45819%)
+all iterations: N=600000 E=2.84576e+07 +- 1.2473e+06 (4.383%) chi^2/dof=3.05049
+
+iteration 2 finished.
+this iteration: N=300000 E=2.81937e+07 +- 461362 (1.6364%)
+all iterations: N=900000 E=2.82255e+07 +- 432709 (1.53305%) chi^2/dof=1.54493
+
+iteration 3 finished.
+this iteration: N=300000 E=2.87384e+07 +- 272000 (0.946466%)
+all iterations: N=1200000 E=2.85932e+07 +- 230282 (0.805375%) chi^2/dof=1.36573
+
+iteration 4 finished.
+this iteration: N=300000 E=2.90102e+07 +- 278400 (0.959662%)
+all iterations: N=1500000 E=2.87626e+07 +- 177445 (0.61693%) chi^2/dof=1.35741
+
+iteration 5 finished.
+this iteration: N=300000 E=2.89857e+07 +- 269978 (0.931417%)
+all iterations: N=1800000 E=2.88299e+07 +- 148284 (0.514341%) chi^2/dof=1.18135
+
+iteration 6 finished.
+this iteration: N=300000 E=2.87505e+07 +- 217656 (0.757051%)
+all iterations: N=2100000 E=2.88047e+07 +- 122547 (0.425441%) chi^2/dof=0.999595
+
+iteration 7 finished.
+this iteration: N=300000 E=2.92604e+07 +- 240732 (0.822723%)
+all iterations: N=2400000 E=2.88985e+07 +- 109211 (0.377912%) chi^2/dof=1.2633
+
+iteration 8 finished.
+this iteration: N=300000 E=2.87069e+07 +- 233059 (0.811857%)
+all iterations: N=2700000 E=2.8864e+07 +- 98891.8 (0.342612%) chi^2/dof=1.17464
+
+iteration 9 finished.
+this iteration: N=300000 E=2.89717e+07 +- 207913 (0.71764%)
+all iterations: N=3000000 E=2.88839e+07 +- 89304.5 (0.309184%) chi^2/dof=1.06844
+
+iteration 10 finished.
+this iteration: N=300000 E=2.89781e+07 +- 200314 (0.69126%)
+all iterations: N=3300000 E=2.88995e+07 +- 81565.7 (0.282239%) chi^2/dof=0.980042
+
+iteration 11 finished.
+this iteration: N=300000 E=2.89072e+07 +- 182611 (0.631713%)
+all iterations: N=3600000 E=2.89008e+07 +- 74474.2 (0.257689%) chi^2/dof=0.891082
+
+iteration 12 finished.
+this iteration: N=300000 E=2.88537e+07 +- 190746 (0.66108%)
+all iterations: N=3900000 E=2.88946e+07 +- 69374 (0.240094%) chi^2/dof=0.821242
+
+iteration 13 finished.
+this iteration: N=300000 E=2.92282e+07 +- 189422 (0.64808%)
+all iterations: N=4200000 E=2.8934e+07 +- 65142.6 (0.225142%) chi^2/dof=0.968506
+
+iteration 14 finished.
+this iteration: N=300000 E=2.84257e+07 +- 173572 (0.610617%)
+all iterations: N=4500000 E=2.88713e+07 +- 60988.7 (0.211244%) chi^2/dof=1.4364
+
+iteration 15 finished.
+this iteration: N=300000 E=3.06357e+07 +- 1.82074e+06 (5.9432%)
+all iterations: N=4800000 E=2.88732e+07 +- 60954.6 (0.211111%) chi^2/dof=1.40317
+
+iteration 16 finished.
+this iteration: N=300000 E=2.97638e+07 +- 672471 (2.25936%)
+all iterations: N=5100000 E=2.88805e+07 +- 60705.7 (0.210196%) chi^2/dof=1.4242
+
+iteration 17 finished.
+this iteration: N=300000 E=2.88233e+07 +- 284919 (0.9885%)
+all iterations: N=5400000 E=2.8878e+07 +- 59373 (0.205599%) chi^2/dof=1.34269
+
+iteration 18 finished.
+this iteration: N=300000 E=2.86465e+07 +- 220039 (0.768119%)
+all iterations: N=5700000 E=2.88623e+07 +- 57322.9 (0.198608%) chi^2/dof=1.32542
+
+iteration 19 finished.
+this iteration: N=300000 E=2.91748e+07 +- 193678 (0.663852%)
+all iterations: N=6000000 E=2.88875e+07 +- 54965.9 (0.190276%) chi^2/dof=1.38169
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.88886e+07 +- 54969.9
+>> chi^2/dof = 1.28349
+Time needed: 272.27s
+Temperature: 340; EQCONST: 4.72311e-06
+
+iteration 0 finished.
+this iteration: N=300000 E=2.07014e+07 +- 4.58363e+06 (22.1416%)
+all iterations: N=300000 E=2.07014e+07 +- 4.58363e+06 (22.1416%) chi^2/dof=inf
+
+iteration 1 finished.
+this iteration: N=300000 E=2.90069e+07 +- 1.29337e+06 (4.45885%)
+all iterations: N=600000 E=2.83944e+07 +- 1.24477e+06 (4.38386%) chi^2/dof=3.04113
+
+iteration 2 finished.
+this iteration: N=300000 E=2.80778e+07 +- 459083 (1.63504%)
+all iterations: N=900000 E=2.81157e+07 +- 430723 (1.53197%) chi^2/dof=1.54903
+
+iteration 3 finished.
+this iteration: N=300000 E=2.88565e+07 +- 281222 (0.974552%)
+all iterations: N=1200000 E=2.86351e+07 +- 235475 (0.822331%) chi^2/dof=1.72405
+
+iteration 4 finished.
+this iteration: N=300000 E=2.88882e+07 +- 251636 (0.871072%)
+all iterations: N=1500000 E=2.87532e+07 +- 171936 (0.59797%) chi^2/dof=1.42783
+
+iteration 5 finished.
+this iteration: N=300000 E=2.82919e+07 +- 222455 (0.786288%)
+all iterations: N=1800000 E=2.85807e+07 +- 136039 (0.475982%) chi^2/dof=1.68085
+
+iteration 6 finished.
+this iteration: N=300000 E=2.86298e+07 +- 197578 (0.690113%)
+all iterations: N=2100000 E=2.85965e+07 +- 112048 (0.391823%) chi^2/dof=1.40769
+
+iteration 7 finished.
+this iteration: N=300000 E=2.91147e+07 +- 284936 (0.978667%)
+all iterations: N=2400000 E=2.86659e+07 +- 104275 (0.36376%) chi^2/dof=1.61584
+
+iteration 8 finished.
+this iteration: N=300000 E=2.87256e+07 +- 269567 (0.93842%)
+all iterations: N=2700000 E=2.86737e+07 +- 97252.5 (0.33917%) chi^2/dof=1.4192
+
+iteration 9 finished.
+this iteration: N=300000 E=2.8682e+07 +- 199550 (0.695732%)
+all iterations: N=3000000 E=2.86753e+07 +- 87422.8 (0.304872%) chi^2/dof=1.26167
+
+iteration 10 finished.
+this iteration: N=300000 E=2.88786e+07 +- 190995 (0.661371%)
+all iterations: N=3300000 E=2.87105e+07 +- 79491.3 (0.276872%) chi^2/dof=1.22921
+
+iteration 11 finished.
+this iteration: N=300000 E=2.88414e+07 +- 188574 (0.65383%)
+all iterations: N=3600000 E=2.87302e+07 +- 73249.3 (0.254955%) chi^2/dof=1.15465
+
+iteration 12 finished.
+this iteration: N=300000 E=2.87595e+07 +- 189438 (0.658699%)
+all iterations: N=3900000 E=2.8734e+07 +- 68319.8 (0.237766%) chi^2/dof=1.06016
+
+iteration 13 finished.
+this iteration: N=300000 E=2.89902e+07 +- 186573 (0.643574%)
+all iterations: N=4200000 E=2.87643e+07 +- 64153.9 (0.223033%) chi^2/dof=1.10646
+
+iteration 14 finished.
+this iteration: N=300000 E=2.84692e+07 +- 176184 (0.618858%)
+all iterations: N=4500000 E=2.87298e+07 +- 60281.9 (0.209824%) chi^2/dof=1.2044
+
+iteration 15 finished.
+this iteration: N=300000 E=3.05312e+07 +- 1.78519e+06 (5.84711%)
+all iterations: N=4800000 E=2.87318e+07 +- 60247.5 (0.209689%) chi^2/dof=1.19191
+
+iteration 16 finished.
+this iteration: N=300000 E=2.98704e+07 +- 702875 (2.35309%)
+all iterations: N=5100000 E=2.87401e+07 +- 60027.4 (0.208863%) chi^2/dof=1.28021
+
+iteration 17 finished.
+this iteration: N=300000 E=2.86369e+07 +- 316420 (1.10494%)
+all iterations: N=5400000 E=2.87365e+07 +- 58975.5 (0.205228%) chi^2/dof=1.21095
+
+iteration 18 finished.
+this iteration: N=300000 E=2.87355e+07 +- 245530 (0.854447%)
+all iterations: N=5700000 E=2.87365e+07 +- 57344.5 (0.199553%) chi^2/dof=1.14367
+
+iteration 19 finished.
+this iteration: N=300000 E=2.90385e+07 +- 195155 (0.672058%)
+all iterations: N=6000000 E=2.87605e+07 +- 55018.5 (0.191299%) chi^2/dof=1.19948
+
+>> Cumulative result: 
+>> N = 5700000; I = 2.87617e+07 +- 55022.4
+>> chi^2/dof = 1.09436
+Time needed: 261.93s
+Temperature: 350; EQCONST: 4.12728e-06
+
+Total time elapsed: 6569.82s
+removed non-finite number: 0
