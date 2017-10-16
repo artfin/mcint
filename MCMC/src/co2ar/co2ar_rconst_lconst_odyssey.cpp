@@ -161,7 +161,7 @@ int main( int argc, char* argv[] )
     const double alpha = atof( argv[3] );
     const bool show_vecs = atoi( argv[4] );
 */
-    const int nsteps = 1000000;
+    const int nsteps = 50000;
     const int burnin = 2000000;
     const double alpha = 8.0;
     const bool show_vecs = 1.0;
