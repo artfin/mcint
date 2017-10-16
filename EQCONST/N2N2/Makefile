@@ -6,47 +6,70 @@ CCXX = g++
 
 F = gfortran
 
-CXXFLAGS = -std=c++11 -lgfortran -lm -Wall 
+CXXFLAGS = -std=c++11 -lm -Wall 
+LINK_GFORTRAN = -lgfortran
 
 INCLUDE_HEP = -I/home/artfin/Downloads/hep-mc-0.5/include -I/n/home11/artfin/hep-mc-0.5/include
 INCLUDE_EIGEN = -I/usr/local/include/eigen3
 
+SRC_PATH = ./src/
+
+##########################################################################
+
+HAM_SRC_PATH = ../../HAM/src/
+HAM_OBJ_PATH = ../../HAM/obj/
+HAM_INCLUDE_PATH = -I../../HAM/include/
+
+$(HAM_OBJ_PATH)n2n2_hamiltonian.o: $(HAM_SRC_PATH)n2n2_hamiltonian.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+
+$(HAM_OBJ_PATH)n2n2_hamiltonian_0_25.o: $(HAM_SRC_PATH)n2n2_hamiltonian_0_25.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+
+$(HAM_OBJ_PATH)n2n2_hamiltonian_0_5.o: $(HAM_SRC_PATH)n2n2_hamiltonian_0_5.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+
+$(HAM_OBJ_PATH)n2n2_hamiltonian_2_0.o: $(HAM_SRC_PATH)n2n2_hamiltonian_2_0.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+
+$(HAM_OBJ_PATH)n2n2_hamiltonian_4_0.o: $(HAM_SRC_PATH)n2n2_hamiltonian_4_0.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+
+##########################################################################
+
+
+##########################################################################
+
 POT_SRC_PATH = ../../POT/src/
 POT_OBJ_PATH = ../../POT/obj/
 
-objects = pa2n2i.o
-OBJ = $(patsubst %,$(POT_OBJ_PATH)%,$(objects))
+$(POT_OBJ_PATH)pa2n2i.o: $(POT_SRC_PATH)pa2n2i.f
+	@$(F) -c $^ -o $@
 
-$(POT_OBJ_PATH)%.o: $(POT_SRC_PATH)%.f 
-	@echo [F] $< -- new
-	@$(F) -c $< -o $@
+##########################################################################
 
-$(TEST): $(TEST).cc
-	@echo [INFO] Building test executable
-	@$(CCXX) $(CXXFLAGS) $(TEST).cc -o $@
+full_parallel: $(SRC_PATH)full_parallel.cpp $(HAM_OBJ_PATH)n2n2_hamiltonian.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 
-# Building target binary
-simple: $(OBJ) 
-	@echo [INFO] Creating Binary Executable
-	@$(CCXX) $(CXXFLAGS) $(TARGET).cc -o $@ $^
+##########################################################################
 
-hamiltonian.o: hamiltonian.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^-o $@
 
-hamiltonian_wcoriolis.o: hamiltonian_wcoriolis.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@
+##########################################################################
+# different lengths of N2 length
 
-# Building full equilibrium binary
-full: $(OBJ) hamiltonian.o
-	@echo [INFO] Building Full Equilibrium Binary
-	$(CCXX) $(CXXFLAGS) $(FULL_TARGET).cc $^ -o $@
+full_0_25: $(SRC_PATH)diff_lengths/full_parallel_0_25.cpp $(HAM_OBJ_PATH)n2n2_hamiltonian_0_25.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 
-potential_test: $(OBJ) potential_test.cpp
-	$(CCXX) $(CXXFLAGS) $^ -o $@
+full_0_5: $(SRC_PATH)diff_lengths/full_parallel_0_5.cpp $(HAM_OBJ_PATH)n2n2_hamiltonian_0_5.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 
-full_p: $(OBJ) hamiltonian.o full_p.cpp
-	$(MPICCXX) $(CXXFLAGS) $(INCLUDE_HEP) $^ -o $@
+full_2_0: $(SRC_PATH)diff_lengths/full_parallel_2_0.cpp $(HAM_OBJ_PATH)n2n2_hamiltonian_2_0.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 
-full_pw: $(OBJ) hamiltonian_wcoriolis.o full_pw.cpp
-	$(MPICCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_HEP) $^ -o $@
+full_4_0: $(SRC_PATH)diff_lengths/full_parallel_4_0.cpp $(HAM_OBJ_PATH)n2n2_hamiltonian_4_0.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
+
+##########################################################################
+
+
 

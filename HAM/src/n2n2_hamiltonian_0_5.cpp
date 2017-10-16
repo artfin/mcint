@@ -11,8 +11,7 @@ const double amu = 9.1093835 * pow(10, -31); // amu to  kg
 const double mu1 = 7.0035 * dalton / amu; // amu
 const double mu2 = mu1; // amu
 const double mu3 = 14.007 * dalton / amu; // amu
-
-const double l1 = 2.0744; // bohrs
+const double l1 = 1.0372; // bohrs
 const double l2 = l1; // bohrs
 
 const double l1_sq = l1 * l1;

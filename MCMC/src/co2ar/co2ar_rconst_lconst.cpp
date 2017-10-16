@@ -4,7 +4,7 @@
 #include <chrono>
 #include <fstream>
 
-#include <iomanip> // std::atoi
+#include <iomanip> 
 #include <algorithm> // std::min
 #include <gsl/gsl_histogram.h>
 
@@ -34,8 +34,8 @@ const int NBINS = 500;
 const int DIM = 6;
 
 // boundaries for L2
-const double LBOUND = 899.5;
-const double UBOUND = 900.5;
+const double LBOUND = 199.5;
+const double UBOUND = 200.5;
 
 // temperature in K
 const double temperature = 300;
