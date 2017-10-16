@@ -134,7 +134,7 @@ int main( int argc, char* argv[] )
 	size_t wrote_vectors = 0;
 
 	int block_counter = 0;
-	int block_size = 100000;
+	int block_size = 1000000;
 	
 	chrono::milliseconds time_for_block;
 	chrono::milliseconds time_for_blocks;
