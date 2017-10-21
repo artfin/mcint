@@ -70,7 +70,17 @@ $(POT_OBJ)co2ar_potential_julia.o: $(POT_SRC)co2ar_potential_julia.cpp
 #   	( angular momentum in Cartesian coordinates )
 #   hamiltonian consists only of kinetic energy ( NO POTENTIAL PART )
 #
+# co2ar_rconst_lconst_mpi -- R = const, L = const ( rotational moment of CO2)
+# 	full-dimensional phase space MCMC with MPI
+# 	output: R, theta, pR, pTheta, Jx, Jy, Jz distributions
+# 		(angular momentum in Cartesian coordinates)
+# 	hamiltonain consists only of kinetic energy ( NO POTENTIAL PART )
 #
+# co2ar_rconst_b -- R = const with selection of b \in [0, 0.8 * R]
+# 	full-dimensional phase space MCMC
+# 	output: R, theta, pR, pTheta, alpha, beta, J distributions
+# 		(angular momentum in spherical coordinates)
+# 	hamiltonian consts only of kinetic energy ( NO POTENTIAL PART )
 
 CO2AR_SRC_PATH = src/co2ar/
 CO2AR_BIN_PATH = bin/co2ar/
@@ -80,6 +90,9 @@ co2ar_rconst_lconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst
 
 co2ar_rconst_lconst_mpi: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_lconst_mpi.cpp
 	$(MPICCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
+
+co2ar_rconst_b: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_b.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 

@@ -45,4 +45,6 @@ plt.plot( temp_log, const_050_log )
 plt.plot( temp_log, const_2_log )
 plt.plot( temp_log, const_4_log )
 
+plt.grid( linestyle = ':', alpha = 0.7 )
+
 plt.show()

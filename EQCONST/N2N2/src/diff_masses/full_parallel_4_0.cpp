@@ -40,9 +40,11 @@ const long double DA = 1.660539040 * pow(10, -27);
 const double BOHRTOM = 0.529177 * pow( 10, -10 );
 const double N2_LENGTH = 2.0744 * BOHRTOM;
 
+const double MASS_COEFF = 4.0;
+
 // particles molar masses, g/mol
-const double N2_MOLARMASS = 28.0;
-const double COMPLEX_MOLARMASS = 56.0;
+const double N2_MOLARMASS = 28.0 * MASS_COEFF;
+const double COMPLEX_MOLARMASS = 56.0 * MASS_COEFF;
 
 double integrand_( hep::mc_point<double> const& x, double Temperature )
 {
