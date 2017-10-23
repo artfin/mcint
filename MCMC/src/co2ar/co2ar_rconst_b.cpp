@@ -26,10 +26,10 @@ const double BOLTZCONST = 1.38064e-23;
 const double HTOJ = 4.35974417e-18;
 
 // ! ---------------------------
-const double RDIST = 20.0;
+const double RDIST = 40.0;
 // -----------------------------
 
-const double BBOUND = 18.0;
+const double BBOUND = 20.0;
 
 const int DIM = 6;
 
@@ -119,7 +119,7 @@ double calc_gunsight( VectorXf x )
 
 int main( int argc, char* argv[] )
 {
-    if ( argc != 5 )
+    if ( argc != 4 )
     {
         cout << "Usage: ./ ... (int) vectors_to_write (int) burn-in-steps (double) alpha" << endl;
         exit( 1 );
