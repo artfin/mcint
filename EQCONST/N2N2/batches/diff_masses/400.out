@@ -82,8 +82,8 @@ all iterations: N=6000000 E=7.27782e+10 +- 1.51283e+08 (0.207869%) chi^2/dof=1.7
 >> Cumulative result: 
 >> N = 5700000; I = 7.27781e+10 +- 1.51283e+08
 >> chi^2/dof = 1.80816
-Time needed: 117.75s
-Temperature: 100; EQCONST: 0.0229059
+Time needed: 186.85s
+Temperature: 100; EQCONST: 0.00143162
 
 iteration 0 finished.
 this iteration: N=300000 E=1.33721e+11 +- 1.10296e+11 (82.4818%)
@@ -168,8 +168,8 @@ all iterations: N=6000000 E=7.05681e+10 +- 1.49407e+08 (0.21172%) chi^2/dof=1.82
 >> Cumulative result: 
 >> N = 5700000; I = 7.0568e+10 +- 1.49407e+08
 >> chi^2/dof = 1.90644
-Time needed: 117.94s
-Temperature: 110; EQCONST: 0.0144639
+Time needed: 187.24s
+Temperature: 110; EQCONST: 0.000903997
 
 iteration 0 finished.
 this iteration: N=300000 E=1.32374e+11 +- 1.09748e+11 (82.9071%)
@@ -254,8 +254,8 @@ all iterations: N=6000000 E=6.90716e+10 +- 1.28421e+08 (0.185925%) chi^2/dof=1.9
 >> Cumulative result: 
 >> N = 5700000; I = 6.90715e+10 +- 1.28421e+08
 >> chi^2/dof = 1.99905
-Time needed: 118.4s
-Temperature: 120; EQCONST: 0.00957039
+Time needed: 187.93s
+Temperature: 120; EQCONST: 0.00059815
 
 iteration 0 finished.
 this iteration: N=300000 E=1.31267e+11 +- 1.09287e+11 (83.256%)
@@ -340,8 +340,8 @@ all iterations: N=6000000 E=6.7846e+10 +- 1.39732e+08 (0.205955%) chi^2/dof=2.09
 >> Cumulative result: 
 >> N = 5700000; I = 6.78459e+10 +- 1.39732e+08
 >> chi^2/dof = 2.1966
-Time needed: 118.06s
-Temperature: 130; EQCONST: 0.0065573
+Time needed: 186.65s
+Temperature: 130; EQCONST: 0.000409831
 
 iteration 0 finished.
 this iteration: N=300000 E=1.3034e+11 +- 1.08895e+11 (83.5473%)
@@ -426,8 +426,8 @@ all iterations: N=6000000 E=6.64762e+10 +- 1.23505e+08 (0.185788%) chi^2/dof=1.8
 >> Cumulative result: 
 >> N = 5700000; I = 6.64761e+10 +- 1.23505e+08
 >> chi^2/dof = 1.9702
-Time needed: 119.04s
-Temperature: 140; EQCONST: 0.00460294
+Time needed: 188.23s
+Temperature: 140; EQCONST: 0.000287684
 
 iteration 0 finished.
 this iteration: N=300000 E=1.29552e+11 +- 1.08557e+11 (83.7939%)
@@ -512,8 +512,8 @@ all iterations: N=6000000 E=6.55883e+10 +- 1.17535e+08 (0.179201%) chi^2/dof=2.8
 >> Cumulative result: 
 >> N = 5700000; I = 6.55882e+10 +- 1.17535e+08
 >> chi^2/dof = 2.99203
-Time needed: 118.32s
-Temperature: 150; EQCONST: 0.00332937
+Time needed: 188.39s
+Temperature: 150; EQCONST: 0.000208085
 
 iteration 0 finished.
 this iteration: N=300000 E=1.28875e+11 +- 1.08262e+11 (84.0055%)
@@ -598,8 +598,8 @@ all iterations: N=6000000 E=6.46494e+10 +- 1.33386e+08 (0.206322%) chi^2/dof=2.4
 >> Cumulative result: 
 >> N = 5700000; I = 6.46493e+10 +- 1.33386e+08
 >> chi^2/dof = 2.51654
-Time needed: 117.42s
-Temperature: 160; EQCONST: 0.00245454
+Time needed: 187.27s
+Temperature: 160; EQCONST: 0.000153409
 
 iteration 0 finished.
 this iteration: N=300000 E=1.28287e+11 +- 1.08003e+11 (84.1889%)
@@ -684,8 +684,8 @@ all iterations: N=6000000 E=6.408e+10 +- 1.41732e+08 (0.22118%) chi^2/dof=2.1506
 >> Cumulative result: 
 >> N = 5700000; I = 6.40799e+10 +- 1.41732e+08
 >> chi^2/dof = 2.25045
-Time needed: 117.5s
-Temperature: 170; EQCONST: 0.00185203
+Time needed: 187.3s
+Temperature: 170; EQCONST: 0.000115752
 
 iteration 0 finished.
 this iteration: N=300000 E=1.2777e+11 +- 1.07774e+11 (84.3494%)
@@ -770,8 +770,8 @@ all iterations: N=6000000 E=6.34954e+10 +- 1.22136e+08 (0.192355%) chi^2/dof=1.9
 >> Cumulative result: 
 >> N = 5700000; I = 6.34953e+10 +- 1.22136e+08
 >> chi^2/dof = 2.07211
-Time needed: 118.1s
-Temperature: 180; EQCONST: 0.00141893
+Time needed: 188.22s
+Temperature: 180; EQCONST: 8.86832e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.27314e+11 +- 1.07569e+11 (84.491%)
@@ -856,8 +856,8 @@ all iterations: N=6000000 E=6.29268e+10 +- 1.17858e+08 (0.187294%) chi^2/dof=1.6
 >> Cumulative result: 
 >> N = 5700000; I = 6.29268e+10 +- 1.17858e+08
 >> chi^2/dof = 1.75276
-Time needed: 118.21s
-Temperature: 190; EQCONST: 0.00110253
+Time needed: 188.39s
+Temperature: 190; EQCONST: 6.89081e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.26907e+11 +- 1.07385e+11 (84.6168%)
@@ -942,8 +942,8 @@ all iterations: N=6000000 E=6.23282e+10 +- 1.3602e+08 (0.218232%) chi^2/dof=1.92
 >> Cumulative result: 
 >> N = 5700000; I = 6.23281e+10 +- 1.3602e+08
 >> chi^2/dof = 2.00884
-Time needed: 117.17s
-Temperature: 200; EQCONST: 0.000866952
+Time needed: 186.8s
+Temperature: 200; EQCONST: 5.41845e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.26543e+11 +- 1.07219e+11 (84.7293%)
@@ -1028,8 +1028,8 @@ all iterations: N=6000000 E=6.19918e+10 +- 1.26623e+08 (0.204257%) chi^2/dof=1.8
 >> Cumulative result: 
 >> N = 5700000; I = 6.19917e+10 +- 1.26623e+08
 >> chi^2/dof = 1.93575
-Time needed: 117.8s
-Temperature: 210; EQCONST: 0.000692298
+Time needed: 187.7s
+Temperature: 210; EQCONST: 4.32686e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.26214e+11 +- 1.07068e+11 (84.8306%)
@@ -1114,8 +1114,8 @@ all iterations: N=6000000 E=6.14307e+10 +- 1.18014e+08 (0.192109%) chi^2/dof=1.6
 >> Cumulative result: 
 >> N = 5700000; I = 6.14307e+10 +- 1.18014e+08
 >> chi^2/dof = 1.72644
-Time needed: 118.03s
-Temperature: 220; EQCONST: 0.000556454
+Time needed: 188.14s
+Temperature: 220; EQCONST: 3.47784e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.25916e+11 +- 1.06931e+11 (84.9222%)
@@ -1200,8 +1200,8 @@ all iterations: N=6000000 E=6.12552e+10 +- 1.18518e+08 (0.193483%) chi^2/dof=1.8
 >> Cumulative result: 
 >> N = 5700000; I = 6.12551e+10 +- 1.18518e+08
 >> chi^2/dof = 1.88031
-Time needed: 117.89s
-Temperature: 230; EQCONST: 0.000454269
+Time needed: 187.9s
+Temperature: 230; EQCONST: 2.83918e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.25645e+11 +- 1.06805e+11 (85.0054%)
@@ -1286,8 +1286,8 @@ all iterations: N=6000000 E=6.05582e+10 +- 1.49213e+08 (0.246396%) chi^2/dof=2.1
 >> Cumulative result: 
 >> N = 5700000; I = 6.05581e+10 +- 1.49213e+08
 >> chi^2/dof = 2.19638
-Time needed: 117.41s
-Temperature: 240; EQCONST: 0.000370824
+Time needed: 187.39s
+Temperature: 240; EQCONST: 2.31765e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.25397e+11 +- 1.0669e+11 (85.0813%)
@@ -1372,8 +1372,8 @@ all iterations: N=6000000 E=6.0398e+10 +- 1.69198e+08 (0.280139%) chi^2/dof=1.27
 >> Cumulative result: 
 >> N = 5700000; I = 6.03978e+10 +- 1.69198e+08
 >> chi^2/dof = 1.32738
-Time needed: 116.88s
-Temperature: 250; EQCONST: 0.000307778
+Time needed: 186.45s
+Temperature: 250; EQCONST: 1.92361e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.2517e+11 +- 1.06583e+11 (85.1509%)
@@ -1458,8 +1458,8 @@ all iterations: N=6000000 E=5.99482e+10 +- 1.69492e+08 (0.28273%) chi^2/dof=1.85
 >> Cumulative result: 
 >> N = 5700000; I = 5.9948e+10 +- 1.69492e+08
 >> chi^2/dof = 1.93844
-Time needed: 117.07s
-Temperature: 260; EQCONST: 0.00025606
+Time needed: 186.65s
+Temperature: 260; EQCONST: 1.60037e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.2496e+11 +- 1.06485e+11 (85.215%)
@@ -1544,8 +1544,8 @@ all iterations: N=6000000 E=6.02739e+10 +- 1.77798e+08 (0.294983%) chi^2/dof=1.3
 >> Cumulative result: 
 >> N = 5700000; I = 6.02737e+10 +- 1.77798e+08
 >> chi^2/dof = 1.43582
-Time needed: 116.45s
-Temperature: 270; EQCONST: 0.000217239
+Time needed: 185.61s
+Temperature: 270; EQCONST: 1.35774e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.24767e+11 +- 1.06394e+11 (85.274%)
@@ -1630,8 +1630,8 @@ all iterations: N=6000000 E=5.98386e+10 +- 1.30921e+08 (0.21879%) chi^2/dof=1.57
 >> Cumulative result: 
 >> N = 5700000; I = 5.98385e+10 +- 1.30921e+08
 >> chi^2/dof = 1.63902
-Time needed: 118.15s
-Temperature: 280; EQCONST: 0.000183111
+Time needed: 188.24s
+Temperature: 280; EQCONST: 1.14445e-05
 
 iteration 0 finished.
 this iteration: N=300000 E=1.24587e+11 +- 1.06309e+11 (85.3287%)
@@ -1716,8 +1716,8 @@ all iterations: N=6000000 E=5.97465e+10 +- 1.28898e+08 (0.215741%) chi^2/dof=1.4
 >> Cumulative result: 
 >> N = 5700000; I = 5.97464e+10 +- 1.28898e+08
 >> chi^2/dof = 1.53197
-Time needed: 117.84s
-Temperature: 290; EQCONST: 0.000156123
+Time needed: 187.79s
+Temperature: 290; EQCONST: 9.75769e-06
 
 iteration 0 finished.
 this iteration: N=300000 E=1.24421e+11 +- 1.0623e+11 (85.3794%)
@@ -1802,8 +1802,8 @@ all iterations: N=6000000 E=5.92785e+10 +- 1.5275e+08 (0.257681%) chi^2/dof=2.13
 >> Cumulative result: 
 >> N = 5700000; I = 5.92784e+10 +- 1.5275e+08
 >> chi^2/dof = 2.22799
-Time needed: 117.08s
-Temperature: 300; EQCONST: 0.000132983
+Time needed: 186.79s
+Temperature: 300; EQCONST: 8.31145e-06
 
 iteration 0 finished.
 this iteration: N=300000 E=1.24265e+11 +- 1.06156e+11 (85.4267%)
@@ -1888,8 +1888,8 @@ all iterations: N=6000000 E=5.92796e+10 +- 1.35244e+08 (0.228147%) chi^2/dof=1.5
 >> Cumulative result: 
 >> N = 5700000; I = 5.92795e+10 +- 1.35245e+08
 >> chi^2/dof = 1.65401
-Time needed: 117.42s
-Temperature: 310; EQCONST: 0.000114742
+Time needed: 187.25s
+Temperature: 310; EQCONST: 7.17139e-06
 
 iteration 0 finished.
 this iteration: N=300000 E=1.2412e+11 +- 1.06086e+11 (85.4707%)
@@ -1974,8 +1974,8 @@ all iterations: N=6000000 E=5.86917e+10 +- 1.30323e+08 (0.222046%) chi^2/dof=2.2
 >> Cumulative result: 
 >> N = 5700000; I = 5.86916e+10 +- 1.30323e+08
 >> chi^2/dof = 2.37953
-Time needed: 117.52s
-Temperature: 320; EQCONST: 9.84798e-05
+Time needed: 187.43s
+Temperature: 320; EQCONST: 6.15499e-06
 
 iteration 0 finished.
 this iteration: N=300000 E=1.23984e+11 +- 1.06021e+11 (85.5119%)
@@ -2060,8 +2060,8 @@ all iterations: N=6000000 E=5.90019e+10 +- 1.32601e+08 (0.224741%) chi^2/dof=1.3
 >> Cumulative result: 
 >> N = 5700000; I = 5.90018e+10 +- 1.32601e+08
 >> chi^2/dof = 1.43647
-Time needed: 117.54s
-Temperature: 330; EQCONST: 8.61983e-05
+Time needed: 187.53s
+Temperature: 330; EQCONST: 5.38739e-06
 
 iteration 0 finished.
 this iteration: N=300000 E=1.23857e+11 +- 1.0596e+11 (85.5505%)
@@ -2146,8 +2146,8 @@ all iterations: N=6000000 E=5.89376e+10 +- 1.21482e+08 (0.20612%) chi^2/dof=1.43
 >> Cumulative result: 
 >> N = 5700000; I = 5.89375e+10 +- 1.21482e+08
 >> chi^2/dof = 1.49596
-Time needed: 117.65s
-Temperature: 340; EQCONST: 7.52805e-05
+Time needed: 187.82s
+Temperature: 340; EQCONST: 4.70503e-06
 
 iteration 0 finished.
 this iteration: N=300000 E=1.23737e+11 +- 1.05903e+11 (85.5868%)
@@ -2232,7 +2232,7 @@ all iterations: N=6000000 E=5.87631e+10 +- 1.14891e+08 (0.195516%) chi^2/dof=1.6
 >> Cumulative result: 
 >> N = 5700000; I = 5.8763e+10 +- 1.14891e+08
 >> chi^2/dof = 1.71917
-Time needed: 117.85s
-Temperature: 350; EQCONST: 6.58785e-05
+Time needed: 187.87s
+Temperature: 350; EQCONST: 4.11741e-06
 
-Total time elapsed: 3060.49s
+Total time elapsed: 4873.83s

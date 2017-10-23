@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH -J 400 
-#SBATCH -o 400.out
-#SBATCH -e 400.err
-#SBATCH -n 10         # number of cores
+#SBATCH -J 025
+#SBATCH -o 025.out
+#SBATCH -e 025.err
+#SBATCH -n 10       # number of cores
 #SBATCH -p general    # partition to submit to
 #SBATCH --contiguous  # ensure that all of the cores are on the same network
-#SBATCH -t 0-01:30   # runtime in DD-HH:MM
+#SBATCH -t 0-02:00   # runtime in DD-HH:MM
 #SBATCH --mem-per-cpu=4000  # memory per cpu in MB
 
-srun -n $SLURM_NTASKS --mpi=pmi2 ./full_m_4_0
+srun -n $SLURM_NTASKS --mpi=pmi2 ./full_0_25

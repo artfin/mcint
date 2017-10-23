@@ -142,7 +142,7 @@ int main( int argc, char* argv[] )
 	clock_t cycle_clock;
 
 	ofstream file;
-	file.open( "full_1_0.txt" );
+	file.open( "full_0_25.txt" );
 
 	hep::mpi_vegas_callback<double>( hep::mpi_vegas_verbose_callback<double> );
 

@@ -44,6 +44,7 @@ const double MASS_COEFF = 4.0;
 
 // particles molar masses, g/mol
 const double N2_MOLARMASS = 28.0 * MASS_COEFF;
+const double N_MOLARMASS = 0.5 * N2_MOLARMASS; 
 const double COMPLEX_MOLARMASS = 56.0 * MASS_COEFF;
 
 double integrand_( hep::mc_point<double> const& x, double Temperature )
@@ -173,7 +174,7 @@ int main( int argc, char* argv[] )
 		double Qtr_N2 = calculate_qtr(N2_MOLARMASS, TEMP );
 
 		// seems to be right
-		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7 * DA * pow(N2_LENGTH, 2);
+		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 0.5 * N_MOLARMASS * DA * pow(N2_LENGTH, 2);
 		double Q_N2 = Qtr_N2 * Qrot_N2;
    		
 
