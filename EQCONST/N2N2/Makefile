@@ -39,6 +39,9 @@ $(HAM_OBJ_PATH_DIFF_LENGTHS)n2n2_hamiltonian_2_0.o: $(HAM_SRC_PATH_DIFF_LENGTHS)
 
 $(HAM_OBJ_PATH_DIFF_LENGTHS)n2n2_hamiltonian_4_0.o: $(HAM_SRC_PATH_DIFF_LENGTHS)n2n2_hamiltonian_4_0.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+
+$(HAM_OBJ_PATH_DIFF_LENGTHS)n2n2_hamiltonian_1000_0.o:$(HAM_SRC_PATH_DIFF_LENGTHS)n2n2_hamiltonian_1000_0.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@
 ##########################################################################
 
 ##########################################################################
@@ -49,6 +52,9 @@ $(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_0_25.o: $(HAM_SRC_PATH_DIFF_MASSES)n
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@
 
 $(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_4_0.o: $(HAM_SRC_PATH_DIFF_MASSES)n2n2_hamiltonian_4_0.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@
+
+$(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_100_0.o: $(HAM_SRC_PATH_DIFF_MASSES)n2n2_hamiltonian_100_0.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@
 
 $(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_10000_0.o: $(HAM_SRC_PATH_DIFF_MASSES)n2n2_hamiltonian_10000_0.cpp
@@ -83,6 +89,9 @@ full_l_2_0: $(SRC_PATH_DIFF_LENGTHS)full_parallel_2_0.cpp $(HAM_OBJ_PATH_DIFF_LE
 
 full_l_4_0: $(SRC_PATH_DIFF_LENGTHS)full_parallel_4_0.cpp $(HAM_OBJ_PATH_DIFF_LENGTHS)n2n2_hamiltonian_4_0.o $(POT_OBJ_PATH)pa2n2i.o
 	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
+
+full_l_1000_0: $(SRC_PATH_DIFF_LENGTHS)full_parallel_1000_0.cpp $(HAM_OBJ_PATH_DIFF_LENGTHS)n2n2_hamiltonian_1000_0.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 ##########################################################################
 
 ##########################################################################
@@ -93,6 +102,9 @@ full_m_0_25: $(SRC_PATH_DIFF_MASSES)full_parallel_0_25.cpp $(HAM_OBJ_PATH_DIFF_M
 	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 
 full_m_4_0: $(SRC_PATH_DIFF_MASSES)full_parallel_4_0.cpp $(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_4_0.o $(POT_OBJ_PATH)pa2n2i.o
+	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
+
+full_m_100_0: $(SRC_PATH_DIFF_MASSES)full_parallel_100_0.cpp $(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_100_0.o $(POT_OBJ_PATH)pa2n2i.o
 	$(MPICCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(HAM_INCLUDE_PATH) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@
 
 full_m_10000_0: $(SRC_PATH_DIFF_MASSES)full_parallel_10000_0.cpp $(HAM_OBJ_PATH_DIFF_MASSES)n2n2_hamiltonian_10000_0.o $(POT_OBJ_PATH)pa2n2i.o

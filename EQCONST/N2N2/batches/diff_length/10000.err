@@ -1,0 +1,15 @@
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+srun: error: holy2a03301: task 0: Exited with exit code 2
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+srun: error: holy2a03305: task 4: Exited with exit code 2
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+slurmstepd: error: execve(): /n/home11/artfin/mcint/EQCONST/N2N2/batches/diff_length/./full_10000_0: No such file or directory
+srun: error: holy2a03303: tasks 2,6,8: Exited with exit code 2
+srun: error: holy2a03302: tasks 1,5: Exited with exit code 2
+srun: error: holy2a03304: tasks 3,7,9: Exited with exit code 2

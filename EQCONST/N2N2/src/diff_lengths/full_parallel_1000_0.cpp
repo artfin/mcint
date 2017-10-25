@@ -37,15 +37,13 @@ const long double PLANKCONST2 = pow(PLANKCONST, 2);
 // dalton to kg
 const long double DA = 1.660539040 * pow(10, -27);
 
+const int COEFF = 1000.0;
 const double BOHRTOM = 0.529177 * pow( 10, -10 );
-const double N2_LENGTH = 2.0744 * BOHRTOM;
-
-const double MASS_COEFF = 10000.0;
+const double N2_LENGTH = 2.073975 * BOHRTOM * COEFF;
 
 // particles molar masses, g/mol
-const double N2_MOLARMASS = 28.0 * MASS_COEFF;
-const double N_MOLARMASS = 0.5 * N2_MOLARMASS; 
-const double COMPLEX_MOLARMASS = 56.0 * MASS_COEFF;
+const double N2_MOLARMASS = 28.0;
+const double COMPLEX_MOLARMASS = 56.0;
 
 double integrand_( hep::mc_point<double> const& x, double Temperature )
 {
@@ -142,7 +140,7 @@ int main( int argc, char* argv[] )
 	clock_t cycle_clock;
 
 	ofstream file;
-	file.open( "full_10000_0.txt" );
+	file.open( "full_1000_0.txt" );
 
 	hep::mpi_vegas_callback<double>( hep::mpi_vegas_verbose_callback<double> );
 
@@ -174,7 +172,7 @@ int main( int argc, char* argv[] )
 		double Qtr_N2 = calculate_qtr(N2_MOLARMASS, TEMP );
 
 		// seems to be right
-		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 0.5 * N_MOLARMASS * DA * pow(N2_LENGTH, 2);
+		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7 * DA * pow(N2_LENGTH, 2);
 		double Q_N2 = Qtr_N2 * Qrot_N2;
    		
 

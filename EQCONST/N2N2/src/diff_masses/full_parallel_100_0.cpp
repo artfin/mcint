@@ -40,7 +40,7 @@ const long double DA = 1.660539040 * pow(10, -27);
 const double BOHRTOM = 0.529177 * pow( 10, -10 );
 const double N2_LENGTH = 2.0744 * BOHRTOM;
 
-const double MASS_COEFF = 10000.0;
+const double MASS_COEFF = 100.0;
 
 // particles molar masses, g/mol
 const double N2_MOLARMASS = 28.0 * MASS_COEFF;
@@ -142,7 +142,7 @@ int main( int argc, char* argv[] )
 	clock_t cycle_clock;
 
 	ofstream file;
-	file.open( "full_10000_0.txt" );
+	file.open( "full_100_0.txt" );
 
 	hep::mpi_vegas_callback<double>( hep::mpi_vegas_verbose_callback<double> );
 
