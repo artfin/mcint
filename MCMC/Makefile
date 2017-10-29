@@ -131,7 +131,6 @@ DIATOMICS_BIN_PATH = bin/diatomics/
 #
 # diatomics_rconst -- R = const, full-dimensional MCMC for two atom
 # 	version of CO2-Ar (two particles with masses of co2 and ar)
-# 	Metropolis-Hastings algorithm outputs points WITH repetition
 #
 
 diatomics_rconst: $(DIATOMICS_SRC_PATH)diatomics_rconst_rep.cpp
@@ -140,6 +139,10 @@ diatomics_rconst: $(DIATOMICS_SRC_PATH)diatomics_rconst_rep.cpp
 diatomics_rconst_exact: $(DIATOMICS_SRC_PATH)diatomics_rconst_exact.cpp
 	$(CCXX) $(CXXFLAGS) $^ -o $(DIATOMICS_BIN_PATH)$@
 
+# ar_he_icpertraj -- R = const, full-dimensional MCMC for Ar-He system
+#  
+ar_he_icpertraj: $(DIATOMICS_SRC_PATH)ar_he_icpertraj.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $^ -o $(DIATOMICS_BIN_PATH)$@
 ##################################################################
 
 ##################################################################

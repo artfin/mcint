@@ -107,7 +107,7 @@ int main( int argc, char* argv[] )
 
 	VectorXf xnew;
 
-    cout << "# Metropolis-Hasitngs sample for CO2-Ar" << endl;
+    cout << "# Metropolis-Hastings sample for CO2-Ar" << endl;
     cout << "# nsteps = " << nsteps << endl;
     cout << "# burnin = " << burnin << endl;
     cout << "# alpha = " << alpha << endl;
