@@ -21,7 +21,7 @@ HAM_OBJ_PATH = ../../HAM/obj/
 HAM_INCLUDE_PATH = -I../../HAM/include/
 
 $(HAM_OBJ_PATH)n2n2_hamiltonian.o: $(HAM_SRC_PATH)n2n2_hamiltonian.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ 
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) -c $^ -o $@ $(HAM_INCLUDE_PATH) 
 ##########################################################################
 
 ##########################################################################
@@ -112,5 +112,9 @@ full_m_10000_0: $(SRC_PATH_DIFF_MASSES)full_parallel_10000_0.cpp $(HAM_OBJ_PATH_
 
 ##########################################################################
 
+simple: $(SRC_PATH)simple.cpp $(POT_OBJ_PATH)pa2n2i.o
+	$(CCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(INCLUDE_HEP) $^ -o $@
 
+full: $(SRC_PATH)full.cpp $(HAM_OBJ_PATH)n2n2_hamiltonian.o $(POT_OBJ_PATH)pa2n2i.o
+	$(CCXX) $(CXXFLAGS) $(LINK_GFORTRAN) $(INCLUDE_HEP) $(INCLUDE_EIGEN) $^ -o $@ $(HAM_INCLUDE_PATH)
 

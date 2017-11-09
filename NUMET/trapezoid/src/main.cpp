@@ -5,6 +5,8 @@
 #include <cmath>
 
 #include "ar_he_pes.h"
+#include "ar_he_dip.h"
+#include "ar_he_dip_der.h"
 
 // Warn about use of deprecated functions
 #define GNUPLOT_DEPRECATE_WARN
@@ -83,8 +85,12 @@ class MakeTrajectory
 		double rmax = 40.0;
 		double rmin;
 		
-		double trapezoid( const double &lowBound, const double &upBound, const int &nIntervals );
+		double Rtrapezoid( const double &lowBound, const double &upBound, const int &nIntervals );
+		double Phi_trapezoid( const double &lowBound, const double &upBound, const int &nIntervals );
 		double Rintegrand( const double &r );
+		double Phi_integrand( const double &r );
+
+		double wrapMax( double x, double max );
 
 		double bisection_function( const double &r );
 		double find_rmin( double a, double b, double eps, int maxSteps );
@@ -93,8 +99,16 @@ class MakeTrajectory
 		MakeTrajectory( double energy, double j );
 
 		void integrate( std::vector<double> &t,
-						std::vector<double> &r );
+					    std::vector<double> &r,
+					 	std::vector<double> &phi );
+
+		void dipole_transition( std::vector<double> &t, 
+								std::vector<double> &r, 
+								std::vector<double> &phi,
+								std::vector<double> &ddipx,
+								std::vector<double> &ddipz );
 		
+		void show( std::string name, std::vector<double> v );
 };
 
 MakeTrajectory::MakeTrajectory( double energy, double j )
@@ -159,13 +173,25 @@ double MakeTrajectory::find_rmin( double a, double b, const double eps, const in
 	}
 }
 
+// wrap x -> [0, max)
+double MakeTrajectory::wrapMax( double x, double max )
+{
+	return fmod( max + fmod(x, max), max );
+}
+
 double MakeTrajectory::Rintegrand( const double &r )
 {
 	double expr = 2.0 / MU * (this->energy - ar_he_pot(r) ) - pow(this->j, 2)/ (pow(MU, 2) * pow(r, 2));
 	return 1.0 / sqrt( expr );
 }
 
-double MakeTrajectory::trapezoid( const double &lowBound, const double &upBound, const int &nIntervals )
+double MakeTrajectory::Phi_integrand( const double &r )
+{
+	double expr = 2.0 * MU * (this->energy - ar_he_pot(r)) - pow(this->j / r, 2);
+	return this->j / pow(r, 2) / sqrt( expr );
+}
+
+double MakeTrajectory::Rtrapezoid( const double &lowBound, const double &upBound, const int &nIntervals )
 {
 	double res = 0;
 	double step = ( upBound - lowBound ) / ( nIntervals - 1 );
@@ -184,21 +210,44 @@ double MakeTrajectory::trapezoid( const double &lowBound, const double &upBound,
 	return res;	
 }
 
+double MakeTrajectory::Phi_trapezoid( const double &lowBound, const double &upBound, const int &nIntervals )
+{
+	double res = 0;
+	double step = ( upBound - lowBound ) / ( nIntervals - 1 );
+
+	for ( double x = lowBound + step; x <= upBound - step; x += step )
+	{
+		res += 2 * Rintegrand( x );
+	}
+
+	res += Phi_integrand( lowBound );
+	res += Phi_integrand( upBound );
+
+	double coeff = ( upBound - lowBound ) / ( 2 * nIntervals );
+	res *= coeff;
+
+	return res;	
+}
+
 void MakeTrajectory::integrate( std::vector<double> &t,
-								std::vector<double> &r )
+								std::vector<double> &r, 
+								std::vector<double> &phi )
 {
 	int steps = 50;
 	double rstep = (this->rmax - this->rmin) / steps;
 	std::cout << "rstep: " << rstep << std::endl;
 
-	double eps = 1e-6;
+	double eps = 1e-5;
 	double ubound;
 	double res;
+	double res_phi;
+
 	double curr_t;
+	double curr_phi;
 
 	bool marker = false;
 
-	for ( double lbound = this->rmax - rstep; lbound >= this->rmin - rstep; lbound -= rstep )
+	for ( double lbound = this->rmax - rstep; lbound > this->rmin - rstep; lbound -= rstep )
 	{
 		ubound = lbound + rstep;
 
@@ -210,8 +259,9 @@ void MakeTrajectory::integrate( std::vector<double> &t,
 			marker = true;
 		}
 		
-		res = trapezoid( lbound, ubound, nIntervals );
-		
+		res = Rtrapezoid( lbound, ubound, nIntervals );
+		//res_phi = Phi_trapezoid( lbound, ubound, nIntervals ); 	
+
 		if ( marker == true )
 		{
 			lbound -= eps;
@@ -224,22 +274,46 @@ void MakeTrajectory::integrate( std::vector<double> &t,
 		else
 		{
 			curr_t = t.end()[-1] + res;
-			std::cout << "t: " << curr_t << "; r: " << lbound << std::endl;
+			//curr_phi = wrapMax( phi.end()[-1] + res_phi, 2 * M_PI );
+
+			std::cout << "t: " << curr_t << "; r: " << lbound << std::endl; 
+
 			t.push_back( curr_t );
+			//phi.push_back( curr_phi );
 		}
 
 		r.push_back( lbound );
 	}
 }
 
+void MakeTrajectory::show( std::string name, std::vector<double> v )
+{
+	std::cout << "#########################" << std::endl;
+	
+	for ( int i = 0; i < v.size(); i++ )
+	{
+			std::cout << name << "[" << i << "] = " << v[i] << std::endl;
+	}
+	
+	std::cout << "#########################" << std::endl;
+}
+
 int main()
 {
-	MakeTrajectory traj( 0.0003869542836545503, 22.2353 ); 
+	double R = 40.0;
+	double pR = -10.0;
+	double pTheta = 22.5; 
+		
+	double E = pow(pR, 2) / (2 * MU) + pow(pTheta, 2) / ( 2 * MU * pow(R, 2) );
+	std::cout << "E: " << E << std::endl;
+
+	MakeTrajectory traj( E, pTheta ); 
 	
 	std::vector<double> t;
 	std::vector<double> r;
-	
-	traj.integrate( t, r );
+	std::vector<double> phi;
+
+	traj.integrate( t, r, phi );
 
 	return 0;
 }

@@ -34,10 +34,10 @@ static mt19937 generator;
 
 // !--------------------------------
 // distance between two atoms in ALU
-const double RDIST = 40.0;
+const double RDIST = 50.0;
 // !--------------------------------
 
-const double BBOUND = 15.0;
+const double BBOUND = 1.0;
 
 static double nextDouble( const double &min = 0.0, const double &max = 1.0 )
 {
@@ -45,29 +45,32 @@ static double nextDouble( const double &min = 0.0, const double &max = 1.0 )
     return distribution( generator );
 }
 
-static void nextGaussianVec( Vector2d &v, Vector2d mean, const double sigma )
+static void nextGaussianVec( Vector3d &v, Vector3d mean, const double sigma )
 {
     normal_distribution<double> d0( mean(0), sigma );
     normal_distribution<double> d1( mean(1), sigma );
+    normal_distribution<double> d2( mean(2), sigma );
 
     v(0) = d0( generator );
     v(1) = d1( generator );
+    v(2) = d2( generator );
 }
 
-// x = [pR, J]
-double target( Vector2d x )
+// x = [pR, theta, pT]
+double target( Vector3d x )
 {
     double pR = x(0);
-    double j = x(1);
+	double theta = x(1);
+    double pT = x(2);
 
-	double h = pow(pR, 2) / ( 2 * MU ) + ( pow(j, 2) ) / (2 * MU * pow(RDIST, 2));
+	double h = pow(pR, 2) / ( 2 * MU ) + ( pow(pT, 2) ) / (2 * MU * pow(RDIST, 2));
 
     return exp( - h * HTOJ / ( BOLTZCONST * temperature ));
 }
 
-Vector2d metro_step( Vector2d x, double alpha )
+Vector3d metro_step( Vector3d x, double alpha )
 {
-    Vector2d prop;
+    Vector3d prop;
 
     // generate random vector
     nextGaussianVec( prop, x, alpha );
@@ -80,26 +83,19 @@ Vector2d metro_step( Vector2d x, double alpha )
     return x;
 }
 
-double gunsight( Vector2d x )
+double calculate_gunsight( Vector3d x )
 {
 	double pR = x(0);
-	double pR2 = pow(pR, 2);
-	
-	double J = x(1);
+	double theta = x(1);
+	double pT = x(2);
 
-	if ( pR > 0 )
-	{
-		return -1;
-	}
-	
-	double denumerator = pR2 + pow(J / RDIST, 2);
+	return pT / pR;
+}
 
-	double cos_phi2 = pR2 / denumerator;
-
-	double b = RDIST * sqrt( 1 - cos_phi2 );
-	//cout << "pR = " << pR << "; J = " << J << "; b = " << b << endl;
-
-	return b;
+// wrap x -> [0, max)
+double wrapMax( double x, double max )
+{
+	return fmod( max + fmod(x, max), max );
 }
 
 int main( int argc, char* argv[] )
@@ -124,8 +120,8 @@ int main( int argc, char* argv[] )
     cerr << ">> alpha: " << alpha << endl;
     cerr << ">> show_vecs: " << show_vecs << endl;
 
-    Vector2d x ( 10.0, 10.0 );
-    Vector2d xnew;
+    Vector3d x ( 1.0, 0.0, 1.0 );
+    Vector3d xnew;
 
     cout << "# Metropolis-Hastings sampler for diatomics" << endl;
     cout << "# moves-to-be-made = " << nsteps << endl;
@@ -159,14 +155,17 @@ int main( int argc, char* argv[] )
         {
             moves++;
         }
-       
-		// gunsight parameter
-		b = gunsight( xnew );
+      
+		xnew(1) = wrapMax( xnew(1), 2 * M_PI );
 
-		if ( show_vecs == true && xnew != x && moves % 10 == 0 &&
-		  	 b > 0 && b < BBOUND )
+		// gunsight parameter
+		b = calculate_gunsight( xnew );
+
+		// if pR < 0
+		if ( show_vecs == true && xnew != x && 
+		  	 xnew(0) < 0 && b > 0 && b < BBOUND )
         {
-            cout << wrote_vectors + 1 << " " << RDIST << " " << xnew(0) << " " << xnew(1) << endl;
+            cout << wrote_vectors + 1 << " " << RDIST << " " << xnew(0) << " " << xnew(1) << " " << xnew(2) << endl;
         
 			wrote_vectors++;
 		}
@@ -178,6 +177,7 @@ int main( int argc, char* argv[] )
 
     cerr << "-----------------------------------" << endl;
     cerr << "Attempted steps: " << attempted_moves << "; moves: " << moves << "; percent: " << (double) moves / attempted_moves * 100.0 << "%" << endl;
+	cerr << "Vectors wrote: " << wrote_vectors << "; percentage (to attempted moves): " << (double) wrote_vectors / attempted_moves * 100 << "%; percentage (to moves made): " << (double) wrote_vectors / moves * 100 << "%" << endl;
     cerr << "Time elapsed: " << chrono::duration_cast<chrono::milliseconds>( chrono::high_resolution_clock::now() - startTime).count() / 1000.0 << " s" << endl; 
     cerr << "-----------------------------------" << endl;
 

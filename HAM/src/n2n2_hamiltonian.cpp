@@ -1,9 +1,4 @@
-#include <iostream>
-#include <math.h>
-#include <Eigen/Dense>
-
-using namespace Eigen;
-using namespace std;
+#include "n2n2_hamiltonian.hpp"
 
 const double dalton = 1.660539040 * pow(10, -27); // dalton to kg
 const double amu = 9.1093835 * pow(10, -31); // amu to  kg 
@@ -92,8 +87,8 @@ void fill_A_matrix(Matrix<double, 3, 4> &A, double &q1, double &q2, double &q3, 
 
 double kinetic_energy(double q1, double q2, double q3, double q4, double p1, double p2, double p3, double p4, double Jx, double Jy, double Jz)
 {
-	Vector3d j_vector(Jx, Jy, Jz);
-	Vector4d p_vector(p1, p2, p3, p4);
+	Eigen::Vector3d j_vector(Jx, Jy, Jz);
+	Eigen::Vector4d p_vector(p1, p2, p3, p4);
 
 	Matrix<double, 3, 3> I;
 	Matrix<double, 4, 4> a;

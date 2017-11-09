@@ -20,7 +20,7 @@ HAM_SRC = ../HAM/src/
 HAM_OBJ = ../HAM/obj/
 
 $(HAM_OBJ)co2ar_hamiltonian.o: $(HAM_SRC)co2ar_hamiltonian.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) -c $^ -o $@
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) -c $^ -o $@ $(HAM_INCLUDE)
 ###################################################################
 
 ###################################################################
@@ -117,6 +117,9 @@ co2ar_bound_icpertraj: $(POT_OBJ)co2ar_potential_julia.o $(HAM_OBJ)co2ar_hamilto
 
 co2ar_rconst_lagrange_binning: $(CO2AR_SRC_PATH)co2ar_rconst_lagrange_binning.cpp 
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@
+
+co2ar_rconst_euler: $(CO2AR_SRC_PATH)co2ar_rconst_euler.cpp $(HAM_OBJ)co2ar_hamiltonian.o
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 ##################################################################
 

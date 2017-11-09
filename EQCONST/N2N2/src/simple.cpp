@@ -22,7 +22,7 @@ const double HTOJ = 4.35974417 * pow(10, -18);
 // boltzmann constant
 const long double BOLTZCONST = 1.38064852 * pow(10, -23);
 // avogadro number
-const double AVOGADRO  = 6.022 * pow(10, 23); 
+const double AVOGADRO  = 6.022140857 * pow(10, 23); 
 // atomic length unit
 const double ALU = 5.291772 * pow(10, -11);
 // pascals to atmospheres
@@ -31,6 +31,18 @@ const double PATOATM = 101325.0;
 const double M3TOCM3 = pow(10, 6);
 // universal gas consant
 const double UGASCONST = 8.314;
+
+const double N2_LENGTH_METERS = 1.0975 * pow(10, -10);
+const double N2_LENGTH = N2_LENGTH_METERS / ALU;
+
+// dalton to kg
+const long double DA = 1.660539040 * pow(10, -27);
+const long double AMU = 9.10938356 *pow(10, -31);
+
+const long double MN = 14.0 * DA / AMU;
+
+const long double MU1 = MN / 2.0;
+const long double MU3 = MN;
 
 struct stop_after_precision
 {
@@ -73,7 +85,8 @@ double integrand_(hep::mc_point<double> const& x, double Temperature)
 	double Theta2 = M_PI * Theta2_new;
 	double Phi = 2 * M_PI * Phi_new;
 
-	if ( R < 4.4 )
+	// ? maybe here?
+	if ( R < 4.0 )
 	{
 		return 0;
 	}
@@ -128,7 +141,7 @@ int main()
 	
 	// set the verbose vegas callback function
 	// hep::vegas_callback<double>(hep::vegas_verbose_callback<double>);
-	hep::vegas_callback<double>(stop_after_precision(0.001));
+	hep::vegas_callback<double>(stop_after_precision(0.01));
 	
 	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP ) 
 	{
@@ -140,31 +153,36 @@ int main()
 
 		auto results = hep::vegas(
 			hep::make_integrand<double>(integrand, 4),
-			std::vector<std::size_t>(20, 100000)
+			std::vector<std::size_t>(20, 50000)
 		);
 					
 		auto result = hep::cumulative_result0(results.begin() + 1, results.end());
 		double chi_square_dof = hep::chi_square_dof0(results.begin() + 1, results.end());
 
-		// cout << "Cumulative result (excluding the first iteration): \nN = " << result.calls() << " I = " << result.value() << " +- " << result.error() << " chi^2/dof = " << chi_square_dof << endl;
+		cout << "Cumulative result (excluding the first iteration): \nN = " << result.calls() << " I = " << result.value() << " +- " << result.error() << " chi^2/dof = " << chi_square_dof << endl;
 
-		double res = AVOGADRO / ( 4 * UGASCONST * TEMP ) * result.value() * pow(ALU, 3) * PATOATM;
+		// for testing
+		double coeff = pow(2 * M_PI * BOLTZCONST * TEMP / HTOJ, 3.5 ) * pow( MU1 * pow(N2_LENGTH,2), 2) * pow(MU3, 1.5);
 
-		constants.push_back( res );
+		cout << "RESULT: " << coeff * result.value() << endl;	
+
+		//double res = AVOGADRO / ( 4 * UGASCONST * TEMP ) * result.value() * pow(ALU, 3) * PATOATM;
+
+		//constants.push_back( res );
 					
-		cout << endl << "Temperature: " << TEMP << "; EQCONST: " << res << "; time elapsed (per cycle): " << (clock() - cycle_clock ) / (double) CLOCKS_PER_SEC << "s " << endl;
+		//cout << endl << "Temperature: " << TEMP << "; EQCONST: " << res << "; time elapsed (per cycle): " << (clock() - cycle_clock ) / (double) CLOCKS_PER_SEC << "s " << endl;
 	}
 
 	cout << "Time elapsed (full calculation): " << ( clock() - full_clock ) / (double) CLOCKS_PER_SEC << "s" << endl;
 
-	FILE* const_file = fopen("simple_constants.dat", "w");
+	//FILE* const_file = fopen("simple_constants.dat", "w");
 
-	for ( int counter = 0; counter < temperatures.size(); counter++ )
-	{
-		fprintf(const_file, "%.12lf %.12lf \n", temperatures[counter], constants[counter]);
-	}
+	//for ( int counter = 0; counter < temperatures.size(); counter++ )
+	//{
+		//fprintf(const_file, "%.12lf %.12lf \n", temperatures[counter], constants[counter]);
+	//}
 
-	fclose(const_file);
+	//fclose(const_file);
 
 	return 0;
 }

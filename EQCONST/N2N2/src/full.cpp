@@ -1,4 +1,4 @@
-#include "hamiltonian.h"
+#include "n2n2_hamiltonian.hpp"
 #include "hep/mc.hpp"
 
 #include <math.h>
@@ -163,9 +163,9 @@ int main()
 	clock_t cycle_clock;
 
 	ofstream file;
-	file.open( "full_constants.dat" );
+	//file.open( "full_constants.dat" );
 
-	hep::vegas_callback<double>(stop_after_precision(0.001));
+	hep::vegas_callback<double>(stop_after_precision(0.01));
 	
 	for ( double TEMP = LTEMP; TEMP <= HTEMP; TEMP += STEP )
 	{
@@ -187,22 +187,27 @@ int main()
 
 		cout << "Time needed: " << ( clock() - cycle_clock ) / (double)(CLOCKS_PER_SEC) << "s" << endl;
 
-		double Qtr_complex = calculate_qtr( COMPLEX_MOLARMASS, TEMP );
-		double Qtr_N2 = calculate_qtr( N2_MOLARMASS, TEMP );
+		double dim = pow(2 * M_PI, -7);
+		double res = result.value() * dim;
+
+		cout << "#####" << endl;
+		cout << "Result: " << res << " in a.u." << endl;
+
+		//double Qtr_complex = calculate_qtr( COMPLEX_MOLARMASS, TEMP );
+		//double Qtr_N2 = calculate_qtr( N2_MOLARMASS, TEMP );
 
 		// seems to be right
-		double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7.0 * DA * pow(N2_LENGTH, 2);
-		double Q_N2 = Qtr_N2 * Qrot_N2;
+		//double Qrot_N2 = 4 * pow(M_PI, 2) * BOLTZCONST * TEMP / PLANKCONST2 * 7.0 * DA * pow(N2_LENGTH, 2);
+		//double Q_N2 = Qtr_N2 * Qrot_N2;
 
-		double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2;
-	   	// what the hell does this 2 means?? 
+		//double eqconst = AVOGADRO / ( UGASCONST * TEMP ) * Qtr_complex / pow(Q_N2, 2) * result.value() * PATOATM / (16 * pow(M_PI, 5)) / 2;
 
-		cout << "Temperature: " << TEMP << "; EQCONST: " << eqconst << endl << endl;
+		//cout << "Temperature: " << TEMP << "; EQCONST: " << eqconst << endl << endl;
 
-		file << setprecision(5) << TEMP << " " << setprecision(10) << eqconst << endl;
+		//file << setprecision(5) << TEMP << " " << setprecision(10) << eqconst << endl;
 	}
 
-	file.close();
+	//file.close();
 
 	cout << "Total time elapsed: " << ( clock() - full_clock ) / (double) CLOCKS_PER_SEC << "s" << endl;
 
