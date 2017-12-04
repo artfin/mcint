@@ -13,6 +13,8 @@
 // co2ar hamiltonian and potential
 #include "co2ar_hamiltonian.hpp"
 
+#include <gsl/gsl_histogram.h>
+
 using namespace Eigen;
 using namespace std;
 
@@ -26,10 +28,12 @@ const double BOLTZCONST = 1.38064e-23;
 const double HTOJ = 4.35974417e-18;
 
 // ! ---------------------------
-const double RDIST = 40.0;
+const double RDIST = 100.0;
 // -----------------------------
 
-const double BBOUND = 20.0;
+const int NBINS = 100;
+
+const double BBOUND = 100.0;
 
 const int DIM = 6;
 
@@ -71,6 +75,16 @@ double target( VectorXf x )
 	return exp( -ke * HTOJ / (BOLTZCONST * temperature ));
 }
 
+void gsl_histogram_normalize( gsl_histogram* h )
+{
+	double max = gsl_histogram_max( h );
+	double min = gsl_histogram_min( h );
+	double step = (max - min) / NBINS;
+
+	double sum = gsl_histogram_sum( h ) * step;
+	gsl_histogram_scale( h, 1.0 / sum );
+}
+
 VectorXf metro_step( VectorXf x, double alpha )
 {
     VectorXf prop( DIM );
@@ -86,8 +100,25 @@ VectorXf metro_step( VectorXf x, double alpha )
     return x;
 }
 
+void save_histogram( gsl_histogram *histogram, string filename, int nsteps, int burnin, double alpha )
+{
+	ofstream file( filename );
+
+	double lower_bound, higher_bound, bin_content;
+	for ( int counter = 0; counter < NBINS; counter++ )
+	{
+		gsl_histogram_get_range( histogram, counter, &lower_bound, &higher_bound );
+		bin_content = gsl_histogram_get( histogram, counter );
+
+		file << lower_bound << " " << higher_bound << " " << bin_content << endl;
+	}
+	
+	file.close();	
+}
+
+
 // x = [ Theta, pR, pT, Jx, Jy, Jz ]
-double calc_gunsight( VectorXf x )
+double calc_gunsight( VectorXf x, gsl_histogram* quad1_hist, gsl_histogram* quad2_hist, gsl_histogram* quad3_hist, gsl_histogram* cos_phi_histogram, gsl_histogram* denumerator_histogram )
 {
 	double Theta = x( 0 );
 	double pR = x( 1 );
@@ -104,15 +135,26 @@ double calc_gunsight( VectorXf x )
 	double pRmu2 = pR / mu2;
 
 	double quad1 = pow( pRmu2, 2 );
-	double quad2 = pow( (Jx + Jz * cot(Theta)) / (mu2 * RDIST), 2 );
-	double quad3 = pow( (Jy - pT) / (mu2 * RDIST), 2 );
+	gsl_histogram_increment( quad1_hist, quad1 );
 	
+	double quad2 = pow( (Jx + Jz * cot(Theta))/(mu2 * RDIST), 2 );
+	gsl_histogram_increment( quad2_hist, quad2 );
+
+	double quad3 = pow( (Jy - pT)/(mu2 * RDIST), 2 );
+	gsl_histogram_increment( quad3_hist, quad3 );
+
 	double numerator = - pRmu2; 
+	
 	double denumerator = sqrt( quad1  + quad2 + quad3 );
+	gsl_histogram_increment( denumerator_histogram, denumerator );
 
 	double cos_phi = numerator / denumerator;
+	gsl_histogram_increment( cos_phi_histogram, cos_phi );
 
-	double gunsight = RDIST * sqrt( 1 - pow( cos_phi, 2 ));
+	double gunsight = RDIST * sqrt(1 - pow(cos_phi, 2));
+	
+	// for R -> \infinity
+	//double gunsight = 1.0 / fabs(pR) * sqrt( quad2 + quad3 ); 
 	
 	return gunsight;
 }
@@ -172,6 +214,27 @@ int main( int argc, char* argv[] )
 	int block_size = 1000000;
 
 	double b;
+	
+	gsl_histogram* histogram_b = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( histogram_b, 0.0, BBOUND );	
+
+	gsl_histogram* quad1_hist = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( quad1_hist, 0.0, 2e-7 );
+	
+	gsl_histogram* quad2_hist = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( quad2_hist, 0.0, 2e-7 );
+	
+	gsl_histogram* quad3_hist = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( quad3_hist, 0.0, 2e-7 );
+
+	gsl_histogram* cos_phi_histogram = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( cos_phi_histogram, -1.0, 1.0 );
+
+	gsl_histogram* pr_histogram = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( pr_histogram, -50.0, 50.0 );
+
+	gsl_histogram* denumerator_histogram = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( denumerator_histogram, 0.0, 1e-3 );
 
 	chrono::milliseconds time_for_block;
 	chrono::milliseconds time_for_blocks;
@@ -179,7 +242,7 @@ int main( int argc, char* argv[] )
 	vector<chrono::high_resolution_clock::time_point> block_times;
 	block_times.push_back( chrono::high_resolution_clock::now() );
 
-	while ( wrote_vectors < nsteps )  
+	while ( moves < nsteps )  
 	{
 		if ( attempted_steps % block_size == 0 && attempted_steps != 0 )
 		{
@@ -204,30 +267,61 @@ int main( int argc, char* argv[] )
 		// wrapping theta to [0, Pi)
 		xnew(0) = wrapMax( xnew(0), M_PI );
 
-		b = calc_gunsight( x );
-			
+		b = calc_gunsight( x, quad1_hist, quad2_hist, quad3_hist, cos_phi_histogram, denumerator_histogram );
+		gsl_histogram_increment( histogram_b, b );
+		
+		gsl_histogram_increment( pr_histogram, xnew(1) );
+
         if ( xnew != x )
         {
             moves++;
         } 
        
-	   	if ( xnew != x && b > 0 && b < BBOUND )
-        {
-			jx = xnew(3);
-			jy = xnew(4);
-			jz = xnew(5);
+	   	//if ( xnew != x && b > 0 && b < BBOUND )
+        //{
+			//jx = xnew(3);
+			//jy = xnew(4);
+			//jz = xnew(5);
 
-			j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
-			jtheta = acos( jz / j );
-			jphi = atan ( jy / jx );
+			//j = sqrt( pow(jx, 2) + pow(jy, 2) + pow(jz, 2) );
+			//jtheta = acos( jz / j );
+			//jphi = atan ( jy / jx );
 
-			cout << wrote_vectors + 1 << " " << RDIST << " " << xnew(0) << " " << xnew(1) << " " << xnew(2) << " " << jphi << " " << jtheta << " " << j << endl;
+			//cout << wrote_vectors + 1 << " " << RDIST << " " << xnew(0) << " " << xnew(1) << " " << xnew(2) << " " << jphi << " " << jtheta << " " << j << endl;
+			//cout << jx << " " << jy << " " << jz << endl;
 
-			wrote_vectors++;
-		}
+			//wrote_vectors++;
+		//}
         
 		x = xnew;
     }
+	
+	gsl_histogram_normalize( histogram_b );
+	save_histogram( histogram_b, "b_true.txt", nsteps, burnin, alpha );
+	gsl_histogram_free( histogram_b );
+
+	gsl_histogram_normalize( cos_phi_histogram );
+	save_histogram( cos_phi_histogram, "cos_phi_true.txt", nsteps, burnin, alpha );
+	gsl_histogram_free( cos_phi_histogram );
+
+	gsl_histogram_normalize( quad1_hist );
+	save_histogram( quad1_hist, "quad1_true.txt", nsteps, burnin, alpha );
+	gsl_histogram_free( quad1_hist );
+	
+	gsl_histogram_normalize( quad2_hist );
+	save_histogram( quad2_hist, "quad2_true.txt", nsteps, burnin, alpha );
+	gsl_histogram_free( quad2_hist );
+	
+	gsl_histogram_normalize( quad3_hist );
+	save_histogram( quad3_hist, "quad3_true.txt", nsteps, burnin, alpha );
+	gsl_histogram_free( quad3_hist );
+
+	gsl_histogram_normalize( pr_histogram ); 
+	save_histogram( pr_histogram, "pr_true.txt", nsteps, burnin, alpha );
+	gsl_histogram_free( pr_histogram );
+
+	gsl_histogram_normalize( denumerator_histogram );
+	save_histogram( denumerator_histogram, "denumerator_true.txt", nsteps, burnin, alpha );
 
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
 

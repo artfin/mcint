@@ -92,10 +92,10 @@ co2ar_rconst_lconst_mpi: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rc
 	$(MPICCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 co2ar_rconst_b: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_b.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
-co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_rep.cpp
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
+co2ar_rconst: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
 
 co2ar_rconst_autobinning: $(HAM_OBJ)co2ar_hamiltonian.o $(CO2AR_SRC_PATH)co2ar_rconst_autobinning.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE) 
@@ -119,7 +119,7 @@ co2ar_rconst_lagrange_binning: $(CO2AR_SRC_PATH)co2ar_rconst_lagrange_binning.cp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@
 
 co2ar_rconst_euler: $(CO2AR_SRC_PATH)co2ar_rconst_euler.cpp $(HAM_OBJ)co2ar_hamiltonian.o
-	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $(LDFLAGS) $^ -o $(CO2AR_BIN_PATH)$@ $(HAM_INCLUDE)
 
 ##################################################################
 
@@ -146,6 +146,10 @@ diatomics_rconst_exact: $(DIATOMICS_SRC_PATH)diatomics_rconst_exact.cpp
 #  
 ar_he_icpertraj: $(DIATOMICS_SRC_PATH)ar_he_icpertraj.cpp
 	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $^ -o $(DIATOMICS_BIN_PATH)$@
+
+diatomics_b_v0: $(DIATOMICS_SRC_PATH)diatomics_b_v0.cpp
+	$(CCXX) $(CXXFLAGS) $(INCLUDE_EIGEN) $(INCLUDE_GSL) $^ -o $(DIATOMICS_BIN_PATH)$@
+
 ##################################################################
 
 ##################################################################

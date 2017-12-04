@@ -5,6 +5,9 @@
 
 #include <iomanip> // std::atoi
 #include <algorithm> // std::min
+#include <fstream>
+
+#include <gsl/gsl_histogram.h>
 
 // Eigen
 #include <Eigen/Dense>
@@ -27,6 +30,8 @@ const double HTOJ = 4.35974417e-18;
 // ! ---------------------------
 const double RDIST = 20.0;
 // -----------------------------
+
+const int NBINS = 500;
 
 const int DIM = 6;
 
@@ -79,6 +84,31 @@ VectorXf metro_step( VectorXf x, double alpha )
     return x;
 }
 
+void gsl_histogram_normalize( gsl_histogram* h )
+{
+	double max = gsl_histogram_max( h );
+	double min = gsl_histogram_min( h );
+	double step = (max - min) / NBINS;
+
+	double sum = gsl_histogram_sum( h ) * step;
+	gsl_histogram_scale( h, 1.0 / sum );
+}
+
+void save_histogram( gsl_histogram *histogram, string filename )
+{
+	ofstream file( filename );
+
+	double lower_bound, higher_bound, bin_content;
+	for ( int counter = 0; counter < NBINS; counter++ )
+	{
+		gsl_histogram_get_range( histogram, counter, &lower_bound, &higher_bound );
+		bin_content = gsl_histogram_get( histogram, counter );
+
+		file << lower_bound << " " << higher_bound << " " << bin_content << endl;
+	}
+	
+	file.close();	
+}
 
 int main( int argc, char* argv[] )
 {
@@ -118,8 +148,18 @@ int main( int argc, char* argv[] )
 	cout << "# file structure: " << endl;
 	cout << "# theta pR pT jx jy jz" << endl;
 
-	double jx, jy, jz;
-	double j, jtheta, jphi;
+	double lbs[] = {0.0, -50.0, -50.0, -1000.0, -1000.0, -100.0};
+	vector<double> lower_boundaries ( lbs, lbs + sizeof(lbs) / sizeof(double) );
+	double ubs[] =  {M_PI, 50.0, 50.0, 1000.0, 1000.0, 100.0 }; 
+	vector<double> upper_boundaries( ubs, ubs + sizeof(ubs) / sizeof(double) );
+
+	vector< gsl_histogram* > histograms;
+	for ( int i = 0; i < DIM; i++ )
+	{
+		gsl_histogram *h = gsl_histogram_alloc( NBINS );
+		gsl_histogram_set_ranges_uniform( h, lower_boundaries[i], upper_boundaries[i] );
+	  	histograms.push_back( h );	
+	}
 
 	// burnin cycle
 	for ( size_t i = 0; i < burnin; i++ )
@@ -133,13 +173,16 @@ int main( int argc, char* argv[] )
 	size_t moves = 0;
 
 	int block_counter = 0;
-	int block_size = 100000;
+	int block_size = 1000000;
 
 	chrono::milliseconds time_for_block;
 	chrono::milliseconds time_for_blocks;
 
 	vector<chrono::high_resolution_clock::time_point> block_times;
 	block_times.push_back( chrono::high_resolution_clock::now() );
+
+	gsl_histogram* jz_ctg_theta = gsl_histogram_alloc( NBINS );
+	gsl_histogram_set_ranges_uniform( jz_ctg_theta, -100.0, 100.0 );
 
 	while ( moves < nsteps )  
 	{
@@ -164,6 +207,15 @@ int main( int argc, char* argv[] )
 		
 		// wrapping theta to [0, Pi)
 		xnew(0) = wrapMax( xnew(0), M_PI );
+		
+		for ( int i = 0; i < DIM; i++ )
+		{
+			gsl_histogram_increment( histograms[i], xnew(i) ); 
+		}
+
+		double Jz = xnew( 5 );
+		double Theta = xnew( 0 );
+		gsl_histogram_increment( jz_ctg_theta, Jz * cos(Theta) / sin(Theta) ); 
 
         if ( xnew != x )
         {
@@ -177,6 +229,19 @@ int main( int argc, char* argv[] )
 		}
 
     }
+	
+	string names[] = {"Theta.txt", "pr.txt", "pt.txt", "jx.txt", "jy.txt", "jz.txt"};
+		
+	for ( int i = 0; i < DIM; i++ )
+	{
+		gsl_histogram_normalize( histograms[i] );
+		save_histogram( histograms[i], names[i] );
+		gsl_histogram_free( histograms[i] );
+	}
+
+	gsl_histogram_normalize( jz_ctg_theta );
+	save_histogram( jz_ctg_theta, "jz_ctg_theta.txt" );
+	gsl_histogram_free( jz_ctg_theta );
 
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
 
