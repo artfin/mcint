@@ -34,7 +34,7 @@ def mean( lbs, ubs ):
     return [ 0.5 * (lb + ub) for lb, ub in zip(lbs, ubs) ]
 
 def modify( s ):
-    return '\Large ' + s.replace("_", "-").split(".txt")[0]
+    return '\Large ' + s.replace("_", "-").split(".txt")[0].split("/")[-1]
 
 def diff( arr1, arr2 ):
     return [ a - b for a, b in zip(arr1, arr2) ]
