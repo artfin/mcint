@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#SBATCH -J lconst
+#SBATCH -o lconst.out
+#SBATCH -e lconst.err
+#SBATCH -n 1
+#SBATCH -p general
+#SBATCH -t 00:30
+#SBATCH --mem-per-cpu=4000
+
+srun -n $SLURM_NTASKS ../bin/co2ar/co2ar_rconst_lconst

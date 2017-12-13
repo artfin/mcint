@@ -103,7 +103,7 @@ void W_matrix( Matrix<double, 3, 3> &W, const double &theta, const double &psi )
 
 double kinetic_energy_euler( const double &R, const double &Theta, const double &pR, const double &pT, const double &phi, const double &theta, const double &psi, const double &p_phi, const double &p_theta, const double &p_psi )
 {
-	Vector3d pe( phi, theta, psi );
+	Vector3d pe( p_phi, p_theta, p_psi );
 	Vector2d p( pR, pT );
 
 	// ##################################################################
