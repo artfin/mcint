@@ -14,7 +14,7 @@ const double MU = ( MCONST::HE_MASS * MCONST::AR_MASS ) / ( MCONST::HE_MASS + MC
 
 const double temperature = 300;
 
-const int NBINS = 500;
+const int NBINS = 100;
 
 // -----------------------------------------
 // distance between atoms in a0 
@@ -104,8 +104,11 @@ int main( int argc, char* argv[] )
 	sprintf( s, "%.2e", (double) n );
 	string ss{ s };
 
-	save_histogram( pr_histogram, "pr_exact_" + ss + ".txt" );
-	save_histogram( jx_histogram, "jx_exact_" + ss + ".txt" );	
+	sprintf( s, "%d", (int) NBINS );
+	string binstring{ s };
+
+	save_histogram( pr_histogram, "pr_exact_" + ss + "_" + binstring + "bins.txt" );
+	save_histogram( jx_histogram, "jx_exact_" + ss + "_" + binstring + "bins.txt" );	
 
 	gsl_histogram_free( pr_histogram );
 	gsl_histogram_free( jx_histogram );	

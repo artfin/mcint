@@ -74,10 +74,13 @@ int main ( int argc, char* argv[] )
 	sprintf( s, "%.2e", (double) MOVES );
 	string ss{ s };
 
+	sprintf( s, "%d", (int) NBINS );
+	string stringbins{ s };
+
 	vector<string> names;
-	names.push_back( "pr_mcmc_" + ss + ".txt" );
-	names.push_back( "theta_mcmc_" + ss + ".txt" );
-	names.push_back( "pt_mcmc_" + ss + ".txt" );
+	names.push_back( "pr_mcmc_" + ss + "_" + stringbins + "bins.txt" );
+	names.push_back( "theta_mcmc_" + ss + "_" + stringbins + "bins.txt" );
+	names.push_back( "pt_mcmc_" + ss + "_" + stringbins + "bins.txt" );
 	// ############################################################
 
 	diatomic.initialize_histograms( histograms, names );

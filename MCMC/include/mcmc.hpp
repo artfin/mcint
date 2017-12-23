@@ -24,7 +24,7 @@ using std::string;
 
 using Eigen::VectorXf;
 
-const int NBINS = 500;
+const int NBINS = 100;
 
 static vector<pair<int,double>> DEFAULT_VECTOR;
 static int BLOCK_SIZE = 1e6;
