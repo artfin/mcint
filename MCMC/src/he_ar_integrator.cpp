@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cassert>
 #include <stdexcept>
+#include <ctime>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ const double MU_SI = MU * WCONST::AMU;
 const double temperature = 300.0; // K
 const double RDIST = 30.0; // a0
 
-// x = [ pR, theta, pT ]
+// x = [ pR, pT ]
 double hamiltonian( hep::mc_point<double> const& x )
 {
 	double pR = x.point()[0];
@@ -36,6 +37,9 @@ vector<double> create_distribution_x_array( const double& lb, const double& ub, 
 	double step = (ub - lb) / (ndots - 1);
 	for ( double s = lb; s <= ub; s += step )
 		v.push_back( s );
+
+	int center = ( ndots + 1 ) / 2;
+	rotate( v.begin(), v.begin() + center, v.end() );
 
 	return v;
 }
@@ -89,17 +93,16 @@ int main( int argc, char* argv[] )
 	int rank;
 	MPI_Comm_rank( MPI_COMM_WORLD, &rank );
 
+	clock_t start = clock();
+
 	Integrand integrand( hamiltonian );
 	integrand.set_limits()->add_limit( 0, "-inf", "+inf" )
-						  ->add_limit( 1, 0.0, 2 * M_PI )
-						  ->add_limit( 2, "-inf", "+inf" );
+						  ->add_limit( 1, "-inf", "+inf" );
 
 	if ( distribution_name == "pR" )
 		integrand.set_argn( 0 );
-	else if ( distribution_name == "theta" )
-		integrand.set_argn( 1 );
 	else if ( distribution_name == "pT" )
-		integrand.set_argn( 2 );
+		integrand.set_argn( 1 );
 	else
 		throw invalid_argument( "Unknown distribution name!" );
 
@@ -110,20 +113,43 @@ int main( int argc, char* argv[] )
 	vector<double> distribution_y_array;
 
 	double v;
+	int intcycles = 10;
+	int intdots = 50000;
 	for ( size_t i = 0; i < distribution_x_array.size(); i++ ) 
 	{
 		integrand.set_default_value(  distribution_x_array[i] );
-		
-		v = integrator.run_integration( 30, 10000 );
+	
+		v = integrator.run_integration( intcycles, intdots );
 		distribution_y_array.push_back( v );
 	}
 
 	if ( rank == 0 )
 	{
 		normalize_distribution( distribution_x_array, distribution_y_array );
+		
+		ostringstream ss;
+		ss << intcycles;
+		string filename = ss.str() + "_";
+		ss.str("");
+		ss << intdots;
+		filename = filename + ss.str() + ".txt";
 
-		save_distribution( "pr_integrated_distribution.txt", distribution_x_array, distribution_y_array );
+		if ( distribution_name == "pR" )
+		{
+			filename = "pr_" + filename;
+
+			save_distribution( filename, distribution_x_array, distribution_y_array );
+		}
+		if ( distribution_name == "pT" )
+		{
+			filename = "pt_" + filename;	
+			save_distribution( filename, distribution_x_array, distribution_y_array );
+		}
+
+		cout << endl << "Time elapsed: " << (double) (clock() - start) / CLOCKS_PER_SEC << " s" << endl; 
 	}
+
+	MPI_Finalize();
 
 	return 0;
 }

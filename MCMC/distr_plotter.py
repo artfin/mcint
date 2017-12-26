@@ -79,11 +79,17 @@ def plot_one( filename ):
     plt.show()
 
 def plot_two( filename1, filename2 ):
-    lbs1, ubs1, contents1 = read_file( filename1, 3 )
-    lbs2, ubs2, contents2 = read_file( filename2, 3 )
+    try:
+        lbs1, ubs1, contents1 = read_file( filename1, 3 )
+        means1 = mean( lbs1, ubs1 )
+    except IndexError:
+        means1, contents1 = read_file( filename1, 2 )
 
-    means1 = mean( lbs1, ubs1 )
-    means2 = mean( lbs2, ubs2 )
+    try:
+        lbs2, ubs2, contents2 = read_file( filename2, 3 )
+        means2 = mean( lbs2, ubs2 )
+    except IndexError:
+        means2, contents2 = read_file( filename2, 2 ) 
 
     fig = plt.figure()
     
